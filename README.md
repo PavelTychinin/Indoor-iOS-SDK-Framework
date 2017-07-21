@@ -51,7 +51,7 @@ Refer to [Setting Up iBeacon Infrastructure](http://docs.navigine.com/is_ibeacon
 
 ## Installation with CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like Navigine in your projects. See the ["Getting Started" guide for more information](https://https://github.com/Navigine/navigine_ios_framework/wiki/Getting-Started). You can install it with the following command:
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like Navigine in your projects. See the ["Getting Started" guide for more information](https://github.com/Navigine/navigine_ios_framework/wiki/Getting-Started). You can install it with the following command:
 
 ```bash
 $ gem install cocoapods
