@@ -1,0 +1,8 @@
+#file ignor list for xcode
+./*/build/
+./*/Build/
+.DS_Store
+
+/Pods
+Podfile.lock
+
