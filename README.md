@@ -23,7 +23,7 @@ The NavigineDemo subfolder in this repository contains source files that you can
 To get the Navigine demo application for iOS, 
 
 - Either find the [Navigine application in the Apple Store](https://itunes.apple.com/ru/app/navigine/id972099798) using your iOS device
-- Or compile the application yourself [using source code, available at GitHub](https://github.com/Navigine/Indoor-navigation-algorithms/tree/master/demo%20apps/ios).
+- Or compile the application yourself [using source code, available at GitHub](https://github.com/Navigine/navigine_ios_framework).
 
 For complete guidelines on using the Demo, refer to the [corresponding sections in the Navigine User Manual](http://docs.navigine.com/ud_ios_demo.html), or refer to the Help file incorporated into the application.
 
@@ -32,14 +32,14 @@ For complete guidelines on using the Demo, refer to the [corresponding sections 
 Navigine SDK for iOS enables you to develop indoor navigation applications using the well-developed methods, classes, and functions created by the Navigine team.
 SDK and corresponding header files reside in the Navigine_SDK folder.
 
-Refer to the [Navigation_SDK sub-folder](https://github.com/Navigine/iOS-SDK/tree/master/Navigine_SDK) for header files used for iOS indoor navigation.
+Refer to the [Navigation_SDK sub-folder](https://github.com/Navigine/navigine_ios_framework/tree/master/Navigine%20Framework) for header files used for iOS indoor navigation.
 
 
 ## Navigation SDK
 
 Navigine SDK for Android applications enables you to develop your own indoor navigation apps using the well-developed methods, classes, and functions created by the Navigine team.
 The SDK file resides in the NavigineSDK folder.
-Find formal description of Navigine-SDK API including the list of classes and their public fields and methods at [Navigine SDK wiki](https://github.com/Navigine/iOS-SDK/wiki).
+Find formal description of Navigine-SDK API including the list of classes and their public fields and methods at [Navigine SDK wiki](https://github.com/Navigine/navigine_ios_framework/wiki).
 
 ## iBeacon Configuration Application
 
@@ -51,7 +51,7 @@ Refer to [Setting Up iBeacon Infrastructure](http://docs.navigine.com/is_ibeacon
 
 ## Installation with CocoaPods
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like Navigine in your projects. See the ["Getting Started" guide for more information](https://https://github.com/Navigine/iOS-SDK/wiki/Getting-Started). You can install it with the following command:
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like Navigine in your projects. See the ["Getting Started" guide for more information](https://github.com/Navigine/navigine_ios_framework/wiki/Getting-Started). You can install it with the following command:
 
 ```bash
 $ gem install cocoapods
@@ -68,7 +68,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'Navigine', '~> 1.0'
+pod 'Navigine'
 end
 ```
 
