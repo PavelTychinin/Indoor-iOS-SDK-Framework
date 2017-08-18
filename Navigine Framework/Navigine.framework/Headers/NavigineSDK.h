@@ -10,6 +10,7 @@
 #import "NCDeviceInfo.h"
 #import "NCDevicePath.h"
 #import "NCVenue.h"
+#import "NCZone.h"
 #import "NCLocation.h"
 
 typedef NS_ENUM(NSInteger, NCBluetoothState) {

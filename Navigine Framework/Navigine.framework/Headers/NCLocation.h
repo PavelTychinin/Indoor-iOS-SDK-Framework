@@ -55,7 +55,7 @@
  *
  *  @return Sublocation object or nil
  */
-- (NCSublocation *)subLocationAtId: (NSInteger) id;
+- (NCSublocation *)subLocationWithId: (NSInteger) id;
 
 /**
  *  Function is used for getting sublocation at index or nil error
@@ -66,5 +66,5 @@
  */
 - (NCSublocation *)subLocationAtIndex: (NSInteger) index;
 
-
+- (NCZone *) zoneWithId: (NSInteger) id;
 @end

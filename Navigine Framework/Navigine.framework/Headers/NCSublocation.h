@@ -12,6 +12,7 @@
 #endif
 #import <UIKit/UIKit.h>
 #import "NCBeacon.h"
+#import "NCZone.h"
 /**
  *  Sublocation in your personal account
  */
@@ -98,6 +99,11 @@
 @property (nonatomic,copy) NSMutableArray    *beacons;
 
 /**
+ *  Beacons which sublocation contains
+ */
+@property (nonatomic,copy) NSArray    *zones;
+
+/**
  *  Venues which sublocation contains
  */
 @property (nonatomic,copy) NSMutableArray    *venues;
@@ -109,4 +115,7 @@
 
 -(NSArray *)getGpsCoordinates: (float)x :(float)y;
 -(id) initWithSublocation: (NCSublocation *)sublocation;
+
+- (NCZone *) zoneWithId: (NSInteger) id;
+
 @end

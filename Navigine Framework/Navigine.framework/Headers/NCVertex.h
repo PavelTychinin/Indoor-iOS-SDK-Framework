@@ -13,10 +13,8 @@
  */
 @interface NCVertex : NSObject <NSCoding>
 @property (nonatomic, assign) NSInteger sublocationId;
-@property (nonatomic, strong) NSString  *name;
 @property (nonatomic, strong) NSNumber  *x;
 @property (nonatomic, strong) NSNumber  *y;
 @property (nonatomic, strong) NSNumber  *kX;
 @property (nonatomic, strong) NSNumber  *kY;
-@property (nonatomic, assign) BOOL      external;
 @end

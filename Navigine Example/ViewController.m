@@ -31,7 +31,7 @@
     _sv.zoomScale = 1.f;
     _sv.maximumZoomScale = 2.f;
     [_sv addSubview:_imageView];
-    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"0000-0000-0000-0000"
+    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"03EB-3BF3-371A-A99F"
                                                     server: @"https://api.navigine.com"];
     _navigineCore.delegate = self;
     
@@ -52,7 +52,7 @@
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
     
-    [_navigineCore downloadLocationById:1571
+    [_navigineCore downloadLocationById:2019
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
                                NSLog(@"%zd",loadProcess);
@@ -72,9 +72,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) navigationTick: (NSTimer *)timer{
+- (void) navigationTick: (NSTimer *)timer {
     NCDeviceInfo *res = _navigineCore.deviceInfo;
-    if (res.error.code == 0){
+    if (res.error.code == 0) {
         NSLog(@"RESULT: %lf %lf", res.x, res.y);
         _current.hidden = NO;
         _current.center = CGPointMake(_imageView.width / _sv.zoomScale * res.kx,
@@ -84,7 +84,7 @@
         _current.hidden = YES;
         NSLog(@"Error code:%zd",res.error.code);
     }
-    if (_isRouting){
+    if (_isRouting) {
         NCDevicePath *devicePath = res.paths.firstObject;
         NSArray *path = devicePath.path;
         float distance = devicePath.lenght;
@@ -95,17 +95,17 @@
 -(void) drawRouteWithPath: (NSArray *)path
               andDistance: (float)distance {
     //    // We check that we are close to the finish point of the route
-    if (distance <= 3.){
+    if (distance <= 3.) {
         [self stopRoute];
     }
-    else{
+    else {
         [routeLayer removeFromSuperlayer];
         [uipath removeAllPoints];
         
         uipath     = [[UIBezierPath alloc] init];
         routeLayer = [CAShapeLayer layer];
         
-        for (int i = 0; i < path.count; i++ ){
+        for (int i = 0; i < path.count; i++ ) {
             NCVertex *vertex = path[i];
             NCSublocation *sublocation = _navigineCore.location.sublocations[0];
             CGSize imageSizeInMeters = CGSizeMake(sublocation.width, sublocation.height);
@@ -219,6 +219,8 @@
     [_navigineCore startNavigine];
     [_navigineCore startPushManager];
     [_navigineCore startVenueManager];
+    
+    [self presentViewController:_navigineCore.location.viewController animated:YES completion:nil];
     
     NCLocation *location = _navigineCore.location;
     NCSublocation *sublocation = [location subLocationAtIndex:0];
