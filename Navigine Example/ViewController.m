@@ -31,7 +31,7 @@
     _sv.zoomScale = 1.f;
     _sv.maximumZoomScale = 2.f;
     [_sv addSubview:_imageView];
-    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"03EB-3BF3-371A-A99F"
+    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"0000-0000-0000-0000"
                                                     server: @"https://api.navigine.com"];
     _navigineCore.delegate = self;
     
@@ -52,7 +52,7 @@
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
     
-    [_navigineCore downloadLocationById:2019
+    [_navigineCore downloadLocationById:1571
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
                                NSLog(@"%zd",loadProcess);
@@ -220,7 +220,10 @@
     [_navigineCore startPushManager];
     [_navigineCore startVenueManager];
     
-    [self presentViewController:_navigineCore.location.viewController animated:YES completion:nil];
+    [_imageView removeAllSubviews];
+    _imageView.layer.sublayers = nil;
+    [_imageView addSubview:_current];
+//    [self presentViewController:_navigineCore.location.viewController animated:YES completion:nil];
     
     NCLocation *location = _navigineCore.location;
     NCSublocation *sublocation = [location subLocationAtIndex:0];
@@ -239,5 +242,38 @@
     _imageView.frame = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
     _imageView.image = image;
     _sv.contentSize = _imageView.frame.size;
+    [self drawZones];
+}
+
+- (void) drawZones {
+    NCSublocation *sublocation = [_navigineCore.location subLocationAtIndex:0];
+    NSArray *zones = sublocation.zones;
+    for (NCZone *zone in zones) {
+        UIBezierPath *zonePath     = [[UIBezierPath alloc] init];
+        CAShapeLayer *zoneLayer = [CAShapeLayer layer];
+        NSArray *points = zone.points;
+        NCVertex *point0 = points[0];
+        [zonePath moveToPoint:CGPointMake(_imageView.width * point0.kX.doubleValue,
+                                          _imageView.height * (1. - point0.kY.doubleValue))];
+        for (NCVertex *point in zone.points) {
+                [zonePath addLineToPoint:CGPointMake(_imageView.width * point.kX.doubleValue,
+                                                     _imageView.height * (1. - point.kY.doubleValue))];
+        }
+        [zonePath addLineToPoint:CGPointMake(_imageView.width * point0.kX.doubleValue,
+                                             _imageView.height *(1. - point0.kY.doubleValue))];
+        unsigned int result = 0;
+        NSScanner *scanner = [NSScanner scannerWithString:zone.color];
+        [scanner setScanLocation:1];
+        [scanner scanHexInt:&result];
+        
+        zoneLayer.hidden = NO;
+        zoneLayer.path            = [zonePath CGPath];
+        zoneLayer.strokeColor     = [kColorFromHex(result) CGColor];
+        zoneLayer.lineWidth       = 2.0;
+        zoneLayer.lineJoin        = kCALineJoinRound;
+        zoneLayer.fillColor       = [[kColorFromHex(result) colorWithAlphaComponent:0.5] CGColor];
+        
+        [_imageView.layer addSublayer:zoneLayer];
+    }
 }
 @end
