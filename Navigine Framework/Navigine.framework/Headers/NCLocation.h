@@ -57,14 +57,5 @@
  */
 - (NCSublocation *)subLocationWithId: (NSInteger) id;
 
-/**
- *  Function is used for getting sublocation at index or nil error
- *
- *  @param index the ordinal sublocation in admin panel
- *
- *  @return Sublocation object or nil
- */
-- (NCSublocation *)subLocationAtIndex: (NSInteger) index;
-
 - (NCZone *) zoneWithId: (NSInteger) id;
 @end

@@ -17,11 +17,8 @@
 @property (nonatomic, assign) float kx;
 @property (nonatomic, assign) float y;
 @property (nonatomic, assign) float ky;
-@property (nonatomic, assign) float z;
 @property (nonatomic, assign) float r;
 @property (nonatomic, assign) float azimuth;
-@property (nonatomic, assign) float pith;
-@property (nonatomic, assign) float roll;
 @property (nonatomic, strong) NSArray *paths;
 @property (nonatomic, strong) NSArray *zones;
 @property (nonatomic, strong) NSError *error;

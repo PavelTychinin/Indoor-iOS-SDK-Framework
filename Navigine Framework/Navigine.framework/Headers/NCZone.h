@@ -10,9 +10,9 @@
 #import "NCVertex.h"
 
 @interface NCZone : NSObject <NSCoding>
-
 @property (nonatomic, assign) NSInteger id;
-@property (nonatomic, assign) NSInteger sublocationId;
+@property (nonatomic, assign) NSInteger location;
+@property (nonatomic, assign) NSInteger sublocation;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *color;

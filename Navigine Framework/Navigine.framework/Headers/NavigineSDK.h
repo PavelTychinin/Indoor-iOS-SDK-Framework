@@ -8,7 +8,7 @@
 #import <CoreGraphics/CGGeometry.h>
 
 #import "NCDeviceInfo.h"
-#import "NCDevicePath.h"
+#import "NCRoutePath.h"
 #import "NCVenue.h"
 #import "NCZone.h"
 #import "NCLocation.h"
@@ -152,8 +152,8 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  *
  *  @return NSArray object – array with NCVertex structures.
  */
-- (NCDevicePath *) makeRouteFrom: (NCVertex *)startPoint
-                              to: (NCVertex *)endPoint;
+- (NCRoutePath *) makeRouteFrom: (NCVertex *)startPoint
+                             to: (NCVertex *)endPoint;
 
 - (void) setTarget:(NCVertex *)target;
 - (void) cancelTarget;
@@ -169,11 +169,6 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  *  Function is used for cheking pushes from web site
  */
 - (void) startPushManager;
-
-/**
- *  Function is used for cheking venues from web site
- */
-- (void) startVenueManager;
 
 /**
  *  Function is used for converting local coordinates to GPS coordinates
@@ -215,13 +210,6 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
                        content :(NSString *)content
                          image :(NSString *)image
                             id :(NSInteger) id;
-/**
- *  Function is used for checking venues from web site.
- *
- *  @param venues     NSArray object – array with NCVenue structures.
- *  @param categories NSArray object – array with NCCategories structures.
- */
-- (void) didRangeVenues :(NSArray *)venues :(NSArray *)categories;
 
 /**
  * Tells the delegate if point enter the zone

@@ -12,7 +12,8 @@
  *  Struсture with vertex content
  */
 @interface NCVertex : NSObject <NSCoding>
-@property (nonatomic, assign) NSInteger sublocationId;
+@property (nonatomic, assign) NSInteger location;
+@property (nonatomic, assign) NSInteger sublocation;
 @property (nonatomic, strong) NSNumber  *x;
 @property (nonatomic, strong) NSNumber  *y;
 @property (nonatomic, strong) NSNumber  *kX;

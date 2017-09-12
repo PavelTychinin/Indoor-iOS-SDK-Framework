@@ -17,8 +17,8 @@ typedef NS_ENUM(NSInteger, NCBeaconStatus) {
 
 @interface NCBeacon : NSObject <NSCoding>
 @property (nonatomic, assign) NSInteger      id;
-@property (nonatomic, assign) NSInteger      locationId;
-@property (nonatomic, assign) NSInteger      sublocationId;
+@property (nonatomic, assign) NSInteger      location;
+@property (nonatomic, assign) NSInteger      sublocation;
 @property (nonatomic, assign) NSInteger      major;
 @property (nonatomic, assign) NSInteger      minor;
 @property (nonatomic, strong) NSString       *uuid;

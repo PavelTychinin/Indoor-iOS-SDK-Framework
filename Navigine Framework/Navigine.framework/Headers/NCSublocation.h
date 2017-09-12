@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "NCBeacon.h"
 #import "NCZone.h"
+#import "NCVenue.h"
 /**
  *  Sublocation in your personal account
  */
@@ -22,6 +23,11 @@
  *  Sublocation id in personal account
  */
 @property (nonatomic, assign) NSInteger id;
+
+/**
+ * Location id in personal account
+ */
+@property (nonatomic, assign) NSInteger locaiton;
 
 /**
  *  Sublocation name in personal account
