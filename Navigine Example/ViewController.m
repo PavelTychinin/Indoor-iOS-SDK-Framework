@@ -85,8 +85,8 @@
         NSLog(@"Error code:%zd",res.error.code);
     }
     if (_isRouting) {
-        NCDevicePath *devicePath = res.paths.firstObject;
-        NSArray *path = devicePath.path;
+        NCRoutePath *devicePath = res.paths.firstObject;
+        NSArray *path = devicePath.points;
         float distance = devicePath.lenght;
         [self drawRouteWithPath:path andDistance:distance];
     }
@@ -169,7 +169,7 @@
     CGFloat xPoint = _pressedPin.centerX /_imageView.width * imageSizeInMeters.width;
     CGFloat yPoint = (1. - _pressedPin.centerY /_imageView.height) * imageSizeInMeters.height;
     NCVertex *vertex = [[NCVertex alloc] init];
-    vertex.sublocationId = res.subLocation;
+    vertex.sublocation = res.subLocation;
     vertex.x = @(xPoint);
     vertex.y = @(yPoint);
     [_navigineCore addTatget:vertex];
@@ -218,7 +218,6 @@
 -(void) setupNavigine{
     [_navigineCore startNavigine];
     [_navigineCore startPushManager];
-    [_navigineCore startVenueManager];
     
     [_imageView removeAllSubviews];
     _imageView.layer.sublayers = nil;
@@ -226,7 +225,7 @@
 //    [self presentViewController:_navigineCore.location.viewController animated:YES completion:nil];
     
     NCLocation *location = _navigineCore.location;
-    NCSublocation *sublocation = [location subLocationAtIndex:0];
+    NCSublocation *sublocation = location.sublocations[0];
     
     NSData *imageData = sublocation.pngImage;
     UIImage *image = [UIImage imageWithData:imageData];
@@ -246,7 +245,7 @@
 }
 
 - (void) drawZones {
-    NCSublocation *sublocation = [_navigineCore.location subLocationAtIndex:0];
+    NCSublocation *sublocation = _navigineCore.location.sublocations[0];
     NSArray *zones = sublocation.zones;
     for (NCZone *zone in zones) {
         UIBezierPath *zonePath     = [[UIBezierPath alloc] init];
