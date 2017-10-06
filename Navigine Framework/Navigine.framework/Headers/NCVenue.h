@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "NCCategory.h"
 
 /**
  *  Structure with venues content
@@ -19,9 +21,9 @@
 @property(nonatomic, strong) NSString   *name;        // name of venue
 @property(nonatomic, strong) NSNumber   *kX;
 @property(nonatomic, strong) NSNumber   *kY;
-@property(nonatomic, strong) NSString   *image;     // url path to image of venue content
+@property(nonatomic, strong) UIImage    *image;     // url path to image of venue content
 @property(nonatomic, strong) NSString   *phone;     // phone number of venue
 @property(nonatomic, strong) NSString   *descript;  // other info about venue
-@property(nonatomic, assign) NSInteger  category;
+@property(nonatomic, strong) NCCategory *category;
 
 @end

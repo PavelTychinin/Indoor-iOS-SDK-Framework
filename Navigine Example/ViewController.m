@@ -31,7 +31,7 @@
     _sv.zoomScale = 1.f;
     _sv.maximumZoomScale = 2.f;
     [_sv addSubview:_imageView];
-    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"0000-0000-0000-0000"
+    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"628B-9792-0789-C136"
                                                     server: @"https://api.navigine.com"];
     _navigineCore.delegate = self;
     
@@ -52,7 +52,7 @@
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
     
-    [_navigineCore downloadLocationById:1571
+    [_navigineCore downloadLocationById:2205
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
                                NSLog(@"%zd",loadProcess);
@@ -215,7 +215,7 @@
     }
 }
 
--(void) setupNavigine{
+-(void) setupNavigine {
     [_navigineCore startNavigine];
     [_navigineCore startPushManager];
     
@@ -232,10 +232,10 @@
     
     float scale = 1.f;
     if (image.size.width / image.size.height >
-        self.view.frame.size.width / self.view.frame.size.height){
+        self.view.frame.size.width / self.view.frame.size.height) {
         scale = self.view.frame.size.height / image.size.height;
     }
-    else{
+    else {
         scale = self.view.frame.size.width / image.size.width;
     }
     _imageView.frame = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
