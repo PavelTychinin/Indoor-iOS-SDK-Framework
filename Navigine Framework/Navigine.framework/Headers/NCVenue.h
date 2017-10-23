@@ -18,12 +18,13 @@
 @property(nonatomic, assign) NSInteger  id;
 @property(nonatomic, assign) NSInteger  location;
 @property(nonatomic, assign) NSInteger  sublocation;  // sublocation id of venue
-@property(nonatomic, strong) NSString   *name;        // name of venue
 @property(nonatomic, strong) NSNumber   *kX;
 @property(nonatomic, strong) NSNumber   *kY;
-@property(nonatomic, strong) UIImage    *image;     // url path to image of venue content
-@property(nonatomic, strong) NSString   *phone;     // phone number of venue
-@property(nonatomic, strong) NSString   *descript;  // other info about venue
+@property(nonatomic, strong) NSString   *name;        // name of venue
+@property(nonatomic, strong) UIImage    *image;       // url path to image of venue content
+@property(nonatomic, strong) NSString   *phone;       // phone number of venue
+@property(nonatomic, strong) NSString   *descript;    // other info about venue
+@property(nonatomic, strong) NSString   *alias;
 @property(nonatomic, strong) NCCategory *category;
 
 @end

@@ -13,37 +13,42 @@
 /**
  *  Location id in personal account
  */
-@property (nonatomic,assign) NSInteger      id;
+@property (nonatomic, assign) NSInteger      id;
 
 /**
  *  Location name in personal account
  */
-@property (nonatomic,copy)   NSString       *name;
+@property (nonatomic, copy)   NSString       *name;
+
+/**
+ *  Location description in personal account
+ */
+@property (nonatomic, copy)   NSString       *localDescription;
 
 /**
  *  Name of archive file
  */
-@property (nonatomic,copy)   NSString       *archiveFile;
+@property (nonatomic, copy)   NSString       *archiveFile;
 
 /**
  *  Archive version
  */
-@property (nonatomic,assign) NSInteger      version;
+@property (nonatomic, assign) NSInteger      version;
 
 /**
  *  Array with sublocations of your location
  */
-@property (nonatomic,strong) NSMutableArray *sublocations;
+@property (nonatomic, strong) NSMutableArray *sublocations;
 
 /**
  *  NCLocationViewController
  */
-@property (nonatomic,copy) UIViewController *viewController;
+@property (nonatomic, copy) UIViewController *viewController;
 
 /**
 *  Is local modified Archive
 */
-@property (nonatomic,assign) BOOL modified;
+@property (nonatomic, assign) BOOL modified;
 
 
 - (id) initWithLocation :(NCLocation *)location;

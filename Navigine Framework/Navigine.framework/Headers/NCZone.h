@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSInteger location;
 @property (nonatomic, assign) NSInteger sublocation;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, strong) NSString *alias;
 @property (nonatomic, strong) NSString *color;
 @property (nonatomic, strong) NSArray *points;
 
