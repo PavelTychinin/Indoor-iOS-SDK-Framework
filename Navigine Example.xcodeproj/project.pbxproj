@@ -19,10 +19,11 @@
 		3F6D5B221F1F913600517753 /* elmVenueIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1A1F1F913600517753 /* elmVenueIcon@2x.png */; };
 		3F6D5B231F1F913600517753 /* elmVenueIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1B1F1F913600517753 /* elmVenueIcon@3x.png */; };
 		3F6D5B241F1F913600517753 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1E1F1F913600517753 /* MapPin.m */; };
-		5F5F71B11228E25BA2A65DEB /* libPods-Navigine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5709D49B8E70D0C5FD0E0345 /* libPods-Navigine.a */; };
+		C2B9C8A27737EDCDCF086625 /* Pods_Navigine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E360C624C961C42264829D5 /* Pods_Navigine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E360C624C961C42264829D5 /* Pods_Navigine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30C43EA2A551CF53140935F6 /* Pods-Navigine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Navigine/Pods-Navigine.debug.xcconfig"; sourceTree = "<group>"; };
 		3F6D5AFA1F1F908C00517753 /* Navigine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6D5AFE1F1F908C00517753 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,7 +43,6 @@
 		3F6D5B1B1F1F913600517753 /* elmVenueIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elmVenueIcon@3x.png"; sourceTree = "<group>"; };
 		3F6D5B1D1F1F913600517753 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
 		3F6D5B1E1F1F913600517753 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
-		5709D49B8E70D0C5FD0E0345 /* libPods-Navigine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Navigine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD17A1F3CBCB5BFA620D81A4 /* Pods-Navigine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigine.release.xcconfig"; path = "Pods/Target Support Files/Pods-Navigine/Pods-Navigine.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F5F71B11228E25BA2A65DEB /* libPods-Navigine.a in Frameworks */,
+				C2B9C8A27737EDCDCF086625 /* Pods_Navigine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +144,7 @@
 		B619986FDA11FF5EE4E164A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5709D49B8E70D0C5FD0E0345 /* libPods-Navigine.a */,
+				1E360C624C961C42264829D5 /* Pods_Navigine.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,9 +245,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh",
+				"${PODS_ROOT}/Navigine/Navigine Framework/Navigine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Navigine.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -260,13 +263,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Navigine-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

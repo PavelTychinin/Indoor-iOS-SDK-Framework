@@ -147,40 +147,29 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 /**
  *  Function is used for making route from one position to other.
  *
- *  @param startPoint start vertex.
- *  @param endPoint  end vertex.
+ *  @param startPoint start location point.
+ *  @param endPoint  end start location point.
  *
- *  @return NSArray object – array with NCVertex structures.
+ *  @return NCRoutePath object
  */
-- (NCRoutePath *) makeRouteFrom: (NCVertex *)startPoint
-                             to: (NCVertex *)endPoint;
+- (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
+                             to: (NCLocationPoint *)endPoint;
 
-- (void) setTarget:(NCVertex *)target;
+- (void) setTarget:(NCLocationPoint *)target;
 - (void) cancelTarget;
 
 - (void) setGraphTag:(NSString *)tag;
 - (NSString *)getGraphTag;
 - (NSString *)getGraphDescription:(NSString *)tag;
 - (NSArray *)getGraphTags;
-- (void) addTatget:(NCVertex *)target;
+- (void) addTatget:(NCLocationPoint *)target;
 - (void) cancelTargets;
+- (BOOL) setGraphParam: (NSDictionary *)param;
 
 /**
  *  Function is used for cheking pushes from web site
  */
 - (void) startPushManager;
-
-/**
- *  Function is used for converting local coordinates to GPS coordinates
- *
- *  @param x         x
- *  @param y         y
- *  @param azimuth   azimuth
- *  @param latitude  latitude
- *  @param longitude longitude
- *  @param data      GPS coordinates
- */
-- (void) localToGps: (float) x :(float) y :(float) azimuth :(double) latitude :(double) longitude :(double*) data;
 
 /**
  *  Function is used for sending data to server using POST sequests

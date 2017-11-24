@@ -15,8 +15,10 @@ typedef NS_ENUM(NSInteger, NCRouteEventType) {
   NCRouteEventTypeTransition
 };
 
-@interface NCRouteEvent : NSObject
+@interface NCRouteEvent : NSObject <NSCoding>
 @property (nonatomic, assign) float distance;
 @property (nonatomic, assign) int value;
 @property (nonatomic, assign) NCRouteEventType type;
+
+- (BOOL) isValid;
 @end

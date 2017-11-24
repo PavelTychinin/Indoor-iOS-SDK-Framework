@@ -7,17 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NCVertex.h"
+#import "NCLocationPoint.h"
+#import "NCGlobalPoint.h"
 
 @interface NCZone : NSObject <NSCoding>
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, assign) NSInteger location;
 @property (nonatomic, assign) NSInteger sublocation;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *alias;
-@property (nonatomic, strong) NSString *color;
-@property (nonatomic, strong) NSArray *points;
+@property (nonatomic, strong) NSString  *name;
+@property (nonatomic, strong) NSString  *alias;
+@property (nonatomic, strong) NSString  *color;
+@property (nonatomic, strong) NSArray   *points;
+@property (nonatomic, strong, readonly) NCLocationPoint *center;
 
-- (BOOL) containsPoint:(NCVertex *)point;
+- (BOOL) containsPoint:(NCLocationPoint *)point;
 
+- (BOOL) isValid;
 @end

@@ -12,7 +12,7 @@
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSDate *time;
 @property (nonatomic, assign) NSInteger location;
-@property (nonatomic, assign) NSInteger subLocation;
+@property (nonatomic, assign) NSInteger sublocation;
 @property (nonatomic, assign) float x;
 @property (nonatomic, assign) float kx;
 @property (nonatomic, assign) float y;
@@ -22,4 +22,7 @@
 @property (nonatomic, strong) NSArray *paths;
 @property (nonatomic, strong) NSArray *zones;
 @property (nonatomic, strong) NSError *error;
+
+- (BOOL) isValid;
+
 @end

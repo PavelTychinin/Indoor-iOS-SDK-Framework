@@ -31,7 +31,7 @@
     _sv.zoomScale = 1.f;
     _sv.maximumZoomScale = 2.f;
     [_sv addSubview:_imageView];
-    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"7AE0-58F9-0750-614A"
+    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"1385-6098-F9A9-6178"
                                                     server: @"https://api.navigine.com"];
     _navigineCore.delegate = self;
     
@@ -52,10 +52,10 @@
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
     
-    [_navigineCore downloadLocationById:2153
+    [_navigineCore downloadLocationById:1783
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
-                               NSLog(@"%zd",loadProcess);
+//                               NSLog(@"%zd",loadProcess);
                            } successBlock:^(NSDictionary *userInfo) {
                                [self setupNavigine];
                            } failBlock:^(NSError *error) {
@@ -75,14 +75,14 @@
 - (void) navigationTick: (NSTimer *)timer {
     NCDeviceInfo *res = _navigineCore.deviceInfo;
     if (res.error.code == 0) {
-        NSLog(@"RESULT: %lf %lf", res.x, res.y);
+//        NSLog(@"RESULT: %lf %lf", res.x, res.y);
         _current.hidden = NO;
         _current.center = CGPointMake(_imageView.width / _sv.zoomScale * res.kx,
                                       _imageView.height / _sv.zoomScale * (1. - res.ky));
     }
     else {
         _current.hidden = YES;
-        NSLog(@"Error code:%zd",res.error.code);
+//        NSLog(@"Error code:%zd",res.error.code);
     }
     if (_isRouting) {
         NCRoutePath *devicePath = res.paths.firstObject;
@@ -207,12 +207,6 @@
                          image:(NSString *)image
                             id:(NSInteger)id{
     // Your code
-}
-
-- (void) didRangeVenues:(NSArray *)venues :(NSArray *)categories{
-    for (NCVenue *v in venues) {
-        [self addPinToMapWithVenue:v andImage:[UIImage imageNamed:@"elmVenueIcon"]];
-    }
 }
 
 -(void) setupNavigine {

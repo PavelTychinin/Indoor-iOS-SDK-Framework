@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCCategory : NSObject
+@interface NCCategory : NSObject <NSCoding>
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, strong) NSString *name;
+
+- (BOOL) isValid;
 @end

@@ -63,4 +63,6 @@
 - (NCSublocation *)subLocationWithId: (NSInteger) id;
 
 - (NCZone *) zoneWithId: (NSInteger) id;
+
+- (BOOL) isValid;
 @end

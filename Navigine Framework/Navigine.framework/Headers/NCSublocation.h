@@ -14,6 +14,7 @@
 #import "NCBeacon.h"
 #import "NCZone.h"
 #import "NCVenue.h"
+
 /**
  *  Sublocation in your personal account
  */
@@ -27,7 +28,7 @@
 /**
  * Location id in personal account
  */
-@property (nonatomic, assign) NSInteger locaiton;
+@property (nonatomic, assign) NSInteger location;
 
 /**
  *  Sublocation name in personal account
@@ -92,12 +93,12 @@
 /**
  *  GPS latitude
  */
-@property (nonatomic, assign) double    gpsLatitude;
+@property (nonatomic, assign) double    latitude;
 
 /**
  *  GPS longitude
  */
-@property (nonatomic, assign) double    gpsLongitude;
+@property (nonatomic, assign) double    longitude;
 
 /**
  *  Beacons which sublocation contains
@@ -119,9 +120,13 @@
  */
 @property (nonatomic,copy) NSString    *archiveFile;
 
--(NSArray *)getGpsCoordinates: (float)x :(float)y;
--(id) initWithSublocation: (NCSublocation *)sublocation;
+- (id) initWithSublocation: (NCSublocation *)sublocation;
 
 - (NCZone *) zoneWithId: (NSInteger) id;
 
+- (NCGlobalPoint *) gpsFromLocal: (NCLocationPoint *)point;
+
+- (NCLocationPoint *) localFromGps: (NCGlobalPoint *)point;
+
+- (BOOL) isValid;
 @end
