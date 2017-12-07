@@ -77,3 +77,7 @@ Then, run the following command:
 ```bash
 $ pod install
 ```
+
+## License
+
+Navigine SDK is released under the MIT license. See LICENSE for details.
