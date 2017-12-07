@@ -106,12 +106,12 @@
         routeLayer = [CAShapeLayer layer];
         
         for (int i = 0; i < path.count; i++ ) {
-            NCVertex *vertex = path[i];
+            NCLocationPoint *point = path[i];
             NCSublocation *sublocation = _navigineCore.location.sublocations[0];
             CGSize imageSizeInMeters = CGSizeMake(sublocation.width, sublocation.height);
             
-            CGFloat xPoint =  (vertex.x.doubleValue / imageSizeInMeters.width) * (_imageView.width / _sv.zoomScale);
-            CGFloat yPoint =  (1. - vertex.y.doubleValue / imageSizeInMeters.height)  * (_imageView.height / _sv.zoomScale);
+            CGFloat xPoint =  (point.x.doubleValue / imageSizeInMeters.width) * (_imageView.width / _sv.zoomScale);
+            CGFloat yPoint =  (1. - point.y.doubleValue / imageSizeInMeters.height)  * (_imageView.height / _sv.zoomScale);
             if(i == 0) {
                 [uipath moveToPoint:CGPointMake(xPoint, yPoint)];
             }
@@ -131,9 +131,10 @@
     [_imageView bringSubviewToFront:_current];
 }
 
-- (void)addPinToMapWithVenue:(NCVenue *)v andImage:(UIImage *)image{
-    CGFloat xPoint = v.kX.doubleValue * _imageView.width;
-    CGFloat yPoint = (1. - v.kY.doubleValue) * _imageView.height;
+- (void)addPinToMapWithVenue:(NCVenue *)v andImage:(UIImage *)image {
+    NCSublocation *sublocation = _navigineCore.location.sublocations[0];
+    CGFloat xPoint =  v.x.doubleValue * _imageView.width / sublocation.width;
+    CGFloat yPoint =  _imageView.height * (1 - v.y.doubleValue / sublocation.height);
     
     CGPoint point = CGPointMake(xPoint, yPoint);
     MapPin *mapPin = [[MapPin alloc] initWithVenue:v];
@@ -168,11 +169,13 @@
     CGSize imageSizeInMeters = CGSizeMake(sublocation.width, sublocation.height);
     CGFloat xPoint = _pressedPin.centerX /_imageView.width * imageSizeInMeters.width;
     CGFloat yPoint = (1. - _pressedPin.centerY /_imageView.height) * imageSizeInMeters.height;
-    NCVertex *vertex = [[NCVertex alloc] init];
-    vertex.sublocation = res.subLocation;
-    vertex.x = @(xPoint);
-    vertex.y = @(yPoint);
-    [_navigineCore addTatget:vertex];
+    
+    NCLocationPoint *point = [NCLocationPoint initWithLocation:res.location
+                                                   sublocation:res.sublocation
+                                                             x:@(xPoint)
+                                                             y:@(yPoint)];
+    [_navigineCore addTatget:point];
+    
     [_pressedPin.popUp removeFromSuperview];
     _pressedPin.popUp.hidden = YES;
     _isRouting = YES;
@@ -245,15 +248,16 @@
         UIBezierPath *zonePath     = [[UIBezierPath alloc] init];
         CAShapeLayer *zoneLayer = [CAShapeLayer layer];
         NSArray *points = zone.points;
-        NCVertex *point0 = points[0];
-        [zonePath moveToPoint:CGPointMake(_imageView.width * point0.kX.doubleValue,
-                                          _imageView.height * (1. - point0.kY.doubleValue))];
-        for (NCVertex *point in zone.points) {
-                [zonePath addLineToPoint:CGPointMake(_imageView.width * point.kX.doubleValue,
-                                                     _imageView.height * (1. - point.kY.doubleValue))];
+        NCLocationPoint *point0 = points[0];
+        
+        [zonePath moveToPoint:CGPointMake(_imageView.width * point0.x.doubleValue / sublocation.width,
+                                          _imageView.height * (1. - point0.y.doubleValue / sublocation.height))];
+        for (NCLocationPoint *point in zone.points) {
+                [zonePath addLineToPoint:CGPointMake(_imageView.width * point.x.doubleValue / sublocation.width,
+                                                     _imageView.height * (1. - point.y.doubleValue / sublocation.height))];
         }
-        [zonePath addLineToPoint:CGPointMake(_imageView.width * point0.kX.doubleValue,
-                                             _imageView.height *(1. - point0.kY.doubleValue))];
+        [zonePath addLineToPoint:CGPointMake(_imageView.width * point0.x.doubleValue / sublocation.width,
+                                             _imageView.height *(1. - point0.y.doubleValue / sublocation.height))];
         unsigned int result = 0;
         NSScanner *scanner = [NSScanner scannerWithString:zone.color];
         [scanner setScanLocation:1];
