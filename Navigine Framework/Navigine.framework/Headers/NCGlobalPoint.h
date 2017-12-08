@@ -14,8 +14,8 @@
 
 - (double) distanceTo: (NCGlobalPoint *)point;
 
-+ (NCGlobalPoint *) initWithLatitude:(double) latitude
-                           longitude:(double) longitude;
++ (NCGlobalPoint *) pointWithLatitude:(double) latitude
+                            longitude:(double) longitude;
 
 - (BOOL) isValid;
 @end
