@@ -57,10 +57,7 @@
                            processBlock:^(NSInteger loadProcess) {
 //                               NSLog(@"%zd",loadProcess);
                            } successBlock:^(NSDictionary *userInfo) {
-//                               dispatch_async(dispatch_get_main_queue(), ^{
-                                   [self setupNavigine];
-                                   NSLog(@"Thread: %@", [NSThread currentThread]);
-//                               });
+                               [self setupNavigine];
                            } failBlock:^(NSError *error) {
                                NSLog(@"%@",error);
                            }];
