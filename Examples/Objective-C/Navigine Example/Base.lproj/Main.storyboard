@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+<scenes>
+<!--View Controller-->
+<scene sceneID="tne-QT-ifu">
+<objects>
+<placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+<viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+<layoutGuides>
+<viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+<viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+</layoutGuides>
+<view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+<rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsM-Cf-3cP">
+<rect key="frame" x="0.0" y="28" width="375" height="639"/>
+<subviews>
+<imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-1e-Gq7">
+<rect key="frame" x="46" y="25" width="240" height="128"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+</imageView>
+</subviews>
+<connections>
+<outlet property="delegate" destination="BYZ-38-t0r" id="rwS-9B-wci"/>
+</connections>
+</scrollView>
+</subviews>
+<color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+<constraints>
+<constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PsM-Cf-3cP" secondAttribute="bottom" id="E7t-sg-QCc"/>
+<constraint firstAttribute="trailingMargin" secondItem="PsM-Cf-3cP" secondAttribute="trailing" constant="-16" id="ZI2-em-WPX"/>
+<constraint firstItem="PsM-Cf-3cP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wFf-We-TFx"/>
+<constraint firstItem="PsM-Cf-3cP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="yth-Ry-rEl"/>
+</constraints>
+</view>
+<connections>
+<outlet property="imageView" destination="SPg-1e-Gq7" id="HmG-fm-j1A"/>
+<outlet property="sv" destination="PsM-Cf-3cP" id="X6k-PD-U8v"/>
+</connections>
+</viewController>
+</objects>
+</scene>
+</scenes>
+</document>
