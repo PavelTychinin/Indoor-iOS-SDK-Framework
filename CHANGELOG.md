@@ -15,4 +15,4 @@ All notable changes to this project will be documented in this file.
 * `NCLocationPoint` and `NCGlobalPoint` all properties are readonly
 
 #### Removed
-* `kX  and kY` properties from `NCBeacon`, `NCVenue` and `NCLocationPoint` classes
+* `kX`  and `kY` properties from `NCBeacon`, `NCVenue` and `NCLocationPoint` classes
