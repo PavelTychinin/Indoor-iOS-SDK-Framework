@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name                 = 'Navigine'
   spec.version              = '1.0.27'
-  spec.license              = 'MIT'
+ # spec.license              = ''
   spec.summary              = "iOS SDK for performing indoor navigation"
   spec.platform             = :ios, "8.0"
   spec.homepage             = 'https://github.com/Navigine/navigine_ios_framework'
