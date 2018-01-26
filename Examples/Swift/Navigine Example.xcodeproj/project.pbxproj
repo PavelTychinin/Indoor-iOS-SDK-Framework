@@ -23,7 +23,6 @@
 		3F0E7CAC1FE4090500512B54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F0E7CAE1FE4090500512B54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C89E7BD4825FB50AB1371AC /* Pods-Navigine Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigine Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Navigine Example/Pods-Navigine Example.release.xcconfig"; sourceTree = "<group>"; };
-		50A64DA7414D75B7ED95616C /* libPods-Navigine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Navigine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95EB7827F9A32A9ADA1D53E /* Pods-Navigine Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigine Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Navigine Example/Pods-Navigine Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -41,7 +40,6 @@
 		253C7556FACCC30BD3C92D4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				50A64DA7414D75B7ED95616C /* libPods-Navigine.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

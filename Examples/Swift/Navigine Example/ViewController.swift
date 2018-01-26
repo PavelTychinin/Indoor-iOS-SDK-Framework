@@ -79,6 +79,7 @@ class ViewController: UIViewController {
                                        fail: { (_ error: Error?) in
                                         print("error: \(error.debugDescription)")
         })
+        navigineCore?.setTarget(<#T##target: NCLocationPoint!##NCLocationPoint!#>)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
