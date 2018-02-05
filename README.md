@@ -2,7 +2,7 @@
 
 # iOS SDK 
 
-The following sections describe the contents of the Navigine iOS SDK repository. The files in our public repository for iOS are:
+The following sections describe the contents of the Navigine iOS SDK repository. Files in our public repository for iOS are:
 
 - sources of the Navigine Demo Application for iOS
 - Navigine SDK for iOS - header files and resources
