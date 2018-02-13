@@ -1,12 +1,12 @@
 PODS:
-  - Navigine (1.0.26)
+  - Navigine (1.0.29)
 
 DEPENDENCIES:
-  - Navigine (~> 1.0)
+  - Navigine (~> 1.0.26)
 
 SPEC CHECKSUMS:
-  Navigine: 6d898876bb4369f41920a35c7fba87e06071d71e
+  Navigine: 663375cab8ed44a5840be6e7dfa5604b4489f1b4
 
-PODFILE CHECKSUM: 107846c3085f45a3b24642439bcd483744b7f13b
+PODFILE CHECKSUM: 625a7966ed61a451e0b5d1a31a27dfcc82ab5c42
 
 COCOAPODS: 1.4.0.beta.2
