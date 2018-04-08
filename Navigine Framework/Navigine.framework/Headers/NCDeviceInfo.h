@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NCLocationPoint.h"
+#import "NCGlobalPoint.h"
+
 
 @interface NCDeviceInfo : NSObject <NSCoding>
 @property (nonatomic, strong) NSString *id;
@@ -19,9 +22,14 @@
 @property (nonatomic, assign) float ky;
 @property (nonatomic, assign) float r;
 @property (nonatomic, assign) float azimuth;
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
 @property (nonatomic, strong) NSArray *paths;
 @property (nonatomic, strong) NSArray *zones;
 @property (nonatomic, strong) NSError *error;
+
+@property (nonatomic, strong, readonly) NCLocationPoint *locationPoint;
+@property (nonatomic, strong, readonly) NCGlobalPoint   *globalPoint;
 
 - (BOOL) isValid;
 

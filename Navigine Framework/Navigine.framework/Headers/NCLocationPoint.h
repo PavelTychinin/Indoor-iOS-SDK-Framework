@@ -20,10 +20,10 @@
 
 - (double) distanceTo: (NCLocationPoint *)point;
 
-+ (NCLocationPoint *) pointWithLocation:(NSInteger) location
-                            sublocation:(NSInteger) sublocation
-                                      x:(NSNumber *)x
-                                      y:(NSNumber *)y;
++ (NCLocationPoint *) pointWithLocation:(NSInteger)  location
+                            sublocation:(NSInteger)  sublocation
+                                      x:(NSNumber *) x
+                                      y:(NSNumber *) y;
 
 - (BOOL) isValid;
 
