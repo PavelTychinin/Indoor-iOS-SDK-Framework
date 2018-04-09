@@ -52,7 +52,7 @@
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
     
-    [_navigineCore downloadLocationById:1636
+    [_navigineCore downloadLocationById:1497
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
 //                               NSLog(@"%zd",loadProcess);
