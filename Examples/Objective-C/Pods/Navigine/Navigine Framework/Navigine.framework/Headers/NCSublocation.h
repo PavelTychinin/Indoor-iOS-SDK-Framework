@@ -115,10 +115,6 @@
  */
 @property (nonatomic,copy) NSMutableArray    *venues;
 
-/**
- *  Name of archive file
- */
-@property (nonatomic,copy) NSString    *archiveFile;
 
 - (id) initWithSublocation: (NCSublocation *)sublocation;
 

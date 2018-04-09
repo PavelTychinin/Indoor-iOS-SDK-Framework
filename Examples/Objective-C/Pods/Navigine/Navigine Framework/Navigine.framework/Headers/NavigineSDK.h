@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 
 @property (nonatomic, strong) NSString *userHash;
 @property (nonatomic, strong) NSString *server;
+
 @property (nonatomic, strong) NCLocation *location;
 
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
@@ -103,12 +104,12 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  *  @return the download process identifier. This number is used further for checking the download process state and for download process terminating.
  */
 - (int)startLocationLoaderByUserHash: (NSString *)userHash
-                        locationId: (NSInteger)locationId
-                            forced: (BOOL) forced;
+                          locationId: (NSInteger)locationId
+                              forced: (BOOL) forced;
 
 - (int)startLocationLoaderByUserHash: (NSString *)userHash
-                      locationName: (NSString *)location
-                            forced: (BOOL) forced;
+                        locationName: (NSString *)location
+                              forced: (BOOL) forced;
 
 /**
  *  Function is used for checking the download process state and progress.
@@ -162,9 +163,8 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 - (NSString *)getGraphTag;
 - (NSString *)getGraphDescription:(NSString *)tag;
 - (NSArray *)getGraphTags;
-- (void) addTatget:(NCLocationPoint *)target;
+- (void) addTarget:(NCLocationPoint *)target;
 - (void) cancelTargets;
-- (BOOL) setGraphParam: (NSDictionary *)param;
 
 /**
  *  Function is used for cheking pushes from web site
@@ -180,7 +180,6 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  */
 - (void) stopSendingPostRequests;
 
-- (void) registerToken:(NSData *)token;
 
 @end
 
@@ -205,14 +204,14 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  *
  * @param id zone id
  */
-- (void) didEnterZoneWithId:(NSInteger) id;
+- (void) didEnterZone:(NCZone *)zone;
 
 /**
  * Tells the delegate if point came out of the zone
  *
  * @param id zone id
  */
-- (void) didExitZoneWithId:(NSInteger) id;
+- (void) didExitZone:(NCZone *)zone;
 
 
 - (void) didRangeBeacons:(NSArray *)beacons;

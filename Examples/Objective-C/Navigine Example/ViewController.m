@@ -174,7 +174,7 @@
                                                    sublocation:res.sublocation
                                                              x:@(xPoint)
                                                              y:@(yPoint)];
-    [_navigineCore addTatget:point];
+    [_navigineCore addTarget:point];
     
     [_pressedPin.popUp removeFromSuperview];
     _pressedPin.popUp.hidden = YES;

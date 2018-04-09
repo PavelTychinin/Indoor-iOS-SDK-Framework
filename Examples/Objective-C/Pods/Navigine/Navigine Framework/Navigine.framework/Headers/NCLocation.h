@@ -26,11 +26,6 @@
 @property (nonatomic, copy)   NSString       *localDescription;
 
 /**
- *  Name of archive file
- */
-@property (nonatomic, copy)   NSString       *archiveFile;
-
-/**
  *  Archive version
  */
 @property (nonatomic, assign) NSInteger      version;
@@ -48,7 +43,7 @@
 /**
 *  Is local modified Archive
 */
-@property (nonatomic, assign) BOOL modified;
+@property (nonatomic, assign, readonly) BOOL modified;
 
 
 - (id) initWithLocation :(NCLocation *)location;

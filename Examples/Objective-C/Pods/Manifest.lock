@@ -1,12 +1,16 @@
 PODS:
-  - Navigine (1.0.29)
+  - Navigine (1.0.31)
 
 DEPENDENCIES:
-  - Navigine (~> 1.0.26)
+  - Navigine (~> 1.0.31)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Navigine
 
 SPEC CHECKSUMS:
-  Navigine: 663375cab8ed44a5840be6e7dfa5604b4489f1b4
+  Navigine: 5edcbe4c30e4410b4693705d5a993188650e5fab
 
-PODFILE CHECKSUM: 625a7966ed61a451e0b5d1a31a27dfcc82ab5c42
+PODFILE CHECKSUM: 3fcece6f43f39243c668efd98f99ed76be289082
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.5.0
