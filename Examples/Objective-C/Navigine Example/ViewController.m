@@ -31,7 +31,7 @@
     _sv.zoomScale = 1.f;
     _sv.maximumZoomScale = 2.f;
     [_sv addSubview:_imageView];
-    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"0000-0000-0000-0000"
+    _navigineCore = [[NavigineCore alloc] initWithUserHash: @"628B-9792-0789-C136"
                                                     server: @"https://api.navigine.com"];
     _navigineCore.delegate = self;
     
@@ -55,7 +55,7 @@
     [_navigineCore downloadLocationById:1497
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
-//                               NSLog(@"%zd",loadProcess);
+                               NSLog(@"%zd",loadProcess);
                            } successBlock:^(NSDictionary *userInfo) {
                                [self setupNavigine];
                            } failBlock:^(NSError *error) {
