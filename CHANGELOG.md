@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.
 * `NCLocationPoint *locationPoint` and `NCGlobalPoint *globalPoint` properties of NCDeviceInfo class
 * `NSArray *events` properties of NCRoutePath class
 
+#### Updated
+* Rename `addTatget` to `addTarget` method of NavigineCore class
+
 #### Removed
 * `float azimuth`, `float latitude`, `float longitude` properties of NCSublocation class
 * `NSString *archiveFile` property of NCLocation and NCSublocation classes
