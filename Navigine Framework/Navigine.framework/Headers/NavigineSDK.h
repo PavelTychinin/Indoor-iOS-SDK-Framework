@@ -13,25 +13,14 @@
 #import "NCZone.h"
 #import "NCLocation.h"
 
-typedef NS_ENUM(NSInteger, NCBluetoothState) {
-  NCBluetoothStateUnknown = 0,                // State unknown, update imminent
-  NCBluetoothStatePoweredOff,                 // Bluetooth is currently powered off.
-  NCBluetoothStateUnsupported,                // The platform doesn't support the Bluetooth Low Energy Central/Client role
-  NCBluetoothStateUnauthorized,               // The application is not authorized to use the Bluetooth Low Energy Central/Client role.
-  NCBluetoothStateLocationDenied,             // User has explicitly denied authorization for this application, or
-                                              // location services are disabled in Settings.
-  NCBluetoothStateLocationNotDetermined,      // User has not yet made a choice with regards to this application
-  NCBluetoothStateLocationRestricted,         // This application is not authorized to use location services.
-  NCBluetoothStateLocationAuthorizedAlways,   // User has granted authorization to use their location at any time
-  NCBluetoothStateLocationAuthorizedWhenInUse // User has granted authorization to use their location only when your app
-                                              // is visible to them
-};
-
+/**
+ *  Protocol is used for getting navigation resutls in timeout
+ */
+@protocol NavigineCoreNavigationDelegate;
 /**
  *  Protocol is used for getting pushes in timeout
  */
 @protocol NavigineCoreDelegate;
-@protocol NCBluetoothStateDelegate;
 
 @interface NavigineCore : NSObject
 
@@ -41,10 +30,9 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 @property (nonatomic, strong) NCLocation *location;
 
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
-@property (nonatomic, assign, readonly) NCBluetoothState bluetoothState;
 
+@property (nonatomic, weak) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
 @property (nonatomic, weak) NSObject <NavigineCoreDelegate> *delegate;
-@property (nonatomic, weak) NSObject <NCBluetoothStateDelegate> *btStateDelegate;
 
 - (id) initWithUserHash:(NSString *)userHash;
 
@@ -183,6 +171,32 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 
 @end
 
+@protocol NavigineCoreNavigationDelegate <NSObject>
+@optional
+
+/**
+ * Tells the delegate if navigation results changed
+ *
+ *
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didUpdateDeviceInfo:(NCDeviceInfo *)deviceInfo;
+
+/**
+ * Tells the delegate if point enter the zone
+ *
+ * @param zone - entered zone
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone;
+
+/**
+ * Tells the delegate if point came out of the zone
+ *
+ * @param zone - exit zone
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone;
+
+@end
+
 @protocol NavigineCoreDelegate <NSObject>
 @optional
 
@@ -199,30 +213,10 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
                          image :(NSString *)image
                             id :(NSInteger) id;
 
-/**
- * Tells the delegate if point enter the zone
- *
- * @param id zone id
- */
-- (void) didEnterZone:(NCZone *)zone;
-
-/**
- * Tells the delegate if point came out of the zone
- *
- * @param id zone id
- */
-- (void) didExitZone:(NCZone *)zone;
-
 
 - (void) didRangeBeacons:(NSArray *)beacons;
-- (void) getLatitude: (double)latitude Longitude:(double)longitude;
 
 - (void) beaconFounded: (NCBeacon *)beacon error:(NSError **)error;
 - (void) measuringBeaconWithProcess: (NSInteger) process;
 
-@end
-
-@protocol NCBluetoothStateDelegate <NSObject>
-@optional
-- (void) didChangeBluetoothState: (NCBluetoothState) state;
 @end
