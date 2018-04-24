@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Struсture with location point content
  */
@@ -30,3 +32,4 @@
 typedef NCLocationPoint NCLocalPoint;
 
 @end
+NS_ASSUME_NONNULL_END

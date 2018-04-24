@@ -5,13 +5,24 @@
 //  Created by Pavel Tychinin on 22.09.14.
 //  Copyright (c) 2015 Navigine. All rights reserved.
 //
-#import <CoreGraphics/CGGeometry.h>
 
 #import "NCDeviceInfo.h"
 #import "NCRoutePath.h"
+#import "NCLocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
-#import "NCLocation.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, NCError) {
+  NCLocationDoesNotExist = 1000,
+  NCDownloadImpossible   = 1010,
+  NCUploadImpossible     = 1020,
+  NCURLRequestImpossible = 1030,
+  NCInvalidArchive       = 1040,
+  NCInvalidClient        = 1050,
+  NCInvalidBeacon        = 1060
+};
 
 /**
  *  Protocol is used for getting navigation resutls in timeout
@@ -31,8 +42,8 @@
 
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
 
-@property (nonatomic, weak) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
-@property (nonatomic, weak) NSObject <NavigineCoreDelegate> *delegate;
+@property (nonatomic, weak, nullable) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
+@property (nonatomic, weak, nullable) NSObject <NavigineCoreDelegate> *delegate;
 
 - (id) initWithUserHash:(NSString *)userHash;
 
@@ -128,10 +139,10 @@
  */
 
 - (void) loadArchiveById :(NSInteger)locationId
-                   error :(NSError * __autoreleasing *)error;
+                   error :(NSError * _Nullable __autoreleasing *)error;
 
 - (void) loadArchiveByName :(NSString *)location
-                     error :(NSError * __autoreleasing *)error;
+                     error :(NSError * _Nullable __autoreleasing *)error;
 
 /**
  *  Function is used for making route from one position to other.
@@ -148,9 +159,9 @@
 - (void) cancelTarget;
 
 - (void) setGraphTag:(NSString *)tag;
-- (NSString *)getGraphTag;
-- (NSString *)getGraphDescription:(NSString *)tag;
-- (NSArray *)getGraphTags;
+- (NSString *_Nullable)getGraphTag;
+- (NSString *_Nullable)getGraphDescription:(NSString *)tag;
+- (NSArray *_Nullable)getGraphTags;
 - (void) addTarget:(NCLocationPoint *)target;
 - (void) cancelTargets;
 
@@ -220,3 +231,5 @@
 - (void) measuringBeaconWithProcess: (NSInteger) process;
 
 @end
+
+NS_ASSUME_NONNULL_END

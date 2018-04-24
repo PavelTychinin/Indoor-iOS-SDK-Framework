@@ -11,9 +11,18 @@
 #import "NCGlobalPoint.h"
 
 
+typedef NS_ENUM(NSInteger, NCNavigationError) {
+  NCIncorrectClient    = 1,
+  NCNoSolution         = 4,
+  NCNoBeacons          = 8,
+  NCIncorrectBMP       = 10,
+  NCIncorrectGP        = 20,
+  NCIncorrectXMLParams = 21
+};
+
 @interface NCDeviceInfo : NSObject <NSCoding>
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSDate *time;
+@property (nonatomic, strong, nonnull) NSString *id;
+@property (nonatomic, strong, nonnull) NSDate *time;
 @property (nonatomic, assign) NSInteger location;
 @property (nonatomic, assign) NSInteger sublocation;
 @property (nonatomic, assign) float x;
@@ -24,12 +33,12 @@
 @property (nonatomic, assign) float azimuth;
 @property (nonatomic, assign) double latitude;
 @property (nonatomic, assign) double longitude;
-@property (nonatomic, strong) NSArray *paths;
-@property (nonatomic, strong) NSArray *zones;
-@property (nonatomic, strong) NSError *error;
+@property (nonatomic, strong, nullable) NSArray *paths;
+@property (nonatomic, strong, nullable) NSArray *zones;
+@property (nonatomic, strong, nullable) NSError *error;
 
-@property (nonatomic, strong, readonly) NCLocationPoint *locationPoint;
-@property (nonatomic, strong, readonly) NCGlobalPoint   *globalPoint;
+@property (nonatomic, strong, readonly, nullable) NCLocationPoint *locationPoint;
+@property (nonatomic, strong, readonly, nullable) NCGlobalPoint   *globalPoint;
 
 - (BOOL) isValid;
 

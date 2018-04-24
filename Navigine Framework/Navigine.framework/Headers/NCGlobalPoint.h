@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+NS_ASSUME_NONNULL_BEGIN
 
 @interface NCGlobalPoint : NSObject <NSCoding>
 @property (nonatomic, assign, readonly) double  latitude;
@@ -19,3 +20,4 @@
 
 - (BOOL) isValid;
 @end
+NS_ASSUME_NONNULL_END
