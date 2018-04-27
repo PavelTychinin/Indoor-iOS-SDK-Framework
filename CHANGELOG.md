@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
 codes of NSErrors which using in NCDeviceInfo
 
 #### Updated
-* Remove 
+* Move 
 ```Objective-C
 - (void) navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone;
 - (void) navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone;
