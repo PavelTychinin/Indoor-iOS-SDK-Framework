@@ -5,7 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [0.9.2](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.37) / 2018-04-25
 
 #### Added
-* ```Objective-C
+* 
+```Objective-C
 - (void) navigineCore:(NavigineCore *)navigineCore didUpdateDeviceInfo:(NCDeviceInfo *)deviceInfo;
 - (void) navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone;
 - (void) navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone;
@@ -13,6 +14,32 @@ All notable changes to this project will be documented in this file.
 methods of NavigineCoreNavigationDelegate
 * `NCBluetoothStateManager` class
 * `NCGlobalPoint *lastKnownLocation` property of NCBluetoothStateManager class
+* `typedef NS_ENUM(NSInteger, NCError) {
+  NCLocationDoesNotExist = 1000,
+  NCDownloadImpossible   = 1010,
+  NCUploadImpossible     = 1020,
+  NCURLRequestImpossible = 1030,
+  NCInvalidArchive       = 1040,
+  NCInvalidClient        = 1050,
+  NCInvalidBeacon        = 1060
+};` codes of NSErrors which using in NavigineCore 
+
+* `typedef NS_ENUM(NSInteger, NCNavigationError) {
+  NCIncorrectClient    = 1,
+  NCNoSolution         = 4,
+  NCNoBeacons          = 8,
+  NCIncorrectBMP       = 10,
+  NCIncorrectGP        = 20,
+  NCIncorrectXMLParams = 21
+};` codes of NSErrors which using in NCDeviceInfo
+
+#### Updated
+* Remove 
+```Objective-C
+- (void) navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone;
+- (void) navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone;
+```
+from NavigineCoreDelegate to NavigineCoreNavigationDelegate
 
 ## [0.9.1](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.34) / 2018-04-12
 
