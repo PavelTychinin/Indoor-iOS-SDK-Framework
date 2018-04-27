@@ -24,7 +24,8 @@ typedef NS_ENUM(NSInteger, NCError) {
   NCInvalidArchive       = 1040,
   NCInvalidClient        = 1050,
   NCInvalidBeacon        = 1060
-};``` codes of NSErrors which using in NavigineCore 
+};``` 
+codes of NSErrors which using in NavigineCore 
 
 * ```Objective-C
 typedef NS_ENUM(NSInteger, NCNavigationError) {
@@ -34,7 +35,8 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
   NCIncorrectBMP       = 10,
   NCIncorrectGP        = 20,
   NCIncorrectXMLParams = 21
-};``` codes of NSErrors which using in NCDeviceInfo
+};``` 
+codes of NSErrors which using in NCDeviceInfo
 
 #### Updated
 * Remove 
