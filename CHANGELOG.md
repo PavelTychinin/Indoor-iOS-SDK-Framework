@@ -14,7 +14,9 @@ All notable changes to this project will be documented in this file.
 methods of NavigineCoreNavigationDelegate
 * `NCBluetoothStateManager` class
 * `NCGlobalPoint *lastKnownLocation` property of NCBluetoothStateManager class
-* `typedef NS_ENUM(NSInteger, NCError) {
+* 
+```Objective-C
+typedef NS_ENUM(NSInteger, NCError) {
   NCLocationDoesNotExist = 1000,
   NCDownloadImpossible   = 1010,
   NCUploadImpossible     = 1020,
@@ -22,16 +24,17 @@ methods of NavigineCoreNavigationDelegate
   NCInvalidArchive       = 1040,
   NCInvalidClient        = 1050,
   NCInvalidBeacon        = 1060
-};` codes of NSErrors which using in NavigineCore 
+};``` codes of NSErrors which using in NavigineCore 
 
-* `typedef NS_ENUM(NSInteger, NCNavigationError) {
+* ```Objective-C
+typedef NS_ENUM(NSInteger, NCNavigationError) {
   NCIncorrectClient    = 1,
   NCNoSolution         = 4,
   NCNoBeacons          = 8,
   NCIncorrectBMP       = 10,
   NCIncorrectGP        = 20,
   NCIncorrectXMLParams = 21
-};` codes of NSErrors which using in NCDeviceInfo
+};``` codes of NSErrors which using in NCDeviceInfo
 
 #### Updated
 * Remove 
