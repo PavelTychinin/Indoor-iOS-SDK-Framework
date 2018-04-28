@@ -9,11 +9,12 @@
 #ifndef NavigineSDK_Sublocation_h
 #define NavigineSDK_Sublocation_h
 
-#endif
 #import <UIKit/UIKit.h>
 #import "NCBeacon.h"
 #import "NCZone.h"
 #import "NCVenue.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Sublocation in your personal account
@@ -86,15 +87,9 @@
 @property (nonatomic, assign) float     azimuth;
 
 /**
- *  Magnetic declination of image in degree
- */
-@property (nonatomic, assign) float     magneticDeclination;
-
-/**
  *  GPS latitude
  */
 @property (nonatomic, assign) double    latitude;
-
 /**
  *  GPS longitude
  */
@@ -118,7 +113,7 @@
 
 - (id) initWithSublocation: (NCSublocation *)sublocation;
 
-- (NCZone *) zoneWithId: (NSInteger) id;
+- (NCZone *_Nullable) zoneWithId: (NSInteger) id;
 
 - (NCGlobalPoint *) gpsFromLocal: (NCLocationPoint *)point;
 
@@ -126,3 +121,6 @@
 
 - (BOOL) isValid;
 @end
+NS_ASSUME_NONNULL_END
+
+#endif

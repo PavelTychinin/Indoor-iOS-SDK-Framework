@@ -8,6 +8,8 @@
 
 #import "NCSublocation.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NCLocation :NSObject<NSCoding>
 
 /**
@@ -36,11 +38,6 @@
 @property (nonatomic, strong) NSMutableArray *sublocations;
 
 /**
- *  NCLocationViewController
- */
-@property (nonatomic, copy) UIViewController *viewController;
-
-/**
 *  Is local modified Archive
 */
 @property (nonatomic, assign, readonly) BOOL modified;
@@ -55,9 +52,11 @@
  *
  *  @return Sublocation object or nil
  */
-- (NCSublocation *)subLocationWithId: (NSInteger) id;
+- (NCSublocation *_Nullable) subLocationWithId: (NSInteger) id;
 
-- (NCZone *) zoneWithId: (NSInteger) id;
+- (NCZone *_Nullable) zoneWithId: (NSInteger) id;
 
 - (BOOL) isValid;
 @end
+
+NS_ASSUME_NONNULL_END

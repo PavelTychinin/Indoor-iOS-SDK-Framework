@@ -11,8 +11,8 @@
 #import "NCRouteEvent.h"
 
 @interface NCRoutePath : NSObject
-@property (nonatomic, strong) NSArray *points;
-@property (nonatomic, strong) NSArray *events;
+@property (nonatomic, strong, nonnull) NSArray *points;
+@property (nonatomic, strong, nonnull) NSArray *events;
 @property (nonatomic, assign) float lenght;
 
 - (BOOL) isValid;

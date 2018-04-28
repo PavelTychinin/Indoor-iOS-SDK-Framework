@@ -10,6 +10,8 @@
 #import "NCLocationPoint.h"
 #import "NCGlobalPoint.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NCZone : NSObject <NSCoding>
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, assign) NSInteger location;
@@ -18,9 +20,10 @@
 @property (nonatomic, strong) NSString  *alias;
 @property (nonatomic, strong) NSString  *color;
 @property (nonatomic, strong) NSArray   *points;
-@property (nonatomic, strong, readonly) NCLocationPoint *center;
+@property (nonatomic, strong, nullable, readonly) NCLocationPoint *center;
 
 - (BOOL) containsPoint:(NCLocationPoint *)point;
 
 - (BOOL) isValid;
 @end
+NS_ASSUME_NONNULL_END

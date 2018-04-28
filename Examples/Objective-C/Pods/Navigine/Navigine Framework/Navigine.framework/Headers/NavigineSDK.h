@@ -5,33 +5,33 @@
 //  Created by Pavel Tychinin on 22.09.14.
 //  Copyright (c) 2015 Navigine. All rights reserved.
 //
-#import <CoreGraphics/CGGeometry.h>
 
 #import "NCDeviceInfo.h"
 #import "NCRoutePath.h"
+#import "NCLocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
-#import "NCLocation.h"
 
-typedef NS_ENUM(NSInteger, NCBluetoothState) {
-  NCBluetoothStateUnknown = 0,                // State unknown, update imminent
-  NCBluetoothStatePoweredOff,                 // Bluetooth is currently powered off.
-  NCBluetoothStateUnsupported,                // The platform doesn't support the Bluetooth Low Energy Central/Client role
-  NCBluetoothStateUnauthorized,               // The application is not authorized to use the Bluetooth Low Energy Central/Client role.
-  NCBluetoothStateLocationDenied,             // User has explicitly denied authorization for this application, or
-                                              // location services are disabled in Settings.
-  NCBluetoothStateLocationNotDetermined,      // User has not yet made a choice with regards to this application
-  NCBluetoothStateLocationRestricted,         // This application is not authorized to use location services.
-  NCBluetoothStateLocationAuthorizedAlways,   // User has granted authorization to use their location at any time
-  NCBluetoothStateLocationAuthorizedWhenInUse // User has granted authorization to use their location only when your app
-                                              // is visible to them
+NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, NCError) {
+  NCLocationDoesNotExist = 1000,
+  NCDownloadImpossible   = 1010,
+  NCUploadImpossible     = 1020,
+  NCURLRequestImpossible = 1030,
+  NCInvalidArchive       = 1040,
+  NCInvalidClient        = 1050,
+  NCInvalidBeacon        = 1060
 };
 
+/**
+ *  Protocol is used for getting navigation resutls in timeout
+ */
+@protocol NavigineCoreNavigationDelegate;
 /**
  *  Protocol is used for getting pushes in timeout
  */
 @protocol NavigineCoreDelegate;
-@protocol NCBluetoothStateDelegate;
 
 @interface NavigineCore : NSObject
 
@@ -41,10 +41,9 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 @property (nonatomic, strong) NCLocation *location;
 
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
-@property (nonatomic, assign, readonly) NCBluetoothState bluetoothState;
 
-@property (nonatomic, weak) NSObject <NavigineCoreDelegate> *delegate;
-@property (nonatomic, weak) NSObject <NCBluetoothStateDelegate> *btStateDelegate;
+@property (nonatomic, weak, nullable) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
+@property (nonatomic, weak, nullable) NSObject <NavigineCoreDelegate> *delegate;
 
 - (id) initWithUserHash:(NSString *)userHash;
 
@@ -140,10 +139,10 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
  */
 
 - (void) loadArchiveById :(NSInteger)locationId
-                   error :(NSError * __autoreleasing *)error;
+                   error :(NSError * _Nullable __autoreleasing *)error;
 
 - (void) loadArchiveByName :(NSString *)location
-                     error :(NSError * __autoreleasing *)error;
+                     error :(NSError * _Nullable __autoreleasing *)error;
 
 /**
  *  Function is used for making route from one position to other.
@@ -160,9 +159,9 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 - (void) cancelTarget;
 
 - (void) setGraphTag:(NSString *)tag;
-- (NSString *)getGraphTag;
-- (NSString *)getGraphDescription:(NSString *)tag;
-- (NSArray *)getGraphTags;
+- (NSString *_Nullable)getGraphTag;
+- (NSString *_Nullable)getGraphDescription:(NSString *)tag;
+- (NSArray *_Nullable)getGraphTags;
 - (void) addTarget:(NCLocationPoint *)target;
 - (void) cancelTargets;
 
@@ -183,6 +182,32 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
 
 @end
 
+@protocol NavigineCoreNavigationDelegate <NSObject>
+@optional
+
+/**
+ * Tells the delegate if navigation results changed
+ *
+ *
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didUpdateDeviceInfo:(NCDeviceInfo *)deviceInfo;
+
+/**
+ * Tells the delegate if point enter the zone
+ *
+ * @param zone - entered zone
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone;
+
+/**
+ * Tells the delegate if point came out of the zone
+ *
+ * @param zone - exit zone
+ */
+- (void) navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone;
+
+@end
+
 @protocol NavigineCoreDelegate <NSObject>
 @optional
 
@@ -199,30 +224,12 @@ typedef NS_ENUM(NSInteger, NCBluetoothState) {
                          image :(NSString *)image
                             id :(NSInteger) id;
 
-/**
- * Tells the delegate if point enter the zone
- *
- * @param id zone id
- */
-- (void) didEnterZone:(NCZone *)zone;
-
-/**
- * Tells the delegate if point came out of the zone
- *
- * @param id zone id
- */
-- (void) didExitZone:(NCZone *)zone;
-
 
 - (void) didRangeBeacons:(NSArray *)beacons;
-- (void) getLatitude: (double)latitude Longitude:(double)longitude;
 
 - (void) beaconFounded: (NCBeacon *)beacon error:(NSError **)error;
 - (void) measuringBeaconWithProcess: (NSInteger) process;
 
 @end
 
-@protocol NCBluetoothStateDelegate <NSObject>
-@optional
-- (void) didChangeBluetoothState: (NCBluetoothState) state;
-@end
+NS_ASSUME_NONNULL_END
