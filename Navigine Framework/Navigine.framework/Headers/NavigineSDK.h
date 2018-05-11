@@ -138,11 +138,14 @@ typedef NS_ENUM(NSInteger, NCError) {
  *  @param error - error if archive invalid.
  */
 
-- (void) loadArchiveById :(NSInteger)locationId
-                   error :(NSError * _Nullable __autoreleasing *)error;
+- (void) loadLocationById:(NSInteger)locationId
+                    error:(NSError * _Nullable __autoreleasing *)error;
 
-- (void) loadArchiveByName :(NSString *)location
-                     error :(NSError * _Nullable __autoreleasing *)error;
+- (void) loadLocationByName:(NSString *)location
+                      error:(NSError * _Nullable __autoreleasing *)error;
+
+
+- (void) cancelLocation;
 
 /**
  *  Function is used for making route from one position to other.

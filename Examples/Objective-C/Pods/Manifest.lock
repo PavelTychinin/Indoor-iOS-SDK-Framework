@@ -1,5 +1,5 @@
 PODS:
-  - Navigine (1.0.37)
+  - Navigine (1.0.38)
 
 DEPENDENCIES:
   - Navigine (~> 1.0.31)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - Navigine
 
 SPEC CHECKSUMS:
-  Navigine: 4759d21d0c8aa77505e06e543fade20f3b7c2003
+  Navigine: 704d440396e144ac5cab42ad54a522700b2137f3
 
 PODFILE CHECKSUM: 3fcece6f43f39243c668efd98f99ed76be289082
 

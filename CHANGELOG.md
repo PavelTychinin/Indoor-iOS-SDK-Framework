@@ -2,6 +2,35 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.9.3](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.39) / 2018-05-11
+
+#### Added
+```Objective-C
+- (void) cancelLocation;
+```
+method of NavigineCore class
+
+#### Renamed
+```Objective-C
+- (void) loadArchiveById:(NSInteger)locationId
+                    error:(NSError * _Nullable __autoreleasing *)error;
+
+- (void) loadArchiveByName:(NSString *)location
+                      error:(NSError * _Nullable __autoreleasing *)error;
+```
+to
+```Objective-C
+- (void) loadLocationById:(NSInteger)locationId
+                    error:(NSError * _Nullable __autoreleasing *)error;
+
+- (void) loadLocationByName:(NSString *)location
+                      error:(NSError * _Nullable __autoreleasing *)error;
+```
+
+#### Fixed
+* Bug in location parser
+* Memmory leak in network utils
+
 ## [0.9.2](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.37) / 2018-04-25
 
 #### Added

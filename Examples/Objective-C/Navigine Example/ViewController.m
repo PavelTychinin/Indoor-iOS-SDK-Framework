@@ -51,7 +51,7 @@
     UITapGestureRecognizer *tapPress = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapPress:)];
     tapPress.delaysTouchesBegan   = NO;
     [_sv addGestureRecognizer:tapPress];
-    
+    [_navigineCore addBeaconGenerator:@"8EEB497E-4928-44C6-9D92-087521A3547C" major:9001 minor:36 timeout:100 rssiMin:-90 rssiMax:-70];
     [_navigineCore downloadLocationById:2626
                             forceReload:true
                            processBlock:^(NSInteger loadProcess) {
@@ -219,7 +219,6 @@
     [_imageView removeAllSubviews];
     _imageView.layer.sublayers = nil;
     [_imageView addSubview:_current];
-//    [self presentViewController:_navigineCore.location.viewController animated:YES completion:nil];
     
     NCLocation *location = _navigineCore.location;
     NCSublocation *sublocation = location.sublocations[0];

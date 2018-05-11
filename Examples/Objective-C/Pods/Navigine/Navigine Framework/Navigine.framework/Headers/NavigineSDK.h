@@ -174,12 +174,30 @@ typedef NS_ENUM(NSInteger, NCError) {
  *  Function is used for sending data to server using POST sequests
  */
 - (void) startSendingPostRequests;
+
 /**
  * Function is used to stop sending data to server
  */
 - (void) stopSendingPostRequests;
 
+/**
+ *
+ */
+- (void) addBeaconGenerator: (NSString *)uuid
+                      major: (NSInteger)major
+                      minor: (NSInteger)minor
+                    timeout: (NSInteger)timeout
+                    rssiMin: (NSInteger)rssiMin
+                    rssiMax: (NSInteger)rssiMax;
 
+/**
+ *
+ */
+- (void) removeBeaconGenerator: (NSString *)uuid
+                         major: (NSInteger)major
+                         minor: (NSInteger)minor;
+
+- (void) removeBeaconGenerators;
 @end
 
 @protocol NavigineCoreNavigationDelegate <NSObject>
