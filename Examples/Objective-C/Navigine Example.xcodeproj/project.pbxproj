@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DE3AE1D8147D5FC3FD69535 /* libPods-Navigine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710E392E406B6BDA12C1F06A /* libPods-Navigine.a */; };
+		3F23C9E320BEC56000227130 /* btnChangeFloor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F23C9E120BEC56000227130 /* btnChangeFloor@3x.png */; };
+		3F23C9E420BEC56000227130 /* btnChangeFloor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F23C9E220BEC56000227130 /* btnChangeFloor@2x.png */; };
 		3F6D5AFF1F1F908C00517753 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5AFE1F1F908C00517753 /* main.m */; };
 		3F6D5B021F1F908C00517753 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B011F1F908C00517753 /* AppDelegate.m */; };
 		3F6D5B051F1F908C00517753 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B041F1F908C00517753 /* ViewController.m */; };
@@ -36,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F23C9E120BEC56000227130 /* btnChangeFloor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnChangeFloor@3x.png"; sourceTree = "<group>"; };
+		3F23C9E220BEC56000227130 /* btnChangeFloor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnChangeFloor@2x.png"; sourceTree = "<group>"; };
 		3F6D5AFA1F1F908C00517753 /* Navigine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6D5AFE1F1F908C00517753 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F6D5B001F1F908C00517753 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 		3F6D5B171F1F913600517753 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3F23C9E220BEC56000227130 /* btnChangeFloor@2x.png */,
+				3F23C9E120BEC56000227130 /* btnChangeFloor@3x.png */,
 				3F6D5B181F1F913600517753 /* elmBubbleArrowOrange@2x.png */,
 				3F6D5B191F1F913600517753 /* elmBubbleArrowOrange@3x.png */,
 				3F6D5B1A1F1F913600517753 /* elmVenueIcon@2x.png */,
@@ -174,7 +180,7 @@
 				3F6D5AF71F1F908C00517753 /* Frameworks */,
 				3F6D5AF81F1F908C00517753 /* Resources */,
 				3F4409401FE15F4200168F53 /* Embed Frameworks */,
-				FA1A1A7A3FE9733230D95C55 /* [CP] Embed Pods Frameworks */,
+				A229931469A57B443EA12FB9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,14 +235,34 @@
 				3F6D5B211F1F913600517753 /* elmBubbleArrowOrange@3x.png in Resources */,
 				3F6D5B0A1F1F908C00517753 /* Assets.xcassets in Resources */,
 				3F6D5B221F1F913600517753 /* elmVenueIcon@2x.png in Resources */,
+				3F23C9E420BEC56000227130 /* btnChangeFloor@2x.png in Resources */,
 				3F6D5B231F1F913600517753 /* elmVenueIcon@3x.png in Resources */,
 				3F6D5B081F1F908C00517753 /* Main.storyboard in Resources */,
+				3F23C9E320BEC56000227130 /* btnChangeFloor@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A229931469A57B443EA12FB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh",
+				"${PODS_ROOT}/Navigine/Navigine Framework/Navigine.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Navigine.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CEA8604B9D3C950A1D9C912D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,24 +279,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FA1A1A7A3FE9733230D95C55 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh",
-				"${PODS_ROOT}/Navigine/Navigine Framework/Navigine.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Navigine.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

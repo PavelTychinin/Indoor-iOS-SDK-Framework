@@ -1,50 +1,112 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-<scenes>
-<!--View Controller-->
-<scene sceneID="tne-QT-ifu">
-<objects>
-<placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-<viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-<layoutGuides>
-<viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-<viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-</layoutGuides>
-<view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-<rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsM-Cf-3cP">
-<rect key="frame" x="0.0" y="28" width="375" height="639"/>
-<subviews>
-<imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-1e-Gq7">
-<rect key="frame" x="46" y="25" width="240" height="128"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-</imageView>
-</subviews>
-<connections>
-<outlet property="delegate" destination="BYZ-38-t0r" id="rwS-9B-wci"/>
-</connections>
-</scrollView>
-</subviews>
-<color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<constraints>
-<constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PsM-Cf-3cP" secondAttribute="bottom" id="E7t-sg-QCc"/>
-<constraint firstAttribute="trailingMargin" secondItem="PsM-Cf-3cP" secondAttribute="trailing" constant="-16" id="ZI2-em-WPX"/>
-<constraint firstItem="PsM-Cf-3cP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wFf-We-TFx"/>
-<constraint firstItem="PsM-Cf-3cP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="yth-Ry-rEl"/>
-</constraints>
-</view>
-<connections>
-<outlet property="imageView" destination="SPg-1e-Gq7" id="HmG-fm-j1A"/>
-<outlet property="sv" destination="PsM-Cf-3cP" id="X6k-PD-U8v"/>
-</connections>
-</viewController>
-</objects>
-</scene>
-</scenes>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PsM-Cf-3cP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SPg-1e-Gq7">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="647" id="gwu-EW-o32"/>
+                                            <constraint firstAttribute="width" constant="375" id="uUP-Fc-p6L"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SPg-1e-Gq7" secondAttribute="trailing" id="47H-db-3y8"/>
+                                    <constraint firstItem="SPg-1e-Gq7" firstAttribute="leading" secondItem="PsM-Cf-3cP" secondAttribute="leading" id="WJz-kJ-iOf"/>
+                                    <constraint firstAttribute="bottom" secondItem="SPg-1e-Gq7" secondAttribute="bottom" id="jrt-6H-50d"/>
+                                    <constraint firstItem="SPg-1e-Gq7" firstAttribute="top" secondItem="PsM-Cf-3cP" secondAttribute="top" id="vdJ-Ps-HN4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rwS-9B-wci"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28k-L9-cwf">
+                                <rect key="frame" x="311" y="70" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Gen-d0-QMz"/>
+                                    <constraint firstAttribute="height" constant="44" id="Oip-ZG-4jh"/>
+                                </constraints>
+                                <state key="normal" image="btnChangeFloor.png"/>
+                                <connections>
+                                    <action selector="btnIncreaseFloorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xHN-rK-scS"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kim-M9-Tch">
+                                <rect key="frame" x="311" y="114" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8i9-60-TZc"/>
+                                    <constraint firstAttribute="width" constant="44" id="ZB9-fF-ODk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHA-M7-b8A">
+                                <rect key="frame" x="311" y="158" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GKy-S4-bea"/>
+                                    <constraint firstAttribute="width" constant="44" id="zaH-WT-rKq"/>
+                                </constraints>
+                                <state key="normal" image="btnChangeFloor.png"/>
+                                <connections>
+                                    <action selector="btnDecreaseFloorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iRk-zi-uBd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kim-M9-Tch" firstAttribute="centerX" secondItem="28k-L9-cwf" secondAttribute="centerX" id="0Fw-uN-DOS"/>
+                            <constraint firstItem="28k-L9-cwf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="6fz-U5-SGE"/>
+                            <constraint firstItem="qHA-M7-b8A" firstAttribute="centerX" secondItem="kim-M9-Tch" secondAttribute="centerX" id="AvR-QB-ESL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PsM-Cf-3cP" secondAttribute="bottom" id="E7t-sg-QCc"/>
+                            <constraint firstAttribute="trailing" secondItem="PsM-Cf-3cP" secondAttribute="trailing" id="ZI2-em-WPX"/>
+                            <constraint firstItem="kim-M9-Tch" firstAttribute="top" secondItem="28k-L9-cwf" secondAttribute="bottom" id="vHX-at-dD3"/>
+                            <constraint firstItem="qHA-M7-b8A" firstAttribute="top" secondItem="kim-M9-Tch" secondAttribute="bottom" id="w2U-3b-Cwp"/>
+                            <constraint firstItem="PsM-Cf-3cP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wFf-We-TFx"/>
+                            <constraint firstAttribute="trailing" secondItem="28k-L9-cwf" secondAttribute="trailing" constant="20" id="wTD-TU-Bhe"/>
+                            <constraint firstItem="PsM-Cf-3cP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yth-Ry-rEl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnDecreaseFloor" destination="qHA-M7-b8A" id="snI-jo-b0J"/>
+                        <outlet property="btnIncreaseFloor" destination="28k-L9-cwf" id="xN2-RG-h0j"/>
+                        <outlet property="imageView" destination="SPg-1e-Gq7" id="HmG-fm-j1A"/>
+                        <outlet property="imageViewHeightConstraint" destination="gwu-EW-o32" id="YId-JU-9Yq"/>
+                        <outlet property="imageViewLeadingConstraint" destination="WJz-kJ-iOf" id="Pfd-4k-h0d"/>
+                        <outlet property="imageViewTopConstraint" destination="vdJ-Ps-HN4" id="Lid-XZ-ItL"/>
+                        <outlet property="imageViewWidthConstraint" destination="uUP-Fc-p6L" id="ERZ-hP-nCO"/>
+                        <outlet property="lblCurrentFloor" destination="kim-M9-Tch" id="eM7-Sx-lnl"/>
+                        <outlet property="sv" destination="PsM-Cf-3cP" id="X6k-PD-U8v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btnChangeFloor.png" width="44" height="44"/>
+    </resources>
 </document>

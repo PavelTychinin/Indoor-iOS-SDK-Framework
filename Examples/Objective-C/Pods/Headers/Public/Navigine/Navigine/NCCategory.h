@@ -1,1 +1,0 @@
-../../../../Navigine/Navigine Framework/Navigine.framework/Headers/NCCategory.h
