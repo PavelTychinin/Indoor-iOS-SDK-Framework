@@ -3,4 +3,5 @@ platform :ios, '8.0'
 
 target 'Navigine' do
     pod 'Navigine', '~> 1.0.30'
+    pod 'MBProgressHUD', '~> 1.1.0'
 end

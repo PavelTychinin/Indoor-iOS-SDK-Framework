@@ -1,67 +1,60 @@
 //
 //  MapPin.m
-//  SVO
+//  Navigine Example
 //
-//  Created by Valentine on 30.06.14.
-//  Copyright (c) 2014 Valentine. All rights reserved.
+//  Created by Dmitry Stavitsky on 01/07/2018.
+//  Copyright © 2018 Navigine. All rights reserved.
 //
 
 #import "MapPin.h"
+#import "Navigine/NCVenue.h"
 
 @implementation MapPin
 
-- (id)initWithVenue:(NCVenue *)venue
-{
-    self = [super initWithFrame:CGRectZero];
-    if (self) {
-        // Initialization code
-        
-      self.venue = venue;
-      UILabel *title = [[UILabel alloc] init];
-      title.font  = [UIFont fontWithName:@"Circe-Bold" size:16.0f];
-      title.textColor = kColorFromHex(0xFAFAFA);
-      title.text = self.venue.name;
-      [title sizeToFit];
-      
-      _popUp = [[UIButton alloc] initWithFrame:CGRectMake(0,0, title.frame.size.width + 31.f + 22.f, 44.f)];
-      _popUp.backgroundColor = [UIColor clearColor];
-      _popUp.clipsToBounds = NO;
-      
-      UIImageView *bg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, title.frame.size.width + 31.f + 22.f, 44.f)];
-      
-      bg.backgroundColor = kColorFromHex(0xCE8951);
-      bg.alpha = 1.f;
-      bg.layer.cornerRadius = bg.frame.size.height/2.f;
-      [_popUp addSubview:bg];
-      
-      UIImageView *pipka = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"elmBubbleArrowOrange"]];
-      [pipka sizeToFit];
-        pipka.top = bg.bottom - 1.f;
-      pipka.centerX = bg.centerX;
-      [_popUp addSubview:pipka];
-      
-//      self.btnVenue = [UIButton buttonWithType:UIButtonTypeCustom];
-//      [self.btnVenue setImage:[UIImage imageNamed:@"elmBubbleArrow"] forState:UIControlStateNormal];
-//      [self.btnVenue sizeToFit];
-//      [self.mapView addSubview:self.btnVenue];
-//      self.btnVenue.frame.size.right = bg.frame.size.right;
-      [_popUp addSubview:title];
-      
-      title.centerX = bg.centerX;
-      title.centerY = bg.centerY;
-      _popUp.hidden = YES;
-    }
-    return self;
+- (id)initWithVenue:(NCVenue *)venue {
+  self = [super initWithFrame:CGRectZero];
+  if (self) {
+    self.venue = venue;
+    // Init map pin with venue's centre
+    CGPoint ctrVenue = CGPointMake(venue.x.floatValue, venue.y.floatValue);
+    self.center = ctrVenue;
+    
+    // Set image to venue
+    UIImage *venImg = [UIImage imageNamed:@"elmVenueIcon"];
+    [self setImage:venImg forState: UIControlStateNormal];
+    self.layer.zPosition = 5.; // For overlap path curve
+    
+    // Add venue's popup title
+    _popUp = [[UIButton alloc] initWithFrame:CGRectZero];
+    [_popUp setTitle:self.venue.name forState:UIControlStateNormal];
+    _popUp.titleLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Bold" size:30.]; ;
+    _popUp.titleLabel.textColor = UIColor.whiteColor;
+    _popUp.titleLabel.textAlignment = NSTextAlignmentCenter;
+    _popUp.backgroundColor = kColorFromHex(0xCE8951);
+    _popUp.clipsToBounds = NO;
+    _popUp.layer.cornerRadius = 10.;
+    [_popUp sizeToFit];
+    _popUp.width += 20.;
+    
+    // Add down arrow to label
+    UIImageView *labelCaret = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"elmBubbleArrowOrange"]];
+    labelCaret.centerX = _popUp.width / 2.;
+    
+    // Hide gap between label and arrow
+    labelCaret.centerY = _popUp.height + labelCaret.height / 2. - .5;
+    [_popUp addSubview:labelCaret];
+    _popUp.hidden = YES;
+  }
+  return self;
 }
 
-- (void) resizeMapPinWithZoom: (CGFloat) zoom{
-//  self.center = CGPointMake(self.originalCenter.x * zoom, self.originalCenter.y * zoom);
-//  self.mapView.frame.size.bottom = self.frame.size.top - 9.0f;
-//  self.mapView.frame.size.centerX = self.frame.size.centerX;
+- (void) resizeMapPinWithZoom: (CGFloat) zoom {
+  const float imgHeight = self.imageView.frame.size.height/2;
+  self.transform = CGAffineTransformMakeScale(1.0f / zoom, 1.0f / zoom);
+  _popUp.transform = CGAffineTransformMakeScale(1.0f / zoom, 1.0f / zoom);
+  _popUp.bottom = self.top - (imgHeight) / zoom;
 }
 
-- (void) saveMapPinSize{
-//  self.originalCenter = self.center;
+- (void) saveMapPinSize {
 }
-
 @end
