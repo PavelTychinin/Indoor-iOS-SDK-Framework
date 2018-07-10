@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MBB-zh-MMu">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="qyY-6T-TWg">
+            <objects>
+                <viewController id="MBB-zh-MMu" customClass="ViewController" customModule="Navigine_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M2s-oG-bSg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4S9-t0-iaI">
+                                <rect key="frame" x="316" y="110" width="44" height="108.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEK-Kj-gTd">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="btnUpFloor.png"/>
+                                        <connections>
+                                            <action selector="btnIncreaseFloorPressed" destination="MBB-zh-MMu" eventType="touchUpInside" id="0AA-YU-FY7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKy-Yq-vUD">
+                                        <rect key="frame" x="0.0" y="44" width="44" height="20.5"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-8o-l7G">
+                                        <rect key="frame" x="0.0" y="64.5" width="44" height="44"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="btnDownFloor.png"/>
+                                        <connections>
+                                            <action selector="btnDecreaseFloorPressed" destination="MBB-zh-MMu" eventType="touchUpInside" id="WLu-Gi-kMM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHY-i7-N2A">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-CV-erY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="R2K-bK-1UI"/>
+                                            <constraint firstAttribute="height" constant="647" id="kmI-KD-K22"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="TNT-CV-erY" secondAttribute="bottom" id="9jT-tM-eW9"/>
+                                    <constraint firstItem="TNT-CV-erY" firstAttribute="leading" secondItem="bHY-i7-N2A" secondAttribute="leading" id="TSC-Sd-jod"/>
+                                    <constraint firstItem="TNT-CV-erY" firstAttribute="top" secondItem="bHY-i7-N2A" secondAttribute="top" id="g6x-kU-yMM"/>
+                                    <constraint firstAttribute="trailing" secondItem="TNT-CV-erY" secondAttribute="trailing" id="xbu-zA-5G1"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bHY-i7-N2A" firstAttribute="top" secondItem="M2s-oG-bSg" secondAttribute="top" constant="20" id="FFi-a4-l55"/>
+                            <constraint firstItem="ulf-Rz-NDV" firstAttribute="trailing" secondItem="4S9-t0-iaI" secondAttribute="trailing" constant="15" id="P7W-2J-umg"/>
+                            <constraint firstItem="bHY-i7-N2A" firstAttribute="leading" secondItem="M2s-oG-bSg" secondAttribute="leading" id="RIm-Kr-gSV"/>
+                            <constraint firstItem="4S9-t0-iaI" firstAttribute="top" secondItem="ulf-Rz-NDV" secondAttribute="top" constant="90" id="T00-eu-28Q"/>
+                            <constraint firstAttribute="bottom" secondItem="bHY-i7-N2A" secondAttribute="bottom" id="s1F-tS-Nqp"/>
+                            <constraint firstAttribute="trailing" secondItem="bHY-i7-N2A" secondAttribute="trailing" id="xbm-Hm-MqW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ulf-Rz-NDV"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageViewHeightConstraint" destination="kmI-KD-K22" id="m4n-Ph-4Qo"/>
+                        <outlet property="imageViewWidthConstraint" destination="R2K-bK-1UI" id="WZe-Yz-pco"/>
+                        <outlet property="mBtnStackFloor" destination="4S9-t0-iaI" id="G27-k9-RCm"/>
+                        <outlet property="mImageView" destination="TNT-CV-erY" id="4s0-Oe-C9G"/>
+                        <outlet property="mLblCurrentFloor" destination="gKy-Yq-vUD" id="XCR-Ux-6mo"/>
+                        <outlet property="mScrollView" destination="bHY-i7-N2A" id="UoH-jV-aGb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ii8-e0-FRs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-268" y="-18.440779610194905"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btnDownFloor.png" width="44" height="44"/>
+        <image name="btnUpFloor.png" width="44" height="44"/>
+    </resources>
+    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</document>

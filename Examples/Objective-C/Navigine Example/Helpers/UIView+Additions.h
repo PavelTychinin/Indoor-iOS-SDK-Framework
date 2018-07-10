@@ -113,6 +113,11 @@
 @property (nonatomic, readonly) CGFloat orientationHeight;
 
 /**
+ * Return the status bar frame.
+ */
+@property (nonatomic, readonly) CGRect statusBarFrame;
+
+/**
  * Removes all subviews.
  */
 - (void)removeAllSubviews;

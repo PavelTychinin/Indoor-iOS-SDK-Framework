@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Navigine Example
+//  Swift-New
 //
-//  Created by Pavel Tychinin on 15/12/2017.
-//  Copyright © 2017 Pavel Tychinin. All rights reserved.
+//  Created by Dmitry Stavitsky on 08/07/2018.
+//  Copyright © 2018 Navigine. All rights reserved.
 //
 
 import UIKit
