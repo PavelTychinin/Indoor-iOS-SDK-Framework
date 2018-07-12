@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NCLocationPoint.h"
 #import "NCGlobalPoint.h"
+#import "NCZone.h"
 
 
 typedef NS_ENUM(NSInteger, NCNavigationError) {
@@ -39,6 +40,9 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
 
 @property (nonatomic, strong, readonly, nullable) NCLocationPoint *locationPoint;
 @property (nonatomic, strong, readonly, nullable) NCGlobalPoint   *globalPoint;
+
+- (BOOL) isInsideZoneWithId:    (NSInteger) id;
+- (BOOL) isInsideZoneWithAlias: (NSString *) alias;
 
 - (BOOL) isValid;
 

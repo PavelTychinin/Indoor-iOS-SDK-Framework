@@ -42,7 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 */
 @property (nonatomic, assign, readonly) BOOL modified;
 
-
 - (id) initWithLocation :(NCLocation *)location;
 
 /**
@@ -55,6 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NCSublocation *_Nullable) subLocationWithId: (NSInteger) id;
 
 - (NCZone *_Nullable) zoneWithId: (NSInteger) id;
+
+- (NSArray<NCZone *> *) zonesContainingPoint: (NCLocalPoint *) point;
 
 - (BOOL) isValid;
 @end
