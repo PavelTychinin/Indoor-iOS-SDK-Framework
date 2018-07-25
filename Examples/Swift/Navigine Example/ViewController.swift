@@ -383,6 +383,15 @@ extension ViewController: NavigineCoreNavigationDelegate {
       }
     }
   }
+  
+  func navigineCore(_ navigineCore: NavigineCore, didEnterZone zone: NCZone) {
+    print("You are enter in zone ", zone.id)
+  }
+  
+  func navigineCore(_ navigineCore: NavigineCore, didExitZone zone: NCZone) {
+    print("You are leave zone ", zone.id)
+  }
+
 }
 
 extension ViewController: UIScrollViewDelegate {
