@@ -2,6 +2,33 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.44](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.44) / 2018-09-07
+
+#### Renamed
+In all public classes property "id" renamed to "identifier". For example:
+```Objective-C
+@property (nonatomic, assign) NSInteger id;
+```
+to:
+```Objective-C
+@property (nonatomic, readonly) NSInteger identifier;
+```
+#### Modified
+Classes NCCategory, NCVenue, NCDeviceInfo, NCLocation, NCSublocation are no longer mutable. For example:
+```Objective-C
+@property (nonatomic, assign) NSInteger id;
+```
+to:
+```Objective-C
+@property (nonatomic, readonly) NSInteger identifier;
+```
+#### Modified
+Method of NavigineCore class
+```Objective-C
+- (void) setTarget:(NCLocationPoint *)target;
+```
+Now works as cancelTarget + addTarget.
+
 ## [0.9.4](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.43) / 2018-07-25
 
 Fix bug with invalid url for downloading location
