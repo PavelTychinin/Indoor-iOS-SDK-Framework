@@ -1,4 +1,10 @@
 #import <Foundation/Foundation.h>
+<<<<<<< HEAD
+=======
+#import "NCLocationPoint.h"
+#import "NCGlobalPoint.h"
+#import "NCZone.h"
+>>>>>>> e713c16d573b27ab7cd55bedefd166f4cbb63036
 
 @class NCLocationPoint, NCGlobalPoint, NCZone, NCRoutePath;
 
@@ -88,6 +94,9 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
 
 @property (nonatomic, readonly, nullable) NCLocationPoint *locationPoint;
 @property (nonatomic, readonly, nullable) NCGlobalPoint *globalPoint;
+
+- (BOOL) isInsideZoneWithId:    (NSInteger) id;
+- (BOOL) isInsideZoneWithAlias: (NSString *) alias;
 
 - (BOOL) isValid;
 

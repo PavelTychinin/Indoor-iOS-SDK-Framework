@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) BOOL modified;
 
+<<<<<<< HEAD
 + (instancetype) locationWithIdentifier: (NSInteger) identifier
                                    name: (NSString *) name
                        localDescription: (NSString *) description
@@ -47,6 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
                    localDescription: (NSString *) aDescription
                             version: (NSInteger) aVersion
                        sublocations: (NSArray *) aSublocations;
+=======
+- (id) initWithLocation :(NCLocation *)location;
+>>>>>>> e713c16d573b27ab7cd55bedefd166f4cbb63036
 
 /**
  *  Function is used for getting sublocation at id or nil error
@@ -60,6 +64,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NCZone *_Nullable) zoneWithId: (NSInteger) zoneId;
 
 - (NSArray<NCZone *> *) zonesContainingPoint: (NCLocationlPoint *) point;
+
+- (NSArray<NCZone *> *) zonesContainingPoint: (NCLocalPoint *) point;
 
 - (BOOL) isValid;
 
