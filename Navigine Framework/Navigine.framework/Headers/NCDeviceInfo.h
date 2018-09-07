@@ -1,15 +1,6 @@
-//
-//  NCDeviceInfo.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 29/03/2017.
-//  Copyright © 2017 Navigine. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-#import "NCLocationPoint.h"
-#import "NCGlobalPoint.h"
 
+@class NCLocationPoint, NCGlobalPoint, NCZone, NCRoutePath;
 
 typedef NS_ENUM(NSInteger, NCNavigationError) {
   NCIncorrectClient    = 1,
@@ -20,25 +11,83 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
   NCIncorrectXMLParams = 21
 };
 
-@interface NCDeviceInfo : NSObject <NSCoding>
-@property (nonatomic, strong, nonnull) NSString *id;
-@property (nonatomic, strong, nonnull) NSDate *time;
-@property (nonatomic, assign) NSInteger location;
-@property (nonatomic, assign) NSInteger sublocation;
-@property (nonatomic, assign) float x;
-@property (nonatomic, assign) float kx;
-@property (nonatomic, assign) float y;
-@property (nonatomic, assign) float ky;
-@property (nonatomic, assign) float r;
-@property (nonatomic, assign) float azimuth;
-@property (nonatomic, assign) double latitude;
-@property (nonatomic, assign) double longitude;
-@property (nonatomic, strong, nullable) NSArray *paths;
-@property (nonatomic, strong, nullable) NSArray *zones;
-@property (nonatomic, strong, nullable) NSError *error;
+@interface NCDeviceInfo : NSObject <NSCoding, NSCopying>
 
-@property (nonatomic, strong, readonly, nullable) NCLocationPoint *locationPoint;
-@property (nonatomic, strong, readonly, nullable) NCGlobalPoint   *globalPoint;
+/**
+ * Device UUID
+ */
+@property (nonatomic, copy, readonly, nonnull) NSString *identifier;
+
+/**
+ * Device measuring time (in milliseconds);
+ */
+@property (nonatomic, copy, readonly, nonnull) NSDate *time;
+
+/**
+ * Id of the location where the user is located
+ */
+@property (nonatomic, assign, readonly) NSInteger locationId;
+
+/**
+ * Id of the sublocation where the user is located
+ */
+@property (nonatomic, assign, readonly) NSInteger sublocationId;
+
+/**
+ * X device position on map(in meters)
+ */
+@property (nonatomic, assign, readonly) float x;
+
+/**
+ * X device position on map(relative coordinates)
+ */
+@property (nonatomic, assign, readonly) float kx;
+
+/**
+ * Y device position on map(in meters)
+ */
+@property (nonatomic, assign, readonly) float y;
+
+/**
+ * Y device position on map(relative coordinates)
+ */
+@property (nonatomic, assign, readonly) float ky;
+
+/**
+ * Trusting radius of the current device position within the sub-location;
+ */
+@property (nonatomic, assign, readonly) float r;
+
+/**
+ * Device azimuth angle (in degrees)
+ */
+@property (nonatomic, assign, readonly) float azimuth;
+
+/**
+ * Device latitude and longitude
+ */
+@property (nonatomic, assign, readonly) double latitude;
+@property (nonatomic, assign, readonly) double longitude;
+
+/**
+ * Device paths from the current position to the target points
+ * or nil if target points are not defined (see NCRoutePath class)
+ */
+@property (nonatomic, strong, readonly, nullable) NSArray<NCRoutePath *> *paths;
+
+/**
+ * Current list of sublocation zones where the device belongs
+ * or nil if no such zones exists (see NCZone class)
+ */
+@property (nonatomic, strong, readonly, nullable) NSArray<NCZone *> *zones;
+
+/**
+ * Navigation error or nil if navigation successful
+ */
+@property (nonatomic, copy, readonly, nullable) NSError *error;
+
+@property (nonatomic, readonly, nullable) NCLocationPoint *locationPoint;
+@property (nonatomic, readonly, nullable) NCGlobalPoint *globalPoint;
 
 - (BOOL) isValid;
 

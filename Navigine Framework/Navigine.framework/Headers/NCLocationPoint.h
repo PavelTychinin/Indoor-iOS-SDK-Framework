@@ -1,23 +1,27 @@
-//
-//  NCLocationPoint.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 17/06/15.
-//  Copyright (c) 2015 Navigine. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- *  Struсture with location point content
- */
 @interface NCLocationPoint : NSObject <NSCoding>
 
+/**
+ * Id of location
+ */
 @property (nonatomic, assign, readonly) NSInteger location;
+
+/**
+ * Id of slocation
+ */
 @property (nonatomic, assign, readonly) NSInteger sublocation;
+
+/**
+ * X coordinate of the location point within the sublocation (m)
+ */
 @property (nonatomic, strong, readonly) NSNumber  *x;
+
+/**
+ * Y coordinate of the location point within the sublocation (m)
+ */
 @property (nonatomic, strong, readonly) NSNumber  *y;
 
 - (double) distanceTo: (NCLocationPoint *)point;

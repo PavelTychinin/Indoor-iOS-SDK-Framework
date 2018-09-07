@@ -11,6 +11,7 @@
 #import "NCLocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
+#import "NCBeacon.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,7 +41,7 @@ typedef NS_ENUM(NSInteger, NCError) {
 
 @property (nonatomic, strong) NCLocation *location;
 
-@property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
+@property (nonatomic, copy, readonly) NCDeviceInfo *deviceInfo;
 
 @property (nonatomic, weak, nullable) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
 @property (nonatomic, weak, nullable) NSObject <NavigineCoreDelegate> *delegate;

@@ -1,32 +1,58 @@
-//
-//  NCBeacon.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 01/03/16.
-//  Copyright © 2016 Navigine. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, NCBeaconStatus) {
   NCBeaconOld = 0,
   NCBeaconNew,
   NCBeaconMod,
-  NCBeaconDel,
+  NCBeaconDel
 };
 
 @interface NCBeacon : NSObject <NSCoding>
-@property (nonatomic, assign) NSInteger      id;
-@property (nonatomic, assign) NSInteger      location;
-@property (nonatomic, assign) NSInteger      sublocation;
-@property (nonatomic, assign) NSInteger      major;
-@property (nonatomic, assign) NSInteger      minor;
-@property (nonatomic, strong) NSString       *uuid;
-@property (nonatomic, strong) NSString       *name;
-@property (nonatomic, strong) NSNumber       *x;
-@property (nonatomic, strong) NSNumber       *y;
-@property (nonatomic, assign) NCBeaconStatus status;
 
+/**
+ * Beacon's identifier
+ */
+@property (nonatomic) NSInteger identifier;
+
+/**
+ * Location Id to which the venue belongs
+ */
+@property (nonatomic) NSInteger locationId;
+
+/**
+ * Sublocation Id to which the venue belongs
+ */
+@property (nonatomic) NSInteger sublocationId;
+
+/**
+ * Beacon's major and minor
+ */
+@property (nonatomic) NSInteger major;
+@property (nonatomic) NSInteger minor;
+
+/**
+ * Beacon's UUID
+ */
+@property (nonatomic, copy) NSString *uuid;
+
+/**
+ * Beacon's name on map
+ */
+@property (nonatomic, copy) NSString *name;
+
+/**
+ * Beacon's coordinates on map
+ */
+@property (nonatomic, copy) NSNumber *x;
+@property (nonatomic, copy) NSNumber *y;
+
+@property (nonatomic) NCBeaconStatus status;
+
+/**
+ * Method for beacon validation
+ *
+ * @return YES if valid, NO othetwise
+ */
 - (BOOL) isValid;
 
 @end

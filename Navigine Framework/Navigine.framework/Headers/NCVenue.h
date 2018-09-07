@@ -1,32 +1,65 @@
-//
-//  NCVenue.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 17/06/15.
-//  Copyright (c) 2015 Navigine. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "NCCategory.h"
+
+@class NCCategory, UIImage;
+
+@interface NCVenue : NSObject <NSCoding, NSCopying>
 
 /**
- *  Structure with venues content
+ * Identifier of venue
  */
-@interface NCVenue : NSObject <NSCoding>
+@property(nonatomic, assign, readonly) NSInteger identifier;
 
-@property(nonatomic, assign) NSInteger  id;
-@property(nonatomic, assign) NSInteger  location;
-@property(nonatomic, assign) NSInteger  sublocation;  // sublocation id of venue
-@property(nonatomic, strong) NSNumber   *x;
-@property(nonatomic, strong) NSNumber   *y;
-@property(nonatomic, strong) NSString   *name;        // name of venue
-@property(nonatomic, strong) UIImage    *image;       // url path to image of venue content
-@property(nonatomic, strong) NSString   *phone;       // phone number of venue
-@property(nonatomic, strong) NSString   *descript;    // other info about venue
-@property(nonatomic, strong) NSString   *alias;
-@property(nonatomic, strong) NCCategory *category;
+/**
+ * Location id of venue
+ */
+@property(nonatomic, assign, readonly) NSInteger locationId;
 
+/**
+ * Sublocation id of venue
+ */
+@property(nonatomic, assign, readonly) NSInteger sublocationId;
+
+/**
+ * Venue's coordinates on map
+ */
+@property(nonatomic, copy, readonly) NSNumber *x;
+@property(nonatomic, copy, readonly) NSNumber *y;
+
+/**
+ * Venue's name
+ */
+@property(nonatomic, copy, readonly) NSString *name;
+
+/**
+ * Venue's phone number
+ */
+@property(nonatomic, copy, readonly) NSString *phone;
+
+/**
+ * Other information about venue
+ */
+@property(nonatomic, copy, readonly) NSString *describe;
+
+/**
+ * Venue's alias
+ */
+@property(nonatomic, copy, readonly) NSString *alias;
+
+/**
+ * Venue's category(caffe, point of interest, etc...)
+ */
+@property(nonatomic, copy, readonly) NCCategory *category;
+
+/**
+ * Venue's image
+ */
+@property(nonatomic, strong, readonly) UIImage *image;
+
+/**
+ * Method for venue validation
+ *
+ * @return YES if valid, NO othetwise
+ */
 - (BOOL) isValid;
 
 @end

@@ -1,19 +1,24 @@
-//
-//  NCRoutePath.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 29/03/2017.
-//  Copyright © 2017 Navigine. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "NCLocationPoint.h"
 #import "NCRouteEvent.h"
 
 @interface NCRoutePath : NSObject
-@property (nonatomic, strong, nonnull) NSArray *points;
+
+/**
+ * Sequence of route events on the route path (see class NCRouteEvent)
+ */
 @property (nonatomic, strong, nonnull) NSArray *events;
+
+/**
+ * Sequence of path points (see class NCLocationPoint)
+ */
+@property (nonatomic, strong, nonnull) NSArray *points;
+
+/**
+ * Full path length (in meters)
+ */
 @property (nonatomic, assign) float lenght;
 
 - (BOOL) isValid;
+
 @end

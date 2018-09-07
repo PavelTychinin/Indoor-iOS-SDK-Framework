@@ -1,62 +1,69 @@
-//
-//  NCLocation.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 11/03/15.
-//  Copyright (c) 2015 Navigine. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#import "NCSublocation.h"
+@class NCSublocation, NCZone, NCLocationlPoint;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NCLocation :NSObject<NSCoding>
+@interface NCLocation : NSObject<NSCoding>
 
 /**
  *  Location id in personal account
  */
-@property (nonatomic, assign) NSInteger      id;
+@property (nonatomic, readonly) NSInteger identifier;
 
 /**
  *  Location name in personal account
  */
-@property (nonatomic, copy)   NSString       *name;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /**
  *  Location description in personal account
  */
-@property (nonatomic, copy)   NSString       *localDescription;
+@property (nonatomic, copy, readonly) NSString *localDescription;
 
 /**
- *  Archive version
+ *  Location version
  */
-@property (nonatomic, assign) NSInteger      version;
+@property (nonatomic, readonly) NSInteger version;
 
 /**
  *  Array with sublocations of your location
  */
-@property (nonatomic, strong) NSMutableArray *sublocations;
+@property (nonatomic, strong, readonly) NSArray<NCSublocation *> *sublocations;
 
 /**
-*  Is local modified Archive
-*/
-@property (nonatomic, assign, readonly) BOOL modified;
+ *  Is local modified Archive
+ */
+@property (nonatomic, readonly) BOOL modified;
 
++ (instancetype) locationWithIdentifier: (NSInteger) identifier
+                                   name: (NSString *) name
+                       localDescription: (NSString *) description
+                                version: (NSInteger) version
+                           sublocations: (NSArray *) sublocations;
 
-- (id) initWithLocation :(NCLocation *)location;
+- (instancetype) initWithIdentifier: (NSInteger) aIdentifier
+                               name: (NSString *) aName
+                   localDescription: (NSString *) aDescription
+                            version: (NSInteger) aVersion
+                       sublocations: (NSArray *) aSublocations;
 
 /**
  *  Function is used for getting sublocation at id or nil error
  *
- *  @param id 
+ *  @param sublocationId of sublocation
  *
  *  @return Sublocation object or nil
  */
-- (NCSublocation *_Nullable) subLocationWithId: (NSInteger) id;
+- (NCSublocation *_Nullable) sublocationWithId: (NSInteger) sublocationId;
 
-- (NCZone *_Nullable) zoneWithId: (NSInteger) id;
+- (NCZone *_Nullable) zoneWithId: (NSInteger) zoneId;
+
+- (NSArray<NCZone *> *) zonesContainingPoint: (NCLocationlPoint *) point;
 
 - (BOOL) isValid;
+
 @end
 
 NS_ASSUME_NONNULL_END
+

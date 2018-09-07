@@ -26,5 +26,3 @@ FOUNDATION_EXPORT const unsigned char NavigineVersionString[];
 #import "NCSublocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
-
-

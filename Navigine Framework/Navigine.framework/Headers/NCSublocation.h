@@ -1,126 +1,129 @@
-//
-//  NCSublocation.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 27/04/15.
-//  Copyright (c) 2015 Navigine. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#ifndef NavigineSDK_Sublocation_h
-#define NavigineSDK_Sublocation_h
-
-#import <UIKit/UIKit.h>
-#import "NCBeacon.h"
-#import "NCZone.h"
-#import "NCVenue.h"
+@class NCZone, NCBeacon, NCVenue, NCLocationPoint, NCGlobalPoint, UIImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- *  Sublocation in your personal account
- */
-@interface NCSublocation :NSObject <NSCoding>
+@interface NCSublocation : NSObject <NSCoding, NSCopying, NSMutableCopying>
 
 /**
  *  Sublocation id in personal account
  */
-@property (nonatomic, assign) NSInteger id;
+@property (nonatomic, readonly) NSInteger identifier;
 
 /**
  * Location id in personal account
  */
-@property (nonatomic, assign) NSInteger location;
+@property (nonatomic, readonly) NSInteger locationId;
 
 /**
- *  Sublocation name in personal account
+ *  Location name in personal account
  */
-@property (nonatomic, copy)   NSString  *name;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /**
  *  Name of svg image or nil if svg image not exists
  */
-@property (nonatomic, copy)   NSString  *svgFile;
+@property (nonatomic, copy, readonly) NSString *svgFile;
 
 /**
  *  Name of png image or nil if png image not exists
  */
-@property (nonatomic, copy)   NSString  *pngFile;
+@property (nonatomic, copy, readonly) NSString *pngFile;
 
 /**
  *  Name of jpg image or nil if jpg image not exists
  */
-@property (nonatomic, copy)   NSString  *jpgFile;
+@property (nonatomic, copy, readonly) NSString *jpgFile;
 
 /**
  *  Data of svg image or nil if svg image not exists
  */
-@property (nonatomic, copy)   NSData    *svgImage;
+@property (nonatomic, readonly) NSData *svgImage;
 
 /**
  *  Data of png image or nil if png image not exists
  */
-@property (nonatomic, copy)   NSData    *pngImage;
+@property (nonatomic, readonly) NSData *pngImage;
 
 /**
  *  Data of jpg image or nil if jpg image not exists
  */
-@property (nonatomic, copy)   NSData    *jpgImage;
+@property (nonatomic, readonly) NSData *jpgImage;
 
 /**
  *  UImage of map or nil if image invalid
  */
-@property (nonatomic, strong)   UIImage    *image;
+@property (nonatomic, strong) UIImage *image;
 
 /**
  *  Width of image in meters
  */
-@property (nonatomic, assign) float     width;
+@property (nonatomic, readonly) float width;
 
 /**
  *  Height of image in meters
  */
-@property (nonatomic, assign) float     height;
+@property (nonatomic, readonly) float height;
 
 /**
  *  Azimuth of image in degree
  */
-@property (nonatomic, assign) float     azimuth;
+@property (nonatomic, readonly) float azimuth;
 
 /**
  *  GPS latitude
  */
-@property (nonatomic, assign) double    latitude;
+@property (nonatomic, readonly) double latitude;
+
 /**
  *  GPS longitude
  */
-@property (nonatomic, assign) double    longitude;
+@property (nonatomic, readonly) double longitude;
 
 /**
- *  Beacons which sublocation contains
+ *  Zones which sublocation contains
  */
-@property (nonatomic,copy) NSMutableArray    *beacons;
-
-/**
- *  Beacons which sublocation contains
- */
-@property (nonatomic,copy) NSArray    *zones;
+@property (nonatomic, strong, readonly) NSArray<NCZone *> *zones;
 
 /**
  *  Venues which sublocation contains
  */
-@property (nonatomic,copy) NSMutableArray    *venues;
+@property (nonatomic, strong, readonly) NSArray<NCVenue *> *venues;
 
+/**
+ *  Beacons which sublocation contains
+ */
+@property (nonatomic, strong, readonly) NSArray<NCBeacon *> *beacons;
 
-- (id) initWithSublocation: (NCSublocation *)sublocation;
+/**
+ *  Function is used for getting zone at id
+ *
+ *  @param zoneId - Identifier of zone
+ *  @return Zone object or nil
+ */
+- (NCZone *_Nullable) zoneWithId: (NSInteger) zoneId;
 
-- (NCZone *_Nullable) zoneWithId: (NSInteger) id;
-
-- (NCGlobalPoint *) gpsFromLocal: (NCLocationPoint *)point;
-
-- (NCLocationPoint *) localFromGps: (NCGlobalPoint *)point;
-
+/**
+ *  Validate sublocation
+ */
 - (BOOL) isValid;
+
+/**
+ * Convert GPS coordinates to local coordinates
+ *
+ * @param point LocationPoint that you want to convert
+ */
+- (NCGlobalPoint *) gpsFromLocal: (NCLocationPoint *) point;
+
+/**
+ * Convert local coordinates to GPS coordinates
+ *
+ * @param point GlobalPoint that you want to convert
+ */
+- (NCLocationPoint *) localFromGps: (NCGlobalPoint *) point;
+
 @end
+
 NS_ASSUME_NONNULL_END
 
-#endif
