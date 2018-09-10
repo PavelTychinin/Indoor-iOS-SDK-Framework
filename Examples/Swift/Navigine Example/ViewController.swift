@@ -41,7 +41,7 @@ class ViewController: UIViewController {
   // Login options
   let userHash   = "0000-0000-0000-0000" // Your user hash
   let serverName = "https://api.navigine.com"
-  let locationId = 3046
+  let locationId = 2872
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -100,10 +100,8 @@ class ViewController: UIViewController {
                                    fail: {(_ error: Error?) in
                                     print("error: \(error.debugDescription)")})
     // Add beacon generators if needed
-    //mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
+    mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
     // [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 63714 minor:8737 timeout:50 rssiMin:-100 rssiMax:-x70];
-    //mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
-    // [_navigineCore addBeaconGenerator: @"8EEB497E-4928-44C6-9D92-087521A3547C" major: 9001  minor:36 timeout:10 rssiMin:-90 rssiMax:-70];
   }
   
   func setupFloor(_ floor: Int) {
