@@ -41,7 +41,7 @@ class ViewController: UIViewController {
   // Login options
   let userHash   = "0000-0000-0000-0000" // Your user hash
   let serverName = "https://api.navigine.com"
-  let locationId = 2872
+  let locationId = 3046
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -100,8 +100,9 @@ class ViewController: UIViewController {
                                    fail: {(_ error: Error?) in
                                     print("error: \(error.debugDescription)")})
     // Add beacon generators if needed
-    mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
+    //mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
     // [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 63714 minor:8737 timeout:50 rssiMin:-100 rssiMax:-x70];
+    //mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
     // [_navigineCore addBeaconGenerator: @"8EEB497E-4928-44C6-9D92-087521A3547C" major: 9001  minor:36 timeout:10 rssiMin:-90 rssiMax:-70];
   }
   
@@ -111,7 +112,7 @@ class ViewController: UIViewController {
     removeZonesFromMap() // Remove zones from map
     mScrollView.zoomScale = 1.0 // Reset zoom
     mLocation = mNavigineCore.location
-    mSublocation = mNavigineCore.location.sublocations[floor] as! NCSublocation
+    mSublocation = mNavigineCore.location.sublocations[floor]
     mImageView.image = UIImage(data: mSublocation.pngImage)
     mScrollView.addSubview(mImageView)
     mBtnStackFloor.isHidden = mLocation.sublocations.count == 1 // Hide buttons if count of sublocations = 0
@@ -154,8 +155,8 @@ extension ViewController {
     mNavigineCore.cancelTarget()
     let touchPtInPx = gesture.location(ofTouch: 0, in: mScrollView) // Touch point in pixels
     let touchPtInM = convertPixelsToMeters(srcX: touchPtInPx.x, srcY: touchPtInPx.y, scale: 1) // Touch point in meters
-    let targetPt = NCLocationPoint(location: mLocation.id,
-                                   sublocation: mSublocation.id,
+    let targetPt = NCLocationPoint(location: mLocation.identifier,
+                                   sublocation: mSublocation.identifier,
                                    x: NSNumber(value: Float(touchPtInM.x)),
                                    y: NSNumber(value: Float(touchPtInM.y)))
     mNavigineCore.addTarget(targetPt)
@@ -230,7 +231,7 @@ extension ViewController {
       mRoutePath = UIBezierPath()
       for obj in path.points {
         if let curPoint = obj as? NCLocationPoint {
-          if curPoint.sublocation != mSublocation.id { // If path between different sublocations
+          if curPoint.sublocation != mSublocation.identifier { // If path between different sublocations
             continue
           }
           else {
@@ -257,51 +258,45 @@ extension ViewController {
   }
 
   func drawVenues() {
-    for obj in mSublocation.venues {
-      if let curVenue = obj as? NCVenue {
-        let mapPin = MapPin(venue: curVenue)
-        let xPt = CGFloat(truncating: curVenue.x)
-        let yPt = CGFloat(truncating: curVenue.y)
-        mapPin.center = convertMetersToPixels(srcX: xPt, srcY: yPt, scale: 1)
-        mapPin.addTarget(self, action: #selector(mapPinTap(_:)), for: .touchUpInside)
-        mapPin.sizeToFit()
-        mImageView.addSubview(mapPin)
-        mScrollView.bringSubview(toFront: mapPin)
-      }
+    for curVenue in mSublocation.venues {
+      let mapPin = MapPin(venue: curVenue)
+      let xPt = CGFloat(truncating: curVenue.x)
+      let yPt = CGFloat(truncating: curVenue.y)
+      mapPin.center = convertMetersToPixels(srcX: xPt, srcY: yPt, scale: 1)
+      mapPin.addTarget(self, action: #selector(mapPinTap(_:)), for: .touchUpInside)
+      mapPin.sizeToFit()
+      mImageView.addSubview(mapPin)
+      mScrollView.bringSubview(toFront: mapPin)
     }
   }
   
   func drawZones() {
-    for obj in mSublocation.zones {
-      if let curZone = obj as? NCZone {
-        let zonePath = UIBezierPath()
-        let zoneLayer = CAShapeLayer()
-        var firstPoint = CGPoint(x: 0, y: 0)
-        for obj in curZone.points {
-          if let curPoint = obj as? NCLocationPoint {
-            let xPt = curPoint.x
-            let yPt = curPoint.y
-            let cgCurPoint: CGPoint = convertMetersToPixels(srcX: CGFloat(truncating: xPt),
-                                                            srcY: CGFloat(truncating: yPt),
-                                                            scale: 1)
-            if zonePath.isEmpty {
-              firstPoint = cgCurPoint
-              zonePath.move(to: cgCurPoint)
-            } else {
-              zonePath.addLine(to: cgCurPoint)
-            }
-          }
+    for curZone in mSublocation.zones {
+      let zonePath = UIBezierPath()
+      let zoneLayer = CAShapeLayer()
+      var firstPoint = CGPoint(x: 0, y: 0)
+      for curPoint in curZone.points {
+        let xPt = curPoint.x
+        let yPt = curPoint.y
+        let cgCurPoint: CGPoint = convertMetersToPixels(srcX: CGFloat(truncating: xPt),
+                                                        srcY: CGFloat(truncating: yPt),
+                                                        scale: 1)
+        if zonePath.isEmpty {
+          firstPoint = cgCurPoint
+          zonePath.move(to: cgCurPoint)
+        } else {
+          zonePath.addLine(to: cgCurPoint)
         }
-        zonePath.addLine(to: firstPoint) // Add first point again to close path
-        let hexColor:UInt32 = stringToHex(srcStr: curZone.color) // Parse zone color
-        zoneLayer.name = "Zone"
-        zoneLayer.path = zonePath.cgPath
-        zoneLayer.strokeColor = UIColor(hex: Int(hexColor)).cgColor
-        zoneLayer.lineWidth = 2.0
-        zoneLayer.lineJoin = kCALineJoinRound
-        zoneLayer.fillColor = UIColor(hex: Int(hexColor)).withAlphaComponent(0.5).cgColor
-        mImageView.layer.addSublayer(zoneLayer)
       }
+      zonePath.addLine(to: firstPoint) // Add first point again to close path
+      let hexColor:UInt32 = stringToHex(srcStr: curZone.color) // Parse zone color
+      zoneLayer.name = "Zone"
+      zoneLayer.path = zonePath.cgPath
+      zoneLayer.strokeColor = UIColor(hex: Int(hexColor)).cgColor
+      zoneLayer.lineWidth = 2.0
+      zoneLayer.lineJoin = kCALineJoinRound
+      zoneLayer.fillColor = UIColor(hex: Int(hexColor)).withAlphaComponent(0.5).cgColor
+      mImageView.layer.addSublayer(zoneLayer)
     }
   }
   
@@ -350,25 +345,23 @@ extension ViewController {
 }
 
 extension ViewController: NavigineCoreNavigationDelegate {
-  
   func navigineCore(_ navigineCore: NavigineCore, didUpdate deviceInfo: NCDeviceInfo) {
-    if let navError = deviceInfo.error {
-      // If some error
+    if let navError = deviceInfo.error { // If some error
       mCurPosition.isHidden = true
       mErrorView.mError = navError as NSError
       mErrorView.isHidden = false
     }
     else {
       mErrorView.isHidden = true
-      mCurPosition.isHidden = deviceInfo.sublocation != mSublocation.id // Hide current position pin
+      mCurPosition.isHidden = deviceInfo.sublocationId != mSublocation.identifier // Hide current position pin
       let radScale = mImageView.width() / CGFloat(mSublocation.width)
       mCurPosition.center = convertMetersToPixels(srcX: CGFloat(deviceInfo.x), srcY: CGFloat(deviceInfo.y), scale: mScrollView.zoomScale)
       mCurPosition.mRadius = CGFloat(deviceInfo.r) * radScale
       if mIsRouting {
-        if let devicePath:NCRoutePath = deviceInfo.paths?.first as? NCRoutePath {
+        if let devicePath:NCRoutePath = deviceInfo.paths?.first {
           let lastPoint = devicePath.points.last as? NCLocationPoint // Last point from route
-          mImageView.viewWithTag(1)?.isHidden = lastPoint?.sublocation != mSublocation.id // Hide destination pin
-          mEventView.isHidden = deviceInfo.sublocation != mSublocation.id // Hide event bar
+          mImageView.viewWithTag(1)?.isHidden = lastPoint?.sublocation != mSublocation.identifier // Hide destination pin
+          mEventView.isHidden = deviceInfo.sublocationId != mSublocation.identifier // Hide event bar
           let distance = devicePath.lenght
           if distance < 1 {
             mEventView.setFinishTitle()
@@ -384,12 +377,12 @@ extension ViewController: NavigineCoreNavigationDelegate {
     }
   }
   
-  func navigineCore(_ navigineCore: NavigineCore, didEnterZone zone: NCZone) {
-    print("You are enter in zone ", zone.id)
+  func navigineCore(_ navigineCore: NavigineCore, didEnter zone: NCZone) {
+    print("You are enter in zone ", zone.identifier)
   }
   
   func navigineCore(_ navigineCore: NavigineCore, didExitZone zone: NCZone) {
-    print("You are leave zone ", zone.id)
+    print("You are leave zone ", zone.identifier)
   }
 
 }

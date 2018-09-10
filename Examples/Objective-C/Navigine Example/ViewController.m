@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-static NSString *const userHash = @"2623-C33C-4C13-9258"; // Your user hash
+static NSString *const userHash = @"0000-0000-0000-0000"; // Your user hash
 static NSString *const serverName =  @"https://api.navigine.com";
 static int const locationId = 2872;
 
@@ -309,8 +309,7 @@ static int const locationId = 2872;
 
 - (void) navigineCore: (NavigineCore *)navigineCore didUpdateDeviceInfo: (NCDeviceInfo *)deviceInfo {
   NSError *navError = deviceInfo.error;
-  //NSError *customError = [[NSError alloc] initWithDomain:NSCocoaErrorDomain code:4 userInfo:navError.userInfo];
-  if (navError.code == 0) {
+  if (navError == nil) {
     _errorView.hidden = YES;
     _curPosition.hidden = deviceInfo.sublocationId != _sublocation.identifier; // Hide current position pin
     if(!_curPosition.hidden) {
