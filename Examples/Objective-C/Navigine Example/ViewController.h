@@ -13,6 +13,7 @@
 #import "RouteEventView.h"
 #import "ErrorView.h"
 #import "Navigine/NavigineSDK.h"
+#import "Navigine/NCSublocation.h"
 
 @interface ViewController : UIViewController
 <

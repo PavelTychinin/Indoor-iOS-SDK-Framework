@@ -1,14 +1,7 @@
-//
-//  NavigineSDK.h
-//  NavigineSDK
-//
-//  Created by Pavel Tychinin on 22.09.14.
-//  Copyright (c) 2015 Navigine. All rights reserved.
-//
-
 #import "NCDeviceInfo.h"
 #import "NCRoutePath.h"
 #import "NCLocation.h"
+#import "NCSublocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
 #import "NCBeacon.h"
@@ -41,7 +34,7 @@ typedef NS_ENUM(NSInteger, NCError) {
 
 @property (nonatomic, strong) NCLocation *location;
 
-@property (nonatomic, copy, readonly) NCDeviceInfo *deviceInfo;
+@property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
 
 @property (nonatomic, weak, nullable) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
 @property (nonatomic, weak, nullable) NSObject <NavigineCoreDelegate> *delegate;

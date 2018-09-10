@@ -27,8 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Initializes and returns a Category object using the provided Name and Identifier.
  */
-- (instancetype) initWithIdentifier: (NSInteger)aIdentifier
-                               name: (NSString *)aName NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithIdentifier: (NSInteger)identifier
+                               name: (NSString *)name NS_DESIGNATED_INITIALIZER;
 
 - (nullable instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 

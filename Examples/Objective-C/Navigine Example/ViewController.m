@@ -160,8 +160,8 @@ static int const locationId = 2872;
   [[_imageView viewWithTag:1] removeFromSuperview]; // Remove destination pin from map
   CGPoint touchPtInPx = [gesture locationOfTouch:0 inView: _scrollView]; // Touch point in pixels
   CGPoint touchPtInM = [self convertPixelsToMeters:touchPtInPx.x: touchPtInPx.y withScale:1]; // Touch point in meters
-  NCLocationPoint *targetPt = [NCLocationPoint pointWithLocation: _location.id
-                                                     sublocation: _sublocation.id
+  NCLocationPoint *targetPt = [NCLocationPoint pointWithLocation: _location.identifier
+                                                     sublocation: _sublocation.identifier
                                                                x: @(touchPtInM.x)
                                                                y: @(touchPtInM.y)];
   [_navigineCore cancelTargets];
@@ -205,7 +205,7 @@ static int const locationId = 2872;
     _routeLayer = [CAShapeLayer layer];
     _routePath = [[UIBezierPath alloc] init];
     for (NCLocationPoint *point in path) {
-      if (point.sublocation != _sublocation.id) // If path between different sublocations
+      if (point.sublocation != _sublocation.identifier) // If path between different sublocations
         continue;
       else {
         CGPoint cgPoint = [self convertMetersToPixels:point.x.floatValue:point.y.floatValue withScale:_scrollView.zoomScale];
@@ -312,7 +312,7 @@ static int const locationId = 2872;
   //NSError *customError = [[NSError alloc] initWithDomain:NSCocoaErrorDomain code:4 userInfo:navError.userInfo];
   if (navError.code == 0) {
     _errorView.hidden = YES;
-    _curPosition.hidden = deviceInfo.sublocation != _sublocation.id; // Hide current position pin
+    _curPosition.hidden = deviceInfo.sublocationId != _sublocation.identifier; // Hide current position pin
     if(!_curPosition.hidden) {
       const float radScale = _imageView.width / _sublocation.width;
       _curPosition.center = [self convertMetersToPixels: deviceInfo.x: deviceInfo.y withScale: _scrollView.zoomScale];
@@ -328,8 +328,8 @@ static int const locationId = 2872;
     NCRoutePath *devicePath = deviceInfo.paths.firstObject;
     if (devicePath) {
       NCLocalPoint *lastPoint = devicePath.points.lastObject;
-      [_imageView viewWithTag:1].hidden = lastPoint.sublocation != _sublocation.id; // Hide destination pin
-      _eventView.hidden = deviceInfo.sublocation != _sublocation.id; // Hide event bar
+      [_imageView viewWithTag:1].hidden = lastPoint.sublocation != _sublocation.identifier; // Hide destination pin
+      _eventView.hidden = deviceInfo.sublocationId != _sublocation.identifier; // Hide event bar
       NSArray *path = devicePath.points;
       NSArray *eventsArr = devicePath.events;
       float distance = devicePath.lenght;
