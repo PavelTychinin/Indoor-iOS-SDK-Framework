@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.46](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.46) / 2018-09-11
+#### Fixed
+* Backward compatibility returned
+
+## [1.0.45](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.45) / 2018-09-10
+#### Fixed
+* Route issue fixed
+
 ## [1.0.44](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.44) / 2018-09-07
 
 #### Renamed
@@ -13,6 +21,28 @@ to:
 ```Objective-C
 @property (nonatomic, readonly) NSInteger identifier;
 ```
+
+In classes such as NCZone, NCVenue, NCSublocation, NCDeviceInfo, NCBeacon properties "sublocation" and "location" renamed to "sublocationId" and "locationId" respectively.
+```Objective-C
+@property (nonatomic) NSInteger location;
+@property (nonatomic) NSInteger sublocation;
+```
+to:
+```Objective-C
+@property (nonatomic) NSInteger locationId;
+@property (nonatomic) NSInteger sublocationId;
+```
+
+In class NCLocation method subLocationWithId renamed to sublocationWithId:
+
+```Objective-C
+- (NCSublocation *_Nullable) subLocationWithId: (NSInteger) subLocationId;
+```
+to:
+```Objective-C
+- (NCSublocation *_Nullable) sublocationWithId: (NSInteger) sublocationId;
+```
+
 #### Modified
 Classes NCCategory, NCVenue, NCDeviceInfo, NCLocation, NCSublocation are no longer mutable. For example:
 ```Objective-C
@@ -28,6 +58,29 @@ Method of NavigineCore class
 - (void) setTarget:(NCLocationPoint *)target;
 ```
 Now works as cancelTarget + addTarget.
+
+Method of NCLocation class 
+```Objective-C
+-(id) initWithLocation :(NCLocation *)location; 
+```
+is now deprecated.
+
+You can use instead:
+```Objective-C
++ (instancetype) locationWithIdentifier: (NSInteger) identifier
+                                   name: (NSString *) name
+                       localDescription: (NSString *) description
+                                version: (NSInteger) version
+                           sublocations: (NSArray *) sublocations;
+```
+or 
+```Objective-C
+- (instancetype) initWithIdentifier: (NSInteger) aIdentifier
+                               name: (NSString *) aName
+                   localDescription: (NSString *) aDescription
+                            version: (NSInteger) aVersion
+                       sublocations: (NSArray *) aSublocations;
+```
 
 ## [0.9.4](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.43) / 2018-07-25
 
