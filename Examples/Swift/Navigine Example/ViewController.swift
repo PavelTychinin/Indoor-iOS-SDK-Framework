@@ -153,8 +153,8 @@ extension ViewController {
     mNavigineCore.cancelTarget()
     let touchPtInPx = gesture.location(ofTouch: 0, in: mScrollView) // Touch point in pixels
     let touchPtInM = convertPixelsToMeters(srcX: touchPtInPx.x, srcY: touchPtInPx.y, scale: 1) // Touch point in meters
-    let targetPt = NCLocationPoint(location: mLocation.identifier,
-                                   sublocation: mSublocation.identifier,
+    let targetPt = NCLocationPoint(location: mLocation.id,
+                                   sublocation: mSublocation.id,
                                    x: NSNumber(value: Float(touchPtInM.x)),
                                    y: NSNumber(value: Float(touchPtInM.y)))
     mNavigineCore.addTarget(targetPt)
@@ -229,7 +229,7 @@ extension ViewController {
       mRoutePath = UIBezierPath()
       for obj in path.points {
         if let curPoint = obj as? NCLocationPoint {
-          if curPoint.sublocation != mSublocation.identifier { // If path between different sublocations
+          if curPoint.sublocation != mSublocation.id { // If path between different sublocations
             continue
           }
           else {
@@ -351,15 +351,15 @@ extension ViewController: NavigineCoreNavigationDelegate {
     }
     else {
       mErrorView.isHidden = true
-      mCurPosition.isHidden = deviceInfo.sublocationId != mSublocation.identifier // Hide current position pin
+      mCurPosition.isHidden = deviceInfo.sublocation != mSublocation.id // Hide current position pin
       let radScale = mImageView.width() / CGFloat(mSublocation.width)
       mCurPosition.center = convertMetersToPixels(srcX: CGFloat(deviceInfo.x), srcY: CGFloat(deviceInfo.y), scale: mScrollView.zoomScale)
       mCurPosition.mRadius = CGFloat(deviceInfo.r) * radScale
       if mIsRouting {
         if let devicePath:NCRoutePath = deviceInfo.paths?.first {
           let lastPoint = devicePath.points.last as? NCLocationPoint // Last point from route
-          mImageView.viewWithTag(1)?.isHidden = lastPoint?.sublocation != mSublocation.identifier // Hide destination pin
-          mEventView.isHidden = deviceInfo.sublocationId != mSublocation.identifier // Hide event bar
+          mImageView.viewWithTag(1)?.isHidden = lastPoint?.sublocation != mSublocation.id // Hide destination pin
+          mEventView.isHidden = deviceInfo.sublocation != mSublocation.id // Hide event bar
           let distance = devicePath.lenght
           if distance < 1 {
             mEventView.setFinishTitle()
@@ -376,11 +376,11 @@ extension ViewController: NavigineCoreNavigationDelegate {
   }
   
   func navigineCore(_ navigineCore: NavigineCore, didEnter zone: NCZone) {
-    print("You are enter in zone ", zone.identifier)
+    print("You are enter in zone ", zone.id)
   }
   
   func navigineCore(_ navigineCore: NavigineCore, didExitZone zone: NCZone) {
-    print("You are leave zone ", zone.identifier)
+    print("You are leave zone ", zone.id)
   }
 
 }
