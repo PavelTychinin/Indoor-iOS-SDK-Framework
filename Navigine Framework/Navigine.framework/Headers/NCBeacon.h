@@ -12,17 +12,17 @@ typedef NS_ENUM(NSInteger, NCBeaconStatus) {
 /**
  * Beacon's identifier
  */
-@property (nonatomic) NSInteger identifier;
+@property (nonatomic) NSInteger id;
 
 /**
  * Location Id to which the venue belongs
  */
-@property (nonatomic) NSInteger locationId;
+@property (nonatomic) NSInteger location;
 
 /**
  * Sublocation Id to which the venue belongs
  */
-@property (nonatomic) NSInteger sublocationId;
+@property (nonatomic) NSInteger sublocation;
 
 /**
  * Beacon's major and minor

@@ -9,7 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Location id in personal account
  */
-@property (nonatomic, readonly) NSInteger identifier;
+@property (nonatomic, readonly) NSInteger id;
 
 /**
  *  Location name in personal account
@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return Sublocation object or nil
  */
-- (NCSublocation *_Nullable) sublocationWithId: (NSInteger) sublocationId;
+- (NCSublocation *_Nullable) subLocationWithId: (NSInteger) sublocationId;
 
 - (NCZone *_Nullable) zoneWithId: (NSInteger) zoneId;
 

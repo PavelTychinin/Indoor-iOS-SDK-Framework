@@ -9,12 +9,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Sublocation id in personal account
  */
-@property (nonatomic, readonly) NSInteger identifier;
+@property (nonatomic, readonly) NSInteger id;
 
 /**
  * Location id in personal account
  */
-@property (nonatomic, readonly) NSInteger locationId;
+@property (nonatomic, readonly) NSInteger location;
 
 /**
  *  Location name in personal account
@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  UImage of map or nil if image invalid
  */
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong, nullable) UIImage *image;
 
 /**
  *  Width of image in meters

@@ -9,17 +9,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Zone's Identifier
  */
-@property (nonatomic) int identifier;
+@property (nonatomic) NSInteger id;
 
 /**
  * Location Id to which the zone belongs
  */
-@property (nonatomic) int locationId;
+@property (nonatomic) NSInteger location;
 
 /**
  * Sublocation Id to which the zone belongs
  */
-@property (nonatomic) int sublocationId;
+@property (nonatomic) NSInteger sublocation;
 
 /**
  * Zone's name on map
@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) containsPoint: (NCLocationPoint *) point;
 
 /**
+ * This method will be deprecated in the next SDK release!!!
+ *
  * Add Vertex to zone
  *
  * @param LocationPoint that you want to add
@@ -62,6 +64,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) addZonePoint: (NCLocationPoint *) zonePoint;
 
 /**
+ * This method will be deprecated in the next SDK release!!!
+ *
  * Remove all vertices
  */
 - (void) clearZonePoints;

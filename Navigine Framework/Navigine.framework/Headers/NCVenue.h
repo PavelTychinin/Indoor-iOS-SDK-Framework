@@ -7,17 +7,17 @@
 /**
  * Identifier of venue
  */
-@property(nonatomic, assign, readonly) NSInteger identifier;
+@property(nonatomic, assign, readonly) NSInteger id;
 
 /**
  * Location id of venue
  */
-@property(nonatomic, assign, readonly) NSInteger locationId;
+@property(nonatomic, assign, readonly) NSInteger location;
 
 /**
  * Sublocation id of venue
  */
-@property(nonatomic, assign, readonly) NSInteger sublocationId;
+@property(nonatomic, assign, readonly) NSInteger sublocation;
 
 /**
  * Venue's coordinates on map
@@ -38,7 +38,7 @@
 /**
  * Other information about venue
  */
-@property(nonatomic, copy, readonly) NSString *describe;
+@property(nonatomic, copy, readonly) NSString *descript;
 
 /**
  * Venue's alias

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
 /**
  * Device UUID
  */
-@property (nonatomic, copy, readonly, nonnull) NSString *identifier;
+@property (nonatomic, copy, readonly, nonnull) NSString *id;
 
 /**
  * Device measuring time (in milliseconds);
@@ -26,12 +26,12 @@ typedef NS_ENUM(NSInteger, NCNavigationError) {
 /**
  * Id of the location where the user is located
  */
-@property (nonatomic, assign, readonly) NSInteger locationId;
+@property (nonatomic, assign, readonly) NSInteger location;
 
 /**
  * Id of the sublocation where the user is located
  */
-@property (nonatomic, assign, readonly) NSInteger sublocationId;
+@property (nonatomic, assign, readonly) NSInteger sublocation;
 
 /**
  * X device position on map(in meters)
