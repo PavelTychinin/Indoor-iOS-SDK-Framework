@@ -2,7 +2,7 @@
 
 @class NCLocationPoint, NCGlobalPoint, NCZone, NCRoutePath;
 
-typedef NS_ENUM(NSInteger, NCNavigationError) {
+typedef NS_ENUM(NSUInteger, NCNavigationError) {
   NCIncorrectClient    = 1,
   NCNoSolution         = 4,
   NCNoBeacons          = 8,

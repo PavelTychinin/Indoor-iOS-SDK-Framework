@@ -1,10 +1,13 @@
 #import "NCDeviceInfo.h"
 #import "NCRoutePath.h"
 #import "NCLocation.h"
+#import "NCLocationPoint.h"
 #import "NCSublocation.h"
 #import "NCVenue.h"
 #import "NCZone.h"
 #import "NCBeacon.h"
+#import "NCRoutePath.h"
+#import "NCRouteEvent.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

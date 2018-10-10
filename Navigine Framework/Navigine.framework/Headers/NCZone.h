@@ -9,37 +9,37 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Zone's Identifier
  */
-@property (nonatomic) NSInteger id;
+@property (nonatomic, readonly) NSInteger id;
 
 /**
  * Location Id to which the zone belongs
  */
-@property (nonatomic) NSInteger location;
+@property (nonatomic, readonly) NSInteger location;
 
 /**
  * Sublocation Id to which the zone belongs
  */
-@property (nonatomic) NSInteger sublocation;
+@property (nonatomic, readonly) NSInteger sublocation;
 
 /**
  * Zone's name on map
  */
-@property (nonatomic) NSString  *name;
+@property (nonatomic, readonly) NSString  *name;
 
 /**
  * Zone's alias
  */
-@property (nonatomic) NSString  *alias;
+@property (nonatomic, readonly) NSString  *alias;
 
 /**
  * Zone's color
  */
-@property (nonatomic) NSString  *color;
+@property (nonatomic, readonly) NSString  *color;
 
 /**
  * Zone's vertices
  */
-@property (nonatomic, copy, readonly) NSArray<NCLocationPoint *> *points;
+@property (nonatomic, strong, readonly) NSArray<NCLocationPoint *> *points;
 
 /**
  * Zone's geometric center
@@ -55,23 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) containsPoint: (NCLocationPoint *) point;
 
 /**
- * This method will be deprecated in the next SDK release!!!
- *
- * Add Vertex to zone
- *
- * @param LocationPoint that you want to add
- */
-- (void) addZonePoint: (NCLocationPoint *) zonePoint;
-
-/**
- * This method will be deprecated in the next SDK release!!!
- *
- * Remove all vertices
- */
-- (void) clearZonePoints;
-
-/**
- * Method for zone validation
+ * Zone validation
  *
  * @return YES if valid, NO othetwise
  */

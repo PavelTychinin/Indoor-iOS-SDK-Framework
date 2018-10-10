@@ -13,7 +13,7 @@ FOUNDATION_EXPORT double NavigineVersionNumber;
 
 //! Project version string for Navigine.
 FOUNDATION_EXPORT const unsigned char NavigineVersionString[];
-
+ 
 #import "NavigineSDK.h"
 #import "NCBeacon.h"
 #import "NCCategory.h"

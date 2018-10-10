@@ -47,7 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
                    localDescription: (NSString *) aDescription
                             version: (NSInteger) aVersion
                        sublocations: (NSArray *) aSublocations;
-
 /**
  *  Function is used for getting sublocation at id or nil error
  *

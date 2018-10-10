@@ -7,17 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+
+@interface NCGlobalPoint : NSObject <NSCoding, NSCopying>
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NCGlobalPoint : NSObject <NSCoding>
-@property (nonatomic, assign, readonly) double  latitude;
-@property (nonatomic, assign, readonly) double  longitude;
+@property (nonatomic, readonly) double latitude;
+@property (nonatomic, readonly) double longitude;
 
-- (double) distanceTo: (NCGlobalPoint *)point;
+- (double) distanceTo: (NCGlobalPoint *) point;
 
-+ (NCGlobalPoint *) pointWithLatitude:(double) latitude
-                            longitude:(double) longitude;
++ (instancetype) pointWithLatitude:(double) latitude
+                         longitude:(double) longitude;
+
+- (instancetype) initWithLatitude:(double) latitude
+                        longitude:(double) longitude NS_DESIGNATED_INITIALIZER;
+
+- (instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+
+NS_ASSUME_NONNULL_END
 
 - (BOOL) isValid;
+
 @end
-NS_ASSUME_NONNULL_END

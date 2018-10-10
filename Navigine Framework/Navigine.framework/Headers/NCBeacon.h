@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, NCBeaconStatus) {
+typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
   NCBeaconOld = 0,
   NCBeaconNew,
   NCBeaconMod,
@@ -12,41 +12,41 @@ typedef NS_ENUM(NSInteger, NCBeaconStatus) {
 /**
  * Beacon's identifier
  */
-@property (nonatomic) NSInteger id;
+@property (nonatomic, readonly) NSInteger id;
 
 /**
  * Location Id to which the venue belongs
  */
-@property (nonatomic) NSInteger location;
+@property (nonatomic, readonly) NSInteger location;
 
 /**
  * Sublocation Id to which the venue belongs
  */
-@property (nonatomic) NSInteger sublocation;
+@property (nonatomic, readonly) NSInteger sublocation;
 
 /**
  * Beacon's major and minor
  */
-@property (nonatomic) NSInteger major;
-@property (nonatomic) NSInteger minor;
+@property (nonatomic, readonly) NSInteger major;
+@property (nonatomic, readonly) NSInteger minor;
 
 /**
  * Beacon's UUID
  */
-@property (nonatomic, copy) NSString *uuid;
+@property (nonatomic, copy, readonly) NSString *uuid;
 
 /**
  * Beacon's name on map
  */
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /**
  * Beacon's coordinates on map
  */
-@property (nonatomic, copy) NSNumber *x;
-@property (nonatomic, copy) NSNumber *y;
+@property (nonatomic, copy, readonly) NSNumber *x;
+@property (nonatomic, copy, readonly) NSNumber *y;
 
-@property (nonatomic) NCBeaconStatus status;
+@property (nonatomic, readonly) NCBeaconStatus status;
 
 /**
  * Method for beacon validation

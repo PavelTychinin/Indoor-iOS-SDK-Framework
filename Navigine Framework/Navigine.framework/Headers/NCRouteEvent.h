@@ -12,13 +12,28 @@ typedef NS_ENUM(NSUInteger, NCRouteEventType) {
 /**
  * Distance from the beginning of the path to the current route event (in meters)
  */
-@property (nonatomic, assign) float distance;
+@property (nonatomic, readonly) float distance;
 
 /**
  * Event type. (Turn left, Turn right or sublocation change);
  */
-@property (nonatomic, assign) NCRouteEventType type;
-@property (nonatomic, assign) int value;
+@property (nonatomic, readonly) NCRouteEventType type;
+
+/**
+ * Rotation angle(in degrees)
+ */
+@property (nonatomic, readonly) int value;
+
++ (instancetype) routeEventWithDistance: (float) distance
+                                  value: (int) value
+                                   type: (NCRouteEventType) eventType;
+
+- (instancetype) initWithDistance: (float) distance
+                            value: (int) value
+                             type: (NCRouteEventType) eventType NS_DESIGNATED_INITIALIZER;
+
+- (instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 - (BOOL) isValid;
+
 @end
