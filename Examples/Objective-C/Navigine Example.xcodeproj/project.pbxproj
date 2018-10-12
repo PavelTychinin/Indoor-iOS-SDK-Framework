@@ -324,7 +324,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh",
 				"${PODS_ROOT}/Navigine/Navigine Framework/Navigine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -333,7 +333,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Navigine/Pods-Navigine-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CEA8604B9D3C950A1D9C912D /* [CP] Check Pods Manifest.lock */ = {

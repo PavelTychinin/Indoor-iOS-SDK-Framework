@@ -64,7 +64,7 @@ static int const locationId = 2872;
   _navigineCore.navigationDelegate = self;
   
   // Add beacon generators if needed
-  [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 65463 minor:38214 timeout:50 rssiMin:-100 rssiMax:-70];
+  //[_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 65463 minor:38214 timeout:50 rssiMin:-100 rssiMax:-70];
   //[_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 63714 minor:8737 timeout:50 rssiMin:-100 rssiMax:-x70];
   //[_navigineCore addBeaconGenerator: @"8EEB497E-4928-44C6-9D92-087521A3547C" major: 9001  minor:36 timeout:10 rssiMin:-90 rssiMax:-70];
   [_navigineCore downloadLocationById: locationId
@@ -79,6 +79,7 @@ static int const locationId = 2872;
                            [self setupFloor: self.floor];
                            [spinnerActivity hideAnimated:YES];
                            self.imageView.userInteractionEnabled = YES;
+                        
                          }
                             failBlock: ^(NSError *error) {
                               NSLog(@"%@", error);
@@ -339,6 +340,14 @@ static int const locationId = 2872;
       [self drawRouteWithPath:path andDistance:distance];
     }
   }
+}
+
+- (void)navigineCore:(NavigineCore *)navigineCore didEnterZone:(NCZone *)zone {
+  NSLog(@"Enter zone: %@", zone);
+}
+
+- (void)navigineCore:(NavigineCore *)navigineCore didExitZone:(NCZone *)zone {
+  NSLog(@"Leave zone: %@", zone);
 }
 
 #pragma mark UIScrollViewDelegate methods

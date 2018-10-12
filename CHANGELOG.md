@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.48](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.48) / 2018-10-12
+* Fixed makeRoute function
+* Fix bug with pushes
+
 ## [1.0.47](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.47) / 2018-10-10
 * All property in public classes now readonly
 * Navigation algorithms are improved
