@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.0.49](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.49) / 2018-11-22
-* Fixed bug causing "CLIENT is NULL" error when downloading location. 
+* Navigation algorithms updated to version 1.9
+* Fixed bug causing to "CLIENT is NULL" error when downloading location. 
 * Added comparison methods to NCBeacon, NCVenue, NCZone. For example:
 ```Objective-C
 /**
@@ -58,7 +59,7 @@ All notable changes to this project will be documented in this file.
 
 ```
 * From the public header [NavigineSDK.h](https://github.com/Navigine/navigine_ios_framework/blob/master/Navigine%20Framework/Navigine.framework/Headers/NavigineSDK.h)
-we removed all external dependencies!!
+we removed all external dependencies!!!
 #### Removed
 ```Objective-C
 #import "NCDeviceInfo.h"
@@ -72,7 +73,8 @@ we removed all external dependencies!!
 #import "NCRoutePath.h"
 #import "NCRouteEvent.h"
 ```
-If you don't want to import each class separately, you can use [Navigine.h](https://github.com/Navigine/navigine_ios_framework/blob/master/Navigine%20Framework/Navigine.framework/Headers/Navigine.h)
+If you don't want to import each class separately, you can import only [Navigine.h](https://github.com/Navigine/navigine_ios_framework/blob/master/Navigine%20Framework/Navigine.framework/Headers/Navigine.h)
+* Various internal improvements
 
 ## [1.0.48](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.48) / 2018-10-12
 * Fixed makeRoute function
