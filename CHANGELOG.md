@@ -2,6 +2,78 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.49](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.49) / 2018-11-22
+* Fixed bug causing "CLIENT is NULL" error when downloading location. 
+* Added comparison methods to NCBeacon, NCVenue, NCZone. For example:
+```Objective-C
+/**
+ Method for comparing beacons.
+
+ @param otherBeacon Compared beacon
+ @return YES if equals, NO othetwise
+ */
+- (BOOL) isEqualToBeacon: (NCBeacon *)otherBeacon;
+```
+* Initialization methods for NCLocation, NCRoutePath, NCRouteEvent, NCCategory now deprecated! In the next SDK Release we will remove them from public API.
+```Objective-C
++ (instancetype) locationWithIdentifier: (NSInteger) identifier
+                                   name: (NSString *) name
+                       localDescription: (NSString *) description
+                                version: (NSInteger) version
+                           sublocations: (NSArray *) sublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+
+- (instancetype) initWithIdentifier: (NSInteger) aIdentifier
+                               name: (NSString *) aName
+                   localDescription: (NSString *) aDescription
+                            version: (NSInteger) aVersion
+                       sublocations: (NSArray *) aSublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+```
+
+```Objective-C
++ (instancetype) categoryWithIdentifier: (NSInteger)aIdentifier
+                                   name: (NSString *)aName DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+
+- (instancetype) initWithIdentifier: (NSInteger)identifier
+                               name: (NSString *)name NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+```
+
+```Objective-C
++ (instancetype) routePathWithLength: (float) length
+                         routePoints: (NSArray *) points
+                         routeEvents: (NSArray *) events DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+
+- (instancetype) initWithLength: (float) length
+                    routePoints: (NSArray *) points
+                    routeEvents: (NSArray *) events NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+```
+
+```Objective-C
++ (instancetype) routeEventWithDistance: (float) distance
+                                  value: (int) value
+                                   type: (NCRouteEventType) eventType DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+
+- (instancetype) initWithDistance: (float) distance
+                            value: (int) value
+                             type: (NCRouteEventType) eventType NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
+
+```
+* From the public header [NavigineSDK.h](https://github.com/Navigine/navigine_ios_framework/blob/master/Navigine%20Framework/Navigine.framework/Headers/NavigineSDK.h)
+we removed all external dependencies!!
+#### Removed
+```Objective-C
+#import "NCDeviceInfo.h"
+#import "NCRoutePath.h"
+#import "NCLocation.h"
+#import "NCLocationPoint.h"
+#import "NCSublocation.h"
+#import "NCVenue.h"
+#import "NCZone.h"
+#import "NCBeacon.h"
+#import "NCRoutePath.h"
+#import "NCRouteEvent.h"
+```
+If you don't want to import each class separately, you can use [Navigine.h](https://github.com/Navigine/navigine_ios_framework/blob/master/Navigine%20Framework/Navigine.framework/Headers/Navigine.h)
+
 ## [1.0.48](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.48) / 2018-10-12
 * Fixed makeRoute function
 * Fix bug with pushes
