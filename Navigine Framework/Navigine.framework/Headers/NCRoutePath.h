@@ -1,3 +1,11 @@
+//
+//  NCRoutePath.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 29/03/2017.
+//  Copyright © 2017 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCRouteEvent, NCLocationPoint;
@@ -23,16 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype) routePathWithLength: (float) length
                          routePoints: (NSArray *) points
-                         routeEvents: (NSArray *) events;
+                         routeEvents: (NSArray *) events DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (instancetype) initWithLength: (float) length
                     routePoints: (NSArray *) points
-                    routeEvents: (NSArray *) events NS_DESIGNATED_INITIALIZER;
+                    routeEvents: (NSArray *) events NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (nullable instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-NS_ASSUME_NONNULL_END
-
 - (BOOL) isValid;
+
+NS_ASSUME_NONNULL_END
 
 @end

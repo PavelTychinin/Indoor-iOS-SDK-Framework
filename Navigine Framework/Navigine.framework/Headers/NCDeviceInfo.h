@@ -1,3 +1,11 @@
+//
+//  NCDeviceInfo.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 29/03/2017.
+//  Copyright © 2017 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCLocationPoint, NCGlobalPoint, NCZone, NCRoutePath;

@@ -1,3 +1,11 @@
+//
+//  NCRouteEvent.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 27/07/2017.
+//  Copyright © 2017 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, NCRouteEventType) {
@@ -26,11 +34,11 @@ typedef NS_ENUM(NSUInteger, NCRouteEventType) {
 
 + (instancetype) routeEventWithDistance: (float) distance
                                   value: (int) value
-                                   type: (NCRouteEventType) eventType;
+                                   type: (NCRouteEventType) eventType DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (instancetype) initWithDistance: (float) distance
                             value: (int) value
-                             type: (NCRouteEventType) eventType NS_DESIGNATED_INITIALIZER;
+                             type: (NCRouteEventType) eventType NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 

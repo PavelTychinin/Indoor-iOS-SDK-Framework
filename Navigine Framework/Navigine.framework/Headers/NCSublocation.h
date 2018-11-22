@@ -1,10 +1,18 @@
+//
+//  NCSublocation.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 27/04/15.
+//  Copyright (c) 2015 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCZone, NCBeacon, NCVenue, NCLocationPoint, NCGlobalPoint, UIImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NCSublocation : NSObject <NSCoding, NSCopying, NSMutableCopying>
+@interface NCSublocation : NSObject <NSCoding, NSCopying>
 
 /**
  *  Sublocation id in personal account
@@ -34,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Name of jpg image or nil if jpg image not exists
  */
-@property (nonatomic, copy, readonly) NSString *jpgFile;
+@property (nonatomic, copy, readonly) NSString *jpgFile; 
 
 /**
  *  Data of svg image or nil if svg image not exists

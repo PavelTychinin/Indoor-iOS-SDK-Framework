@@ -123,16 +123,16 @@
 		3F6D5AFC1F1F908C00517753 /* Navigine Example */ = {
 			isa = PBXGroup;
 			children = (
+				F2A606DF20E23FE6003BCB92 /* CurrentLocation */,
 				F2A606E420E3E1E8003BCB92 /* RouteEventView */,
 				3F6D5B141F1F913600517753 /* Helpers */,
 				3F6D5B171F1F913600517753 /* Images */,
 				3F6D5B1C1F1F913600517753 /* MapPin */,
+				F2A606F420E8E0BD003BCB92 /* ErrorView */,
 				3F6D5B001F1F908C00517753 /* AppDelegate.h */,
 				3F6D5B011F1F908C00517753 /* AppDelegate.m */,
-				F2A606DF20E23FE6003BCB92 /* CurrentLocation */,
 				3F6D5B031F1F908C00517753 /* ViewController.h */,
 				3F6D5B041F1F908C00517753 /* ViewController.m */,
-				F2A606F420E8E0BD003BCB92 /* ErrorView */,
 				3F6D5B061F1F908C00517753 /* Main_objc.storyboard */,
 				3F6D5B091F1F908C00517753 /* Assets.xcassets */,
 				3F6D5B0B1F1F908C00517753 /* LaunchScreen.storyboard */,

@@ -6,14 +6,9 @@
 //  Copyright © 2018 Navigine. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
-#import "MapPin.h"
-#import "CurrentLocation.h"
-#import "RouteEventView.h"
-#import "ErrorView.h"
-#import "Navigine/NavigineSDK.h"
-#import "Navigine/NCSublocation.h"
+#import "Navigine/Navigine.h"
+
+@class ErrorView, RouteEventView, CurrentLocation, MapPin;
 
 @interface ViewController : UIViewController
 <

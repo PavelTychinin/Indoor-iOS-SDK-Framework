@@ -1,3 +1,11 @@
+//
+//  NCBeacon.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 01/03/16.
+//  Copyright © 2016 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
@@ -54,5 +62,13 @@ typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
  * @return YES if valid, NO othetwise
  */
 - (BOOL) isValid;
+
+/**
+ Method for comparing beacons.
+
+ @param otherBeacon Compared beacon
+ @return YES if equals, NO othetwise
+ */
+- (BOOL) isEqualToBeacon: (NCBeacon *)otherBeacon;
 
 @end

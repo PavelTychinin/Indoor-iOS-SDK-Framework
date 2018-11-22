@@ -1,3 +1,11 @@
+//
+//  NCLocationPoint.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 17/06/15.
+//  Copyright (c) 2015 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -29,10 +37,10 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Convenience creation method.
  *
- * @param location: Location id of LocationPoint.
- * @param sublocation: Sublocation id of LocationPoint.
- * @param x: x coordinate of LocationPoint(m)
- * @param y: y coordinate of LocationPoint(m)
+ * @param locationId Location id of LocationPoint.
+ * @param sublocationId Sublocation id of LocationPoint.
+ * @param x x coordinate of LocationPoint(m)
+ * @param y y coordinate of LocationPoint(m)
  *
  * @return An instance of NCLocationPoint.
  */

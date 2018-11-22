@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3F04D4F731E722C6BE8797DE /* libPods-Navigine Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37661346E0EBE0493C7C92A4 /* libPods-Navigine Example.a */; };
-		F215FDAC2146BF71004DABF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F215FDAB2146BF71004DABF2 /* Info.plist */; };
 		F26735D920EF5C1F004DDE4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26735D820EF5C1F004DDE4F /* AppDelegate.swift */; };
 		F26735DB20EF5C1F004DDE4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26735DA20EF5C1F004DDE4F /* ViewController.swift */; };
 		F26735E020EF5C21004DDE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26735DF20EF5C21004DDE4F /* Assets.xcassets */; };
@@ -185,11 +184,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Navigine;
 				TargetAttributes = {
 					F26735D420EF5C1F004DDE4F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -218,7 +218,6 @@
 			files = (
 				F26735E320EF5C21004DDE4F /* LaunchScreen.storyboard in Resources */,
 				F267360320EF5E98004DDE4F /* elmBubbleArrowOrange@2x.png in Resources */,
-				F215FDAC2146BF71004DABF2 /* Info.plist in Resources */,
 				F26735E020EF5C21004DDE4F /* Assets.xcassets in Resources */,
 				F267360920EF5E98004DDE4F /* elmVenueIcon@3x.png in Resources */,
 				F267360E20EF5E98004DDE4F /* elmMapPin@3x.png in Resources */,
@@ -264,7 +263,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Navigine Example/Pods-Navigine Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Navigine Example/Pods-Navigine Example-frameworks.sh",
 				"${PODS_ROOT}/Navigine/Navigine Framework/Navigine.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -273,7 +272,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Navigine Example/Pods-Navigine Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Navigine Example/Pods-Navigine Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -443,7 +442,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Navigine.Navigine-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -464,7 +463,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Navigine.Navigine-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

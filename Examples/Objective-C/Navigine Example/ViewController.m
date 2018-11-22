@@ -7,6 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "MBProgressHUD.h"
+#import "MapPin.h"
+#import "CurrentLocation.h"
+#import "RouteEventView.h"
+#import "ErrorView.h"
 
 static NSString *const userHash = @"0000-0000-0000-0000"; // Your user hash
 static NSString *const serverName =  @"https://api.navigine.com";
@@ -167,6 +172,7 @@ static int const locationId = 2872;
                                                                y: @(touchPtInM.y)];
   [_navigineCore cancelTargets];
   [_navigineCore setTarget:targetPt];
+  
   // Create destination pin on map
   UIImage *imgMarker = [UIImage imageNamed:@"elmMapPin"];
   UIImageView *destinationMarker = [[UIImageView alloc] initWithImage:imgMarker];

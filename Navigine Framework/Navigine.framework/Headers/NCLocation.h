@@ -1,3 +1,11 @@
+//
+//  NCLocation.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 11/03/15.
+//  Copyright (c) 2015 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCSublocation, NCZone, NCLocationlPoint;
@@ -17,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *name;
 
 /**
- *  Location description in personal account
+ *  Location description in personal account 
  */
 @property (nonatomic, copy, readonly) NSString *localDescription;
 
@@ -40,13 +48,13 @@ NS_ASSUME_NONNULL_BEGIN
                                    name: (NSString *) name
                        localDescription: (NSString *) description
                                 version: (NSInteger) version
-                           sublocations: (NSArray *) sublocations;
+                           sublocations: (NSArray *) sublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (instancetype) initWithIdentifier: (NSInteger) aIdentifier
                                name: (NSString *) aName
                    localDescription: (NSString *) aDescription
                             version: (NSInteger) aVersion
-                       sublocations: (NSArray *) aSublocations;
+                       sublocations: (NSArray *) aSublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 /**
  *  Function is used for getting sublocation at id or nil error
  *

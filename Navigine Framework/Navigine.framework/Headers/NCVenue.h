@@ -1,3 +1,11 @@
+//
+//  NCVenue.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 17/06/15.
+//  Copyright (c) 2015 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCCategory, UIImage;
@@ -61,5 +69,13 @@
  * @return YES if valid, NO othetwise
  */
 - (BOOL) isValid;
+
+/**
+ Method for comparing venues.
+ 
+ @param otherVenue Compared Venue
+ @return YES if equals, NO othetwise
+ */
+- (BOOL)isEqualToVenue: (NCVenue *)otherVenue;
 
 @end

@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     
     // Add current position on map
     mImageView.addSubview(mCurPosition)
-    view.bringSubview(toFront: mBtnStackFloor!)
+    view.bringSubviewToFront(mBtnStackFloor!)
     
     // Add loading progress bar while map is downloading
     let spinnerActivity = MBProgressHUD.showAdded(to: view, animated: true)
@@ -227,20 +227,18 @@ extension ViewController {
       mRoutePath.removeAllPoints()
       mRouteLayer = CAShapeLayer()
       mRoutePath = UIBezierPath()
-      for obj in path.points {
-        if let curPoint = obj as? NCLocationPoint {
-          if curPoint.sublocation != mSublocation.id { // If path between different sublocations
-            continue
-          }
-          else {
-            let cgPoint: CGPoint = convertMetersToPixels(srcX: CGFloat(truncating: curPoint.x),
-                                                         srcY: CGFloat(truncating: curPoint.y),
-                                                         scale: mScrollView.zoomScale)
-            if mRoutePath.isEmpty {
-              mRoutePath.move(to: cgPoint)
-            } else {
-              mRoutePath.addLine(to: cgPoint)
-            }
+      for curPoint in path.points {
+        if curPoint.sublocation != mSublocation.id { // If path between different sublocations
+          continue
+        }
+        else {
+          let cgPoint: CGPoint = convertMetersToPixels(srcX: CGFloat(truncating: curPoint.x),
+                                                       srcY: CGFloat(truncating: curPoint.y),
+                                                       scale: mScrollView.zoomScale)
+          if mRoutePath.isEmpty {
+            mRoutePath.move(to: cgPoint)
+          } else {
+            mRoutePath.addLine(to: cgPoint)
           }
         }
       }
@@ -248,10 +246,10 @@ extension ViewController {
       mRouteLayer.path = mRoutePath.cgPath
       mRouteLayer.strokeColor = UIColor(hex: 0x4aadd4).cgColor
       mRouteLayer.lineWidth = 2.0
-      mRouteLayer.lineJoin = kCALineJoinRound
+      mRouteLayer.lineJoin = CAShapeLayerLineJoin.round
       mRouteLayer.fillColor = UIColor.clear.cgColor
       mImageView.layer.addSublayer(mRouteLayer) // Add route layer on map
-      mImageView.bringSubview(toFront: mCurPosition)
+      mImageView.bringSubviewToFront(mCurPosition)
     }
   }
 
@@ -264,7 +262,7 @@ extension ViewController {
       mapPin.addTarget(self, action: #selector(mapPinTap(_:)), for: .touchUpInside)
       mapPin.sizeToFit()
       mImageView.addSubview(mapPin)
-      mScrollView.bringSubview(toFront: mapPin)
+      mScrollView.bringSubviewToFront(mapPin)
     }
   }
   
@@ -292,7 +290,7 @@ extension ViewController {
       zoneLayer.path = zonePath.cgPath
       zoneLayer.strokeColor = UIColor(hex: Int(hexColor)).cgColor
       zoneLayer.lineWidth = 2.0
-      zoneLayer.lineJoin = kCALineJoinRound
+      zoneLayer.lineJoin = CAShapeLayerLineJoin.round
       zoneLayer.fillColor = UIColor(hex: Int(hexColor)).withAlphaComponent(0.5).cgColor
       mImageView.layer.addSublayer(zoneLayer)
     }
@@ -357,7 +355,7 @@ extension ViewController: NavigineCoreNavigationDelegate {
       mCurPosition.mRadius = CGFloat(deviceInfo.r) * radScale
       if mIsRouting {
         if let devicePath:NCRoutePath = deviceInfo.paths?.first {
-          let lastPoint = devicePath.points.last as? NCLocationPoint // Last point from route
+          let lastPoint = devicePath.points.last // Last point from route
           mImageView.viewWithTag(1)?.isHidden = lastPoint?.sublocation != mSublocation.id // Hide destination pin
           mEventView.isHidden = deviceInfo.sublocation != mSublocation.id // Hide event bar
           let distance = devicePath.lenght
@@ -365,7 +363,7 @@ extension ViewController: NavigineCoreNavigationDelegate {
             mEventView.setFinishTitle()
           }
           else {
-            if let firstEvent = devicePath.events.first as? NCRouteEvent {
+            if let firstEvent = devicePath.events.first {
               mEventView.mEvent = firstEvent
             }
           }

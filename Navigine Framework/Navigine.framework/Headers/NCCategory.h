@@ -1,3 +1,11 @@
+//
+//  NCCategory.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 03/10/2017.
+//  Copyright © 2017 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @interface NCCategory : NSObject <NSCoding, NSCopying>
@@ -22,17 +30,15 @@ NS_ASSUME_NONNULL_BEGIN
  * @return An instance of NCCategory.
  */
 + (instancetype) categoryWithIdentifier: (NSInteger)aIdentifier
-                                   name: (NSString *)aName;
+                                   name: (NSString *)aName DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 /**
  * Initializes and returns a Category object using the provided Name and Identifier.
  */
 - (instancetype) initWithIdentifier: (NSInteger)identifier
-                               name: (NSString *)name NS_DESIGNATED_INITIALIZER;
+                               name: (NSString *)name NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 
 - (nullable instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-
-NS_ASSUME_NONNULL_END
 
 /**
  * Method for category validation
@@ -40,5 +46,7 @@ NS_ASSUME_NONNULL_END
  * @return YES if valid, NO othetwise
  */
 - (BOOL) isValid;
+
+NS_ASSUME_NONNULL_END
 
 @end

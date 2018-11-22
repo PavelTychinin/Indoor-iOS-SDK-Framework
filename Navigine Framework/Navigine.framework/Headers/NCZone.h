@@ -1,3 +1,11 @@
+//
+//  NCZone.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 25/07/2017.
+//  Copyright © 2017 Navigine. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 
 @class NCLocationPoint;
@@ -60,6 +68,14 @@ NS_ASSUME_NONNULL_BEGIN
  * @return YES if valid, NO othetwise
  */
 - (BOOL) isValid;
+
+/**
+ Method for comparing zones.
+ 
+ @param otherZone Compared zone
+ @return YES if equals, NO othetwise
+ */
+- (BOOL)isEqualToZone: (NCZone *)otherZone;
 
 @end
 

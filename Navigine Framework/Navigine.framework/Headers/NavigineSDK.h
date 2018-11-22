@@ -1,13 +1,16 @@
-#import "NCDeviceInfo.h"
-#import "NCRoutePath.h"
-#import "NCLocation.h"
-#import "NCLocationPoint.h"
-#import "NCSublocation.h"
-#import "NCVenue.h"
-#import "NCZone.h"
-#import "NCBeacon.h"
-#import "NCRoutePath.h"
-#import "NCRouteEvent.h"
+//
+//  NavigineSDK.h
+//  NavigineSDK
+//
+//  Created by Pavel Tychinin on 22.09.14.
+//  Copyright (c) 2015 Navigine. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@class NCLocationPoint, NCRoutePath, NCRouteEvent;
+@class NCDeviceInfo, NCVenue, NCZone, NCBeacon;
+@class NCLocation;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -50,9 +53,8 @@ typedef NS_ENUM(NSInteger, NCError) {
 /**
  *  Function is used for downloading location and start navigation
  *
- *  @param userHash     userID ID from web site.
- *  @param location     location location name from web site.
- *  @param forced       the boolean flag.
+ *  @param locationId Location name from web site.
+ *  @param forced The boolean flag.
  If set, the content data would be loaded even if the same version has been downloaded already earlier.
  If flag is not set, the download process compares the current downloaded version with the last version on the server.
  If server version equals to the current downloaded version, the re-downloading is not done.
@@ -88,9 +90,9 @@ typedef NS_ENUM(NSInteger, NCError) {
  Download is done in a separate thread in the non-blocking mode.
  Function startLocationLoader doesn't wait until download is finished and returns immediately.
  *
- *  @param userHash   userID ID from web site.
+ *  @param userHash userID ID from web site.
  *
- *  @param location location location name from web site.
+ *  @param locationId location name from web site.
  *
  *  @param forced   the boolean flag.
  If set, the content data would be loaded even if the same version has been downloaded already earlier.
@@ -131,8 +133,8 @@ typedef NS_ENUM(NSInteger, NCError) {
 /**
  *  Function is used for checking the download process state and progress.
  *
- *  @param location - location location name from web site.
- *  @param error - error if archive invalid.
+ *  @param locationId Location name from web site.
+ *  @param error Error if archive invalid.
  */
 
 - (void) loadLocationById:(NSInteger)locationId
@@ -228,7 +230,6 @@ typedef NS_ENUM(NSInteger, NCError) {
 
 @protocol NavigineCoreDelegate <NSObject>
 @optional
-
 /**
  *  Tells the delegate that push in range. Function is called by the timeout of the web site.
  *
