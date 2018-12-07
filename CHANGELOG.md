@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.50](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.50) / 2018-12-07
+* Navigation algorithms updated to version 1.10
+
 ## [1.0.49](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.49) / 2018-11-22
 * Navigation algorithms updated to version 1.9
 * Fixed bug causing to "CLIENT is NULL" error when downloading location. 
