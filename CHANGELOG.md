@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.51](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.51) / 2018-12-28
+* Navigation algorithms updated to version 1.11
+
 ## [1.0.50](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.50) / 2018-12-07
 * Navigation algorithms updated to version 1.10
 

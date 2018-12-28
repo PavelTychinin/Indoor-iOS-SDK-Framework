@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DE3AE1D8147D5FC3FD69535 /* libPods-Navigine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710E392E406B6BDA12C1F06A /* libPods-Navigine.a */; };
 		3F6D5AFF1F1F908C00517753 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5AFE1F1F908C00517753 /* main.m */; };
 		3F6D5B021F1F908C00517753 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B011F1F908C00517753 /* AppDelegate.m */; };
 		3F6D5B051F1F908C00517753 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B041F1F908C00517753 /* ViewController.m */; };
@@ -20,6 +19,7 @@
 		3F6D5B221F1F913600517753 /* elmVenueIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1A1F1F913600517753 /* elmVenueIcon@2x.png */; };
 		3F6D5B231F1F913600517753 /* elmVenueIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1B1F1F913600517753 /* elmVenueIcon@3x.png */; };
 		3F6D5B241F1F913600517753 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D5B1E1F1F913600517753 /* MapPin.m */; };
+		609F6145F129999E1412886A /* libPods-Navigine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710E392E406B6BDA12C1F06A /* libPods-Navigine.a */; };
 		F29F658920DBFE5F009BA8E4 /* btnDownFloor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F29F658520DBFE5E009BA8E4 /* btnDownFloor@2x.png */; };
 		F29F658A20DBFE5F009BA8E4 /* btnUpFloor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F29F658620DBFE5E009BA8E4 /* btnUpFloor@2x.png */; };
 		F29F658B20DBFE5F009BA8E4 /* btnDownFloor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F29F658720DBFE5E009BA8E4 /* btnDownFloor@3x.png */; };
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DE3AE1D8147D5FC3FD69535 /* libPods-Navigine.a in Frameworks */,
+				609F6145F129999E1412886A /* libPods-Navigine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
