@@ -10,9 +10,9 @@
 
 @class NCRouteEvent, NCLocationPoint;
 
-@interface NCRoutePath : NSObject<NSCoding>
-
 NS_ASSUME_NONNULL_BEGIN
+
+@interface NCRoutePath : NSObject<NSCoding>
 
 /**
  * Sequence of route events on the route path (see class NCRouteEvent)
@@ -41,6 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL) isValid;
 
-NS_ASSUME_NONNULL_END
-
 @end
+
+NS_ASSUME_NONNULL_END

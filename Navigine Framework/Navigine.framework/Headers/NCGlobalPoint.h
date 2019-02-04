@@ -25,8 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-NS_ASSUME_NONNULL_END
-
 - (BOOL) isValid;
 
 @end
+
+NS_ASSUME_NONNULL_END

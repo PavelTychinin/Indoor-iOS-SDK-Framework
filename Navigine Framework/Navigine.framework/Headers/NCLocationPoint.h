@@ -60,8 +60,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
-NS_ASSUME_NONNULL_END
-
 /**
  * Method for LocationPoint validation
  *
@@ -72,3 +70,5 @@ NS_ASSUME_NONNULL_END
 typedef NCLocationPoint NCLocalPoint;
 
 @end
+
+NS_ASSUME_NONNULL_END

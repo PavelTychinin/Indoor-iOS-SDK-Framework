@@ -100,8 +100,7 @@ class ViewController: UIViewController {
                                    fail: {(_ error: Error?) in
                                     print("error: \(error.debugDescription)")})
     // Add beacon generators if needed
-    mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
-    // [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 63714 minor:8737 timeout:50 rssiMin:-100 rssiMax:-x70];
+ // mNavigineCore.addBeaconGenerator("F7826DA6-4FA2-4E98-8024-BC5B71E0893E", major: 65463, minor: 38214, timeout: 50, rssiMin: -100, rssiMax: -70)
   }
   
   func setupFloor(_ floor: Int) {

@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCCategory : NSObject <NSCoding, NSCopying>
-
 NS_ASSUME_NONNULL_BEGIN
+
+@interface NCCategory : NSObject <NSCoding, NSCopying>
 
 /**
  * Category's identifier
@@ -47,6 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL) isValid;
 
-NS_ASSUME_NONNULL_END
-
 @end
+
+NS_ASSUME_NONNULL_END
