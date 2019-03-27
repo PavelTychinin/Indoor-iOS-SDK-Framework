@@ -51,7 +51,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Initializes and returns a LocationPoint object using the provided Name and Identifier.
- 
  */
 - (instancetype) initWithLocation: (NSInteger) locationId
                       sublocation: (NSInteger) sublocationId

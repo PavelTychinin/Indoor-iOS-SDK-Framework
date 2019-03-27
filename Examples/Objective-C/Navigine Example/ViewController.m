@@ -80,7 +80,6 @@ static int const locationId = 2872;
                          }
                          successBlock: ^(NSDictionary *userInfo) {
                            [self.navigineCore startNavigine];
-                           [self.navigineCore startPushManager];
                            [self setupFloor: self.floor];
                            [spinnerActivity hideAnimated:YES];
                            self.imageView.userInteractionEnabled = YES;

@@ -12,8 +12,6 @@
 @class NCDeviceInfo, NCVenue, NCZone, NCBeacon;
 @class NCLocation;
 
-NS_ASSUME_NONNULL_BEGIN
-
 typedef NS_ENUM(NSInteger, NCError) {
   NCLocationDoesNotExist = 1000,
   NCDownloadImpossible   = 1010,
@@ -24,10 +22,13 @@ typedef NS_ENUM(NSInteger, NCError) {
   NCInvalidBeacon        = 1060
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  *  Protocol is used for getting navigation resutls in timeout
  */
 @protocol NavigineCoreNavigationDelegate;
+
 /**
  *  Protocol is used for getting pushes in timeout
  */
@@ -35,20 +36,36 @@ typedef NS_ENUM(NSInteger, NCError) {
 
 @interface NavigineCore : NSObject
 
-@property (nonatomic, strong) NSString *userHash;
-@property (nonatomic, strong) NSString *server;
+/**
+ @see NCLocation class
+ */
+@property (nonatomic, strong, readonly) NCLocation *location;
 
-@property (nonatomic, strong) NCLocation *location;
-
+/**
+ @see NCDeviceInfo class
+ */
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
 
-@property (nonatomic, weak, nullable) NSObject <NavigineCoreNavigationDelegate> *navigationDelegate;
-@property (nonatomic, weak, nullable) NSObject <NavigineCoreDelegate> *delegate;
+/**
+ @property userHash
+ @brief User security key
+ */
+@property (nonatomic, copy, readonly) NSString *userHash;
 
-- (id) initWithUserHash:(NSString *)userHash;
+/**
+ @property server
+ @brief Server URL (in the format http[s]://host[:port], e.g. "https://api.navigine.com")
+ */
+@property (nonatomic, copy, readonly) NSString *server;
 
-- (id) initWithUserHash:(NSString *)userHash
-                 server:(NSString *)server;
+@property (nonatomic, weak, nullable) id<NavigineCoreNavigationDelegate> navigationDelegate;
+
+@property (nonatomic, weak, nullable) id<NavigineCoreDelegate> delegate;
+
+- (instancetype) initWithUserHash:(NSString *)userHash;
+
+- (instancetype) initWithUserHash:(NSString *)userHash
+                           server:(NSString *)server NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Function is used for downloading location and start navigation
@@ -62,7 +79,6 @@ typedef NS_ENUM(NSInteger, NCError) {
  *  @param successBlock run when download complete successfull
  *  @param failBlock    show error message and stop downloading
  */
-
 - (void) downloadLocationById :(NSInteger)locationId
                   forceReload :(BOOL) forced
                  processBlock :(void(^)(NSInteger loadProcess))processBlock
@@ -76,12 +92,12 @@ typedef NS_ENUM(NSInteger, NCError) {
                       failBlock :(void(^)(NSError *error))failBlock;
 
 /**
- *  Function is used for starting Navigine service.
+ @brief Function is used for starting Navigine service.
  */
 - (void) startNavigine;
 
 /**
- *  Function is used for forced termination of Navigine service.
+ @brief Function is used for forced termination of Navigine service.
  */
 - (void) stopNavigine;
 
@@ -94,7 +110,7 @@ typedef NS_ENUM(NSInteger, NCError) {
  *
  *  @param locationId location name from web site.
  *
- *  @param forced   the boolean flag.
+ *  @param forced the boolean flag.
  If set, the content data would be loaded even if the same version has been downloaded already earlier.
  If flag is not set, the download process compares the current downloaded version with the last version on the server.
  If server version equals to the current downloaded version, the re-downloading is not done.
@@ -103,11 +119,15 @@ typedef NS_ENUM(NSInteger, NCError) {
  */
 - (int)startLocationLoaderByUserHash: (NSString *)userHash
                           locationId: (NSInteger)locationId
-                              forced: (BOOL) forced;
+                              forced: (BOOL) forced DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationId: locationId instead.");
+
+- (NSInteger)startLocationLoaderByLocationId: (NSInteger)locationId;
 
 - (int)startLocationLoaderByUserHash: (NSString *)userHash
                         locationName: (NSString *)location
-                              forced: (BOOL) forced;
+                              forced: (BOOL) forced DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationName: locationName instead.");
+
+- (NSInteger)startLocationLoaderByLocationName: (NSString *)locationName;
 
 /**
  *  Function is used for checking the download process state and progress.
@@ -115,12 +135,12 @@ typedef NS_ENUM(NSInteger, NCError) {
  *  @param loaderId download process identifier.
  *
  *  @return Integer number — the download process state:
- •	values in interval [0, 99] mean that download is in progress.
+ •  values in interval [0, 99] mean that download is in progress.
  In that case the value shows the download progress percentage;
- •	value 100 means that download has been successfully finished;
- •	other values mean that download process is impossible for some reason.
+ •  value 100 means that download has been successfully finished;
+ •  other values mean that download process is impossible for some reason.
  */
-- (int) checkLocationLoader :(int)loaderId;
+- (NSInteger) checkLocationLoader :(NSInteger)loaderId;
 
 /**
  *  Function is used for forced termination of download process which has been started earlier.
@@ -128,49 +148,26 @@ typedef NS_ENUM(NSInteger, NCError) {
  *
  *  @param loaderId download process identifier.
  */
-- (void) stopLocationLoader :(int)loaderId;
+- (void) stopLocationLoader :(NSInteger)loaderId;
 
 /**
- *  Function is used for checking the download process state and progress.
+ *  Function is used for load location from downloaded archive.
  *
  *  @param locationId Location name from web site.
  *  @param error Error if archive invalid.
  */
-
-- (void) loadLocationById:(NSInteger)locationId
+- (BOOL) loadLocationById:(NSInteger)locationId
                     error:(NSError * _Nullable __autoreleasing *)error;
 
-- (void) loadLocationByName:(NSString *)location
+- (BOOL) loadLocationByName:(NSString *)location
                       error:(NSError * _Nullable __autoreleasing *)error;
-
 
 - (void) cancelLocation;
 
 /**
- *  Function is used for making route from one position to other.
- *
- *  @param startPoint start location point.
- *  @param endPoint  end start location point.
- *
- *  @return NCRoutePath object
- */
-- (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
-                             to: (NCLocationPoint *)endPoint;
-
-- (void) setTarget:(NCLocationPoint *)target;
-- (void) cancelTarget;
-
-- (void) setGraphTag:(NSString *)tag;
-- (NSString *_Nullable)getGraphTag;
-- (NSString *_Nullable)getGraphDescription:(NSString *)tag;
-- (NSArray *_Nullable)getGraphTags;
-- (void) addTarget:(NCLocationPoint *)target;
-- (void) cancelTargets;
-
-/**
  *  Function is used for cheking pushes from web site
  */
-- (void) startPushManager;
+- (void) startPushManager DEPRECATED_MSG_ATTRIBUTE("Method is not yet implemented. Don't use it!");
 
 /**
  *  Function is used for sending data to server using POST sequests
@@ -182,9 +179,6 @@ typedef NS_ENUM(NSInteger, NCError) {
  */
 - (void) stopSendingPostRequests;
 
-/**
- *
- */
 - (void) addBeaconGenerator: (NSString *)uuid
                       major: (NSInteger)major
                       minor: (NSInteger)minor
@@ -192,23 +186,94 @@ typedef NS_ENUM(NSInteger, NCError) {
                     rssiMin: (NSInteger)rssiMin
                     rssiMax: (NSInteger)rssiMax;
 
-/**
- *
- */
 - (void) removeBeaconGenerator: (NSString *)uuid
                          major: (NSInteger)major
                          minor: (NSInteger)minor;
 
 - (void) removeBeaconGenerators;
+
+/**
+ @brief Function is used for building routes between the two location points,
+ specified in the parameters.
+ 
+ @discussion Route is a polyline represented as an array of location points.
+ Location points can belong to different sublocations. For example, this function
+ can be used for building the optimal route from the current device position to
+ the specified position in the location.
+ 
+ @param startPoint A source LocationPoint
+ @param endPoint A destination LocationPoint
+ @return If route is successfully build, function returns the RoutePath,
+ starting from the source point, ending in the destination point.
+ If route can't be build function returns nil.
+ */
+- (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
+                             to: (NCLocationPoint *)endPoint;
+
+/**
+ @brief Function is used for setting up a target point for the device.
+ @discussion If a target point is set up, NavigineCore will automatically
+ build route to that point as soon as new device coordinates are be determined.
+ The route will be stored in a path parameter in the DeviceInfo(@see NCDeviceInfo) class.
+ 
+ @param target Target LocationPoint.
+ */
+- (void) setTarget:(NCLocationPoint *)target;
+
+/**
+ @brief Functions are used for canceling all target points for the device, which have been set up earlier.
+ */
+- (void) cancelTarget;
+- (void) cancelTargets;
+
+/**
+ @brief Function is used for specifying the graph on which routing is performed.
+ 
+ @param tag Tag name of the specified routing graph.
+ */
+- (void) setGraphTag:(NSString *)tag;
+
+/**
+ @brief Function is used for determine the current routing graph.
+ 
+ @return The tag name of the currently used routing graph. If the location is not loaded,
+ function returns nil.
+ */
+- (nullable NSString *)getGraphTag;
+
+/**
+ @brief Function is used for determine the description of the specified routing graph.
+ 
+ @param tag Tag name of the specified routing graph.
+ @return Description of the specified routing graph or nil
+ if there is no routing graph with the specified tag.
+ If the location is not loaded, function returns nil.
+ */
+- (nullable NSString *)getGraphDescription:(NSString *)tag;
+
+/**
+ @brief Function is used for determine the list of available routing graphs.
+ 
+ @return Function returns a list of tags corresponding to the available routing graphs.
+ If the location is not loaded, function returns nil.
+ */
+- (nullable NSArray *)getGraphTags;
+
+/**
+ @brief Function is used for adding a new target point for the device.
+ NavigineSDK will automatically build routes to all target points which were added.
+ Routes will be stored in a path parameter in the DeviceInfo(@see NCDeviceInfo) class.
+ 
+ @param target Target LocationPoint.
+ */
+- (void) addTarget:(NCLocationPoint *)target;
+
 @end
 
 @protocol NavigineCoreNavigationDelegate <NSObject>
 @optional
-
 /**
  * Tells the delegate if navigation results changed
- *
- *
  */
 - (void) navigineCore:(NavigineCore *)navigineCore didUpdateDeviceInfo:(NCDeviceInfo *)deviceInfo;
 
@@ -230,6 +295,7 @@ typedef NS_ENUM(NSInteger, NCError) {
 
 @protocol NavigineCoreDelegate <NSObject>
 @optional
+
 /**
  *  Tells the delegate that push in range. Function is called by the timeout of the web site.
  *
@@ -243,10 +309,10 @@ typedef NS_ENUM(NSInteger, NCError) {
                          image :(NSString *)image
                             id :(NSInteger) id;
 
-
-- (void) didRangeBeacons:(NSArray *)beacons;
+- (void) didRangeBeacons: (NSArray *)beacons;
 
 - (void) beaconFounded: (NCBeacon *)beacon error:(NSError **)error;
+
 - (void) measuringBeaconWithProcess: (NSInteger) process;
 
 @end
