@@ -2,6 +2,60 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.54](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.54) / 2018-03-27
+* ```userHash```, ```server```, ```location``` in ```NavigineCore``` class now readonly properties
+```Objective-C
+@property (nonatomic, copy, readonly) NSString *server;
+@property (nonatomic, copy, readonly) NSString *userHash;
+@property (nonatomic, strong, readonly) NCLocation *location;
+```
+* Add description to navigation methods in ```NavigineCore``` class such as:
+```Objective-C
+- (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
+                             to: (NCLocationPoint *)endPoint;
+- (void) setTarget:(NCLocationPoint *)target;
+- (void) cancelTarget;
+- (void) cancelTargets;
+- (void) setGraphTag:(NSString *)tag;
+- (nullable NSString *)getGraphTag;
+- (nullable NSString *)getGraphDescription:(NSString *)tag;
+- (nullable NSArray *)getGraphTags;
+- (void) addTarget:(NCLocationPoint *)target;
+```
+* ```startPushManager``` method in ```NavigineCore``` deprecated;
+```Objective-C
+- (void) startPushManager DEPRECATED_MSG_ATTRIBUTE("Method is not yet implemented. Don't use it!");
+```
+
+* Add validation for ```server``` and ```userHash``` in ```NavigineCore```. At now, if you enter invalid 
+or corrupted ```server``` or ```userHash``` while initialising ```NavigineCore```, ```NavigineCore```
+will not be created and will return ```nil```.
+
+* Methods
+```Objective-C
+- (int)startLocationLoaderByUserHash: (NSString *)userHash
+                          locationId: (NSInteger)locationId
+                              forced: (BOOL) forced;
+```
+and
+```Objective-C
+- (int)startLocationLoaderByUserHash: (NSString *)userHash
+                        locationName: (NSString *)location
+                              forced: (BOOL) forced;
+```
+now deprecated. Use 
+```Objective-C
+- (NSInteger)startLocationLoaderByLocationId: (NSInteger)locationId;
+```
+or
+```Objective-C
+- (NSInteger)startLocationLoaderByLocationName: (NSString *)locationName;
+```
+instead.
+* Fixed a bug leading to initialising ```CLLlocationManager``` in non main-thread
+* Fix issue with main-thread checker in ```NavigineCoreNavigationDelegate``` protocol
+* Small bugfixes and improvements
+
 ## [1.0.53](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.53) / 2018-03-01
 * Navigation algorithms updated to version 1.14
 
