@@ -68,7 +68,9 @@ now deprecated. Use ```@property (nonatomic, readonly, nullable) NCGlobalPoint *
 ```
 with ```forced``` flag.
 
-* Added new class ```NCSublocationImage```.
+* Added new class ```NCSublocationImage```
+* Navigation algorithms updated to version 1.17
+* Small bugfixes in demo projects
 
 ## [1.0.54](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.54) / 2018-03-27
 * ```userHash```, ```server```, ```location``` in ```NavigineCore``` class now readonly properties
