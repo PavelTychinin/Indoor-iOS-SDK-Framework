@@ -57,8 +57,8 @@
 		F274BEF621088AC30085B7FC /* CurrentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocation.swift; sourceTree = "<group>"; };
 		F274BEF721088AC30085B7FC /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F274BEF821088AC30085B7FC /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
-		F274BEF921088AC30085B7FC /* RouteEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteEventView.swift; sourceTree = "<group>"; };
-		F274BEFA21088AC40085B7FC /* UIKitAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitAdditions.swift; sourceTree = "<group>"; };
+		F274BEF921088AC30085B7FC /* RouteEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = RouteEventView.swift; sourceTree = "<group>"; tabWidth = 2; };
+		F274BEFA21088AC40085B7FC /* UIKitAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UIKitAdditions.swift; sourceTree = "<group>"; tabWidth = 2; };
 		F2CCEBDA20EF642A00F39702 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F2CCEBDC20EFB52C00F39702 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +79,7 @@
 			children = (
 				F26735D720EF5C1F004DDE4F /* Navigine Example */,
 				F26735D620EF5C1F004DDE4F /* Products */,
+				F85C792580ED49904BE11954 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +132,13 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		F85C792580ED49904BE11954 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,7 +171,7 @@
 				TargetAttributes = {
 					F26735D420EF5C1F004DDE4F = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -376,7 +384,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Navigine.Navigine-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -396,7 +404,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Navigine.Navigine-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

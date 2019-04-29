@@ -7,7 +7,7 @@
 //
 
 #import "MapPin.h"
-#import "Navigine/NCVenue.h"
+#import "Navigine/Navigine.h"
 
 @implementation MapPin
 

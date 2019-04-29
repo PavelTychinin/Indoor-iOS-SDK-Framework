@@ -25,12 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * X coordinate of the location point within the sublocation (m)
  */
-@property (nonatomic, readonly) NSNumber  *x;
+@property (nonatomic, readonly) NSNumber *x;
 
 /**
  * Y coordinate of the location point within the sublocation (m)
  */
-@property (nonatomic, readonly) NSNumber  *y;
+@property (nonatomic, readonly) NSNumber *y;
 
 - (double) distanceTo: (NCLocationPoint *)point;
 

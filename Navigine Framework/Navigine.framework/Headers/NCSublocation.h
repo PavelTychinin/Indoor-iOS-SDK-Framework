@@ -7,15 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CGGeometry.h>
 
-@class NCZone, NCBeacon, NCVenue, NCLocationPoint, NCGlobalPoint, UIImage;
+@class NCZone, NCBeacon, NCVenue, NCLocationPoint, NCGlobalPoint, NCSublocationImage, UIImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NCSublocation : NSObject <NSCoding, NSCopying>
 
 /**
- *  Sublocation id in personal account
+ * Sublocation id in personal account
  */
 @property (nonatomic, readonly) NSInteger id;
 
@@ -30,64 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *name;
 
 /**
- *  Name of svg image or nil if svg image not exists
- */
-@property (nonatomic, copy, readonly) NSString *svgFile;
-
-/**
- *  Name of png image or nil if png image not exists
- */
-@property (nonatomic, copy, readonly) NSString *pngFile;
-
-/**
- *  Name of jpg image or nil if jpg image not exists
- */
-@property (nonatomic, copy, readonly) NSString *jpgFile; 
-
-/**
- *  Data of svg image or nil if svg image not exists
- */
-@property (nonatomic, readonly) NSData *svgImage;
-
-/**
- *  Data of png image or nil if png image not exists
- */
-@property (nonatomic, readonly) NSData *pngImage;
-
-/**
- *  Data of jpg image or nil if jpg image not exists
- */
-@property (nonatomic, readonly) NSData *jpgImage;
-
-/**
- *  UImage of map or nil if image invalid
- */
-@property (nonatomic, strong, nullable) UIImage *image;
-
-/**
- *  Width of image in meters
- */
-@property (nonatomic, readonly) float width;
-
-/**
- *  Height of image in meters
- */
-@property (nonatomic, readonly) float height;
-
-/**
  *  Azimuth of image in degree
  */
 @property (nonatomic, readonly) float azimuth;
-
-/**
- *  GPS latitude
- */
-@property (nonatomic, readonly) double latitude;
-
-/**
- *  GPS longitude
- */
-@property (nonatomic, readonly) double longitude;
 
 /**
  *  Zones which sublocation contains
@@ -103,6 +49,20 @@ NS_ASSUME_NONNULL_BEGIN
  *  Beacons which sublocation contains
  */
 @property (nonatomic, strong, readonly) NSArray<NCBeacon *> *beacons;
+
+@property (nonatomic, strong, readonly) NCSublocationImage *sublocationImage;
+
+/**
+ @property dimensions
+ Consists of sublocation width and sublocation height
+ */
+@property (nonatomic, assign, readonly) CGSize dimensions;
+
+/**
+ @property coordinates
+ Sublocation's GPS coordinates
+ */
+@property (nonatomic, readonly, nullable) NCGlobalPoint *coordinates;
 
 /**
  *  Function is used for getting zone at id
@@ -130,6 +90,65 @@ NS_ASSUME_NONNULL_BEGIN
  * @param point GlobalPoint that you want to convert
  */
 - (NCLocationPoint *) localFromGps: (NCGlobalPoint *) point;
+
+@end
+
+@interface NCSublocation (NCDeprecated)
+
+/**
+ *  Name of svg image or nil if svg image not exists
+ */
+@property (nonatomic, copy, readonly) NSString *svgFile DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Name of png image or nil if png image not exists
+ */
+@property (nonatomic, copy, readonly) NSString *pngFile DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Name of jpg image or nil if jpg image not exists
+ */
+@property (nonatomic, copy, readonly) NSString *jpgFile DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Data of svg image or nil if svg image not exists
+ */
+@property (nonatomic, readonly) NSData *svgImage DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Data of png image or nil if png image not exists
+ */
+@property (nonatomic, readonly) NSData *pngImage DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Data of jpg image or nil if jpg image not exists
+ */
+@property (nonatomic, readonly) NSData *jpgImage DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  UImage of map or nil if image invalid
+ */
+@property (nonatomic, strong, readonly, nullable) UIImage *image DEPRECATED_MSG_ATTRIBUTE("Use sublocationImage instead");
+
+/**
+ *  Width of image in meters
+ */
+@property (nonatomic, readonly) float width DEPRECATED_MSG_ATTRIBUTE("Use dimensions instead");
+
+/**
+ *  Height of image in meters
+ */
+@property (nonatomic, readonly) float height DEPRECATED_MSG_ATTRIBUTE("Use dimensions instead");
+
+/**
+ *  GPS latitude
+ */
+@property (nonatomic, readonly) double latitude DEPRECATED_MSG_ATTRIBUTE("Use coordinates instead");
+
+/**
+ *  GPS longitude
+ */
+@property (nonatomic, readonly) double longitude DEPRECATED_MSG_ATTRIBUTE("Use coordinates instead");
 
 @end
 

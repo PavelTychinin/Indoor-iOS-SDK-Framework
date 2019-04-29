@@ -2,8 +2,8 @@
 //  NavigineSDK.h
 //  NavigineSDK
 //
-//  Created by Pavel Tychinin on 22.09.14.
-//  Copyright (c) 2015 Navigine. All rights reserved.
+//  Created by Dmitry Stavitsky on 06/02/2019.
+//  Copyright © 2019 Navigine. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

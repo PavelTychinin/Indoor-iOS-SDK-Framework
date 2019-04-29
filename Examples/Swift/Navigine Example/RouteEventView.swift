@@ -26,6 +26,8 @@ class RouteEventView: UILabel {
           mEventSubTitle.text = "Turn right"
         case NCRouteEventType.transition:
           mEventSubTitle.text = "Cange floor"
+        @unknown default:
+          break
         }
         return
       }

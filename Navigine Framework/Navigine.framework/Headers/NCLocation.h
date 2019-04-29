@@ -44,17 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) BOOL modified;
 
-+ (instancetype) locationWithIdentifier: (NSInteger) identifier
-                                   name: (NSString *) name
-                       localDescription: (NSString *) description
-                                version: (NSInteger) version
-                           sublocations: (NSArray *) sublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
-
-- (instancetype) initWithIdentifier: (NSInteger) aIdentifier
-                               name: (NSString *) aName
-                   localDescription: (NSString *) aDescription
-                            version: (NSInteger) aVersion
-                       sublocations: (NSArray *) aSublocations DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
 /**
  *  Function is used for getting sublocation at id or nil error
  *

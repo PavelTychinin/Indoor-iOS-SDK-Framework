@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NCLocationPoint.h"
 
-@class NCLocationPoint, NCGlobalPoint, NCZone, NCRoutePath;
+@class NCGlobalPoint, NCZone, NCRoutePath;
 
 typedef NS_ENUM(NSUInteger, NCNavigationError) {
   NCIncorrectClient    = 1,
@@ -19,7 +20,9 @@ typedef NS_ENUM(NSUInteger, NCNavigationError) {
   NCIncorrectXMLParams = 21
 };
 
-@interface NCDeviceInfo : NSObject <NSCoding, NSCopying>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NCDeviceInfo : NCLocationPoint
 
 /**
  * Device UUID
@@ -32,36 +35,6 @@ typedef NS_ENUM(NSUInteger, NCNavigationError) {
 @property (nonatomic, copy, readonly, nonnull) NSDate *time;
 
 /**
- * Id of the location where the user is located
- */
-@property (nonatomic, assign, readonly) NSInteger location;
-
-/**
- * Id of the sublocation where the user is located
- */
-@property (nonatomic, assign, readonly) NSInteger sublocation;
-
-/**
- * X device position on map(in meters)
- */
-@property (nonatomic, assign, readonly) float x;
-
-/**
- * X device position on map(relative coordinates)
- */
-@property (nonatomic, assign, readonly) float kx;
-
-/**
- * Y device position on map(in meters)
- */
-@property (nonatomic, assign, readonly) float y;
-
-/**
- * Y device position on map(relative coordinates)
- */
-@property (nonatomic, assign, readonly) float ky;
-
-/**
  * Trusting radius of the current device position within the sub-location;
  */
 @property (nonatomic, assign, readonly) float r;
@@ -70,12 +43,6 @@ typedef NS_ENUM(NSUInteger, NCNavigationError) {
  * Device azimuth angle (in degrees)
  */
 @property (nonatomic, assign, readonly) float azimuth;
-
-/**
- * Device latitude and longitude
- */
-@property (nonatomic, assign, readonly) double latitude;
-@property (nonatomic, assign, readonly) double longitude;
 
 /**
  * Device paths from the current position to the target points
@@ -94,9 +61,38 @@ typedef NS_ENUM(NSUInteger, NCNavigationError) {
  */
 @property (nonatomic, copy, readonly, nullable) NSError *error;
 
-@property (nonatomic, readonly, nullable) NCLocationPoint *locationPoint;
-@property (nonatomic, readonly, nullable) NCGlobalPoint *globalPoint;
+/**
+ @property coordinates
+ Device's GPS coordinates
+ */
+@property (nonatomic, readonly, nullable) NCGlobalPoint *coordinates;
 
 - (BOOL) isValid;
+
+@end
+
+NS_ASSUME_NONNULL_END
+
+@interface NCDeviceInfo (NCDeprecated)
+
+/**
+ * Device latitude and longitude
+ */
+@property (nonatomic, assign, readonly) double latitude DEPRECATED_MSG_ATTRIBUTE("Use coordinates instead");
+@property (nonatomic, assign, readonly) double longitude DEPRECATED_MSG_ATTRIBUTE("Use coordinates instead");
+
+/**
+ * X device position on map(relative coordinates)
+ */
+@property (nonatomic, assign, readonly) float kx DEPRECATED_ATTRIBUTE;
+
+/**
+ * Y device position on map(relative coordinates)
+ */
+@property (nonatomic, assign, readonly) float ky DEPRECATED_ATTRIBUTE;
+
+@property (nonatomic, readonly, nullable) NCLocationPoint *locationPoint DEPRECATED_ATTRIBUTE;
+
+@property (nonatomic, readonly, nullable) NCGlobalPoint *globalPoint DEPRECATED_MSG_ATTRIBUTE("Use coordinates instead");
 
 @end

@@ -32,16 +32,6 @@ typedef NS_ENUM(NSUInteger, NCRouteEventType) {
  */
 @property (nonatomic, readonly) int value;
 
-+ (instancetype) routeEventWithDistance: (float) distance
-                                  value: (int) value
-                                   type: (NCRouteEventType) eventType DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
-
-- (instancetype) initWithDistance: (float) distance
-                            value: (int) value
-                             type: (NCRouteEventType) eventType NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
-
-- (instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-
 - (BOOL) isValid;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NCLocationPoint.h"
 
 typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
   NCBeaconOld = 0,
@@ -15,22 +16,14 @@ typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
   NCBeaconDel
 };
 
-@interface NCBeacon : NSObject <NSCoding>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NCBeacon : NCLocationPoint
 
 /**
  * Beacon's identifier
  */
 @property (nonatomic, readonly) NSInteger id;
-
-/**
- * Location Id to which the venue belongs
- */
-@property (nonatomic, readonly) NSInteger location;
-
-/**
- * Sublocation Id to which the venue belongs
- */
-@property (nonatomic, readonly) NSInteger sublocation;
 
 /**
  * Beacon's major and minor
@@ -47,12 +40,6 @@ typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
  * Beacon's name on map
  */
 @property (nonatomic, copy, readonly) NSString *name;
-
-/**
- * Beacon's coordinates on map
- */
-@property (nonatomic, copy, readonly) NSNumber *x;
-@property (nonatomic, copy, readonly) NSNumber *y;
 
 @property (nonatomic, readonly) NCBeaconStatus status;
 
@@ -72,3 +59,5 @@ typedef NS_ENUM(NSUInteger, NCBeaconStatus) {
 - (BOOL) isEqualToBeacon: (NCBeacon *)otherBeacon;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -29,16 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) float lenght;
 
-+ (instancetype) routePathWithLength: (float) length
-                         routePoints: (NSArray *) points
-                         routeEvents: (NSArray *) events DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
-
-- (instancetype) initWithLength: (float) length
-                    routePoints: (NSArray *) points
-                    routeEvents: (NSArray *) events NS_DESIGNATED_INITIALIZER DEPRECATED_MSG_ATTRIBUTE("Please don't use this method anymore");
-
-- (nullable instancetype) initWithCoder: (NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-
 - (BOOL) isValid;
 
 @end

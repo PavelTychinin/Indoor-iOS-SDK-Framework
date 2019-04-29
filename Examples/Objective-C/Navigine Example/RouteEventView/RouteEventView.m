@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RouteEventView.h"
-#import "Navigine/NCRouteEvent.h"
+#import "Navigine/Navigine.h"
 
 @interface RouteEventView()
 @property (nonatomic, strong) UILabel *eventTitle;

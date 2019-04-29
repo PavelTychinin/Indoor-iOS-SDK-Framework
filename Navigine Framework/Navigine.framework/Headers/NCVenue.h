@@ -7,31 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NCLocationPoint.h"
 
 @class NCCategory, UIImage;
 
-@interface NCVenue : NSObject <NSCoding, NSCopying>
+@interface NCVenue : NCLocationPoint
 
 /**
  * Identifier of venue
  */
 @property(nonatomic, assign, readonly) NSInteger id;
-
-/**
- * Location id of venue
- */
-@property(nonatomic, assign, readonly) NSInteger location;
-
-/**
- * Sublocation id of venue
- */
-@property(nonatomic, assign, readonly) NSInteger sublocation;
-
-/**
- * Venue's coordinates on map
- */
-@property(nonatomic, copy, readonly) NSNumber *x;
-@property(nonatomic, copy, readonly) NSNumber *y;
 
 /**
  * Venue's name

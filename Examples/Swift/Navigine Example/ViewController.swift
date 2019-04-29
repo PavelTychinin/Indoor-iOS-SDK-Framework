@@ -34,7 +34,7 @@ class ViewController: UIViewController {
   var mIsRouting  = false
 
   // Navigine core attributes
-  var mNavigineCore = NavigineCore()
+  var mNavigineCore: NavigineCore! = nil
   var mLocation = NCLocation()
   var mSublocation = NCSublocation() // Current sublocation
   
@@ -90,10 +90,9 @@ class ViewController: UIViewController {
                                    processBlock: {(_ loadProcess: Int) in
                                     print("load process: \(loadProcess)")
                                     spinnerActivity.progress = Float(loadProcess)
-                                  },
+    },
                                    successBlock: {(_ userInfo:[AnyHashable : Any]?) in
                                     self.mNavigineCore.startNavigine()
-                                    self.mNavigineCore.startPushManager()
                                     self.setupFloor(self.mFloor)
                                     spinnerActivity.hide(animated: true)
                                     self.mImageView.isUserInteractionEnabled = true },
@@ -110,7 +109,7 @@ class ViewController: UIViewController {
     mScrollView.zoomScale = 1.0 // Reset zoom
     mLocation = mNavigineCore.location
     mSublocation = mNavigineCore.location.sublocations[floor]
-    mImageView.image = UIImage(data: mSublocation.pngImage)
+    mImageView.image = UIImage(data: mSublocation.sublocationImage.imageData!)
     mScrollView.addSubview(mImageView)
     mBtnStackFloor.isHidden = mLocation.sublocations.count == 1 // Hide buttons if count of sublocations = 0
     mLblCurrentFloor.text = String(floor)
@@ -318,15 +317,15 @@ extension ViewController {
   
   // Convert from pixels to meters
   func convertPixelsToMeters(srcX: CGFloat, srcY: CGFloat, scale: CGFloat) -> CGPoint {
-    let dstX = (srcX / (mImageView.width() / scale) * CGFloat(mSublocation.width))
-    let dstY = ((1.0 - srcY / (mImageView.height() / scale)) * CGFloat(mSublocation.height))
+    let dstX = (srcX / (mImageView.width() / scale) * CGFloat(mSublocation.dimensions.width))
+    let dstY = ((1.0 - srcY / (mImageView.height() / scale)) * CGFloat(mSublocation.dimensions.height))
     return CGPoint(x: dstX, y: dstY)
   }
   
   // Convert from meters to pixels
   func convertMetersToPixels(srcX: CGFloat, srcY: CGFloat, scale: CGFloat) -> CGPoint {
-    let dstX = CGFloat(mImageView.width() / scale * srcX / CGFloat(mSublocation.width))
-    let dstY = CGFloat(mImageView.height() / scale * (1.0 - srcY / CGFloat(mSublocation.height)))
+    let dstX = CGFloat(mImageView.width() / scale * srcX / CGFloat(mSublocation.dimensions.width))
+    let dstY = CGFloat(mImageView.height() / scale * (1.0 - srcY / CGFloat(mSublocation.dimensions.height)))
     return CGPoint(x: dstX, y: dstY)
   }
   
@@ -349,8 +348,8 @@ extension ViewController: NavigineCoreNavigationDelegate {
     else {
       mErrorView.isHidden = true
       mCurPosition.isHidden = deviceInfo.sublocation != mSublocation.id // Hide current position pin
-      let radScale = mImageView.width() / CGFloat(mSublocation.width)
-      mCurPosition.center = convertMetersToPixels(srcX: CGFloat(deviceInfo.x), srcY: CGFloat(deviceInfo.y), scale: mScrollView.zoomScale)
+      let radScale = mImageView.width() / CGFloat(mSublocation.dimensions.width)
+      mCurPosition.center = convertMetersToPixels(srcX: CGFloat(deviceInfo.x.intValue), srcY: CGFloat(deviceInfo.y.intValue), scale: mScrollView.zoomScale)
       mCurPosition.mRadius = CGFloat(deviceInfo.r) * radScale
       if mIsRouting {
         if let devicePath:NCRoutePath = deviceInfo.paths?.first {

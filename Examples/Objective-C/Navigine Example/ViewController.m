@@ -68,12 +68,13 @@ static int const locationId = 2872;
   _navigineCore.delegate = self;
   _navigineCore.navigationDelegate = self;
   
-  // Add beacon generators if needed
+//  // Add beacon generators if needed
 //  [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 65463 minor:38214 timeout:50 rssiMin:-100 rssiMax:-70];
 //  [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 63714 minor:8737 timeout:50 rssiMin:-100 rssiMax:-70];
 //  [_navigineCore addBeaconGenerator: @"8EEB497E-4928-44C6-9D92-087521A3547C" major: 9001  minor:36 timeout:10 rssiMin:-90 rssiMax:-70];
+
   [_navigineCore downloadLocationById: locationId
-                          forceReload: true
+                          forceReload: YES
                          processBlock: ^(NSInteger loadProcess) {
                            NSLog(@"%ld", (long)loadProcess);
                            spinnerActivity.progress = loadProcess;
@@ -96,7 +97,7 @@ static int const locationId = 2872;
   _scrollView.zoomScale = 1.; // Reset zoom
   _location = _navigineCore.location;
   _sublocation = _navigineCore.location.sublocations[floor];
-  _imageView.image = [UIImage imageWithData: _sublocation.pngImage];
+  _imageView.image = [UIImage imageWithData: _sublocation.sublocationImage.imageData];
   [_scrollView addSubview:_imageView];
   _btnStackFloor.hidden = _location.sublocations.count == 1; // Hide buttons if count of sublocations = 0
   _lblCurrentFloor.text = [NSString stringWithFormat:@"%d", _floor];
@@ -188,15 +189,15 @@ static int const locationId = 2872;
 
 // Convert from pixels to meters
 - (CGPoint) convertPixelsToMeters:(float)srcX :(float)srcY withScale :(float)scale {
-  const CGFloat dstX = srcX / (_imageView.width / scale) * _sublocation.width;
-  const CGFloat dstY = (1. - srcY / (_imageView.height / scale)) * _sublocation.height;
+  const CGFloat dstX = srcX / (_imageView.width / scale) * _sublocation.dimensions.width;
+  const CGFloat dstY = (1. - srcY / (_imageView.height / scale)) * _sublocation.dimensions.height;
   return CGPointMake(dstX, dstY);
 }
 
 // Convert from meters to pixels
 - (CGPoint) convertMetersToPixels:(float)srcX :(float)srcY withScale :(float)scale {
-  const CGFloat dstX = (_imageView.width / scale) * srcX / _sublocation.width;
-  const CGFloat dstY = (_imageView.height / scale) * (1. - srcY / _sublocation.height);
+  const CGFloat dstX = (_imageView.width / scale) * srcX / _sublocation.dimensions.width;
+  const CGFloat dstY = (_imageView.height / scale) * (1. - srcY / _sublocation.dimensions.height);
   return CGPointMake(dstX, dstY);
 }
 
@@ -318,8 +319,8 @@ static int const locationId = 2872;
     _errorView.hidden = YES;
     _curPosition.hidden = deviceInfo.sublocation != _sublocation.id; // Hide current position pin
     if(!_curPosition.hidden) {
-      const float radScale = _imageView.width / _sublocation.width;
-      _curPosition.center = [self convertMetersToPixels: deviceInfo.x: deviceInfo.y withScale: _scrollView.zoomScale];
+      const float radScale = _imageView.width / _sublocation.dimensions.width;
+      _curPosition.center = [self convertMetersToPixels: [deviceInfo.x floatValue]: [deviceInfo.y floatValue] withScale: _scrollView.zoomScale];
       _curPosition.radius = deviceInfo.r * radScale;
     }
   }
