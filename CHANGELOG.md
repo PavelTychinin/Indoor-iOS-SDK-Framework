@@ -2,6 +2,74 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.55) / 2018-04-29
+* Classes ```NCBeacon```, ```NCDeviceInfo```, ```NCVenue``` now inherits from class ```NCLocationPoint```
+* Changes in ```NCDeviceInfo``` class:
+***
+```Objective-C
+@property (nonatomic, assign, readonly) float x;
+@property (nonatomic, assign, readonly) float y;
+```
+now removed! Use
+```Objective-C
+@property (nonatomic, readonly) NSNumber *x;
+@property (nonatomic, readonly) NSNumber *y;
+```
+from base-class ```NCLocationPoint```! Please change your code according to these changes. 
+Otherwise your application will not build or will not working correctly.
+***
+```Objective-C
+@property (nonatomic, assign, readonly) double latitude;
+@property (nonatomic, assign, readonly) double longitude;
+```
+now deprecated. Use
+```Objective-C
+@property (nonatomic, readonly, nullable) NCGlobalPoint *coordinates instead!
+```
+***
+```Objective-C
+@property (nonatomic, readonly, nullable) NCLocationPoint *locationPoint;
+```
+now deprecated. You can build it itself if you needed.
+***
+
+* Changes in ```NCSublocation``` class:
+```Objective-C
+@property (nonatomic, readonly) NSData *pngImage;
+@property (nonatomic, readonly) NSData *jpgImage;
+@property (nonatomic, readonly) NSData *svgImage;
+@property (nonatomic, copy, readonly) NSString *svgFile;
+@property (nonatomic, copy, readonly) NSString *pngFile;
+@property (nonatomic, copy, readonly) NSString *jpgFile;
+@property (nonatomic, strong, readonly, nullable) UIImage *image;
+```
+now deprecated. Consider new ```NCSublocationImage``` class.
+***
+```Objective-C
+@property (nonatomic, readonly) float width;
+@property (nonatomic, readonly) float height;
+```
+now deprecated. Use ```@property (nonatomic, assign, readonly) CGSize dimensions;``` instead.
+***
+```Objective-C
+@property (nonatomic, readonly) double latitude;
+@property (nonatomic, readonly) double longitude;
+```
+now deprecated. Use ```@property (nonatomic, readonly, nullable) NCGlobalPoint *coordinates;``` instead.
+***
+
+* Fix issue in method
+```Objective-C
+- (void) downloadLocationById :(NSInteger)locationId
+                  forceReload :(BOOL) forced
+                 processBlock :(void(^)(NSInteger loadProcess))processBlock
+                 successBlock :(void(^)(NSDictionary *userInfo))successBlock
+                    failBlock :(void(^)(NSError *error))failBlock;
+```
+with ```forced``` flag.
+
+* Added new class ```NCSublocationImage```.
+
 ## [1.0.54](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.54) / 2018-03-27
 * ```userHash```, ```server```, ```location``` in ```NavigineCore``` class now readonly properties
 ```Objective-C
