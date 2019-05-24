@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCGlobalPoint : NSObject <NSCoding, NSCopying>
+@interface NCGlobalPoint : NSObject <NSCoding, NSSecureCoding, NSCopying>
 
 NS_ASSUME_NONNULL_BEGIN
 

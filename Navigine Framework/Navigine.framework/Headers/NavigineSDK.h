@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class NCLocationPoint, NCRoutePath, NCRouteEvent;
-@class NCDeviceInfo, NCVenue, NCZone, NCBeacon;
+@class NCDeviceInfo, NCVenue, NCZone, NCBeacon, NCGlobalPoint;
 @class NCLocation;
 
 typedef NS_ENUM(NSInteger, NCError) {
@@ -34,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol NavigineCoreDelegate;
 
+/**
+ *  Protocol is used for tracking location updates and AuthorizationStatus
+ */
+@protocol NavigineCoreLocationDelegate;
+
 @interface NavigineCore : NSObject
 
 /**
@@ -45,6 +51,12 @@ NS_ASSUME_NONNULL_BEGIN
  @see NCDeviceInfo class
  */
 @property (nonatomic, strong, readonly) NCDeviceInfo *deviceInfo;
+
+/**
+ @property lastKnownLocation
+ @brief Last global location coordinates received from CLLocationManager
+ */
+@property (nonatomic, strong, nullable, readonly) NCGlobalPoint *lastKnownLocation;
 
 /**
  @property userHash
@@ -59,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *server;
 
 @property (nonatomic, weak, nullable) id<NavigineCoreNavigationDelegate> navigationDelegate;
+
+@property (nonatomic, weak, nullable) id<NavigineCoreLocationDelegate> locationDelegate;
 
 @property (nonatomic, weak, nullable) id<NavigineCoreDelegate> delegate;
 
@@ -314,6 +328,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) beaconFounded: (NCBeacon *)beacon error:(NSError **)error;
 
 - (void) measuringBeaconWithProcess: (NSInteger) process;
+
+@end
+
+@protocol NavigineCoreLocationDelegate <NSObject>
+
+@optional
+
+- (void)navigineCore: (NavigineCore *)navigineCore didUpdateLocations:(NSArray<CLLocation *> *)locations;
+
+- (void)navigineCore: (NavigineCore *)navigineCore didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+
+- (void)navigineCore: (NavigineCore *)navigineCore didFailWithError:(NSError *)error;
 
 @end
 

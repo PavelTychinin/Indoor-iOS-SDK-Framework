@@ -66,6 +66,7 @@ static int const locationId = 2872;
   // Initialize navigation core
   _navigineCore = [[NavigineCore alloc] initWithUserHash:userHash server:serverName];
   _navigineCore.delegate = self;
+  _navigineCore.locationDelegate = self;
   _navigineCore.navigationDelegate = self;
   
 //  // Add beacon generators if needed
@@ -394,4 +395,17 @@ static int const locationId = 2872;
                             id:(NSInteger)id {
   // Your code
 }
+
+- (void)navigineCore:(NavigineCore *)navigineCore didUpdateLocations:(NSArray<CLLocation *> *)locations {
+  NSLog(@"Locations: %@", locations);
+}
+
+- (void)navigineCore:(NavigineCore *)navigineCore didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+  NSLog(@"AuthorizationStatus: %d", status);
+}
+
+- (void)navigineCore:(NavigineCore *)navigineCore didFailWithError:(NSError *)error {
+  NSLog(@"Error: %@", error);
+}
+
 @end

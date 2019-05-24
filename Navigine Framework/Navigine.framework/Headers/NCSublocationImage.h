@@ -19,8 +19,8 @@ typedef NS_ENUM(NSUInteger, NCImageType) {
 
 @interface NCSublocationImage : NSObject<NSCoding>
 
-- (instancetype) initWithImageData:(NSData *) imageData
-                      andImageType:(NCImageType) imageType;
+- (nullable instancetype) initWithImageData:(NSData *_Nonnull) imageData
+                               andImageType:(NCImageType) imageType;
 
 /**
  Returns nil if the image is not supported or corrupted.

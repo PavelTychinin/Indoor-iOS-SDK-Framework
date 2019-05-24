@@ -2,6 +2,29 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.56) / 2018-05-24
+* Add new protocol to NavigineCore:
+```Objective-C
+@protocol NavigineCoreLocationDelegate <NSObject>
+
+@optional
+
+- (void)navigineCore: (NavigineCore *)navigineCore didUpdateLocations:(NSArray<CLLocation *> *)locations;
+
+- (void)navigineCore: (NavigineCore *)navigineCore didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
+
+- (void)navigineCore: (NavigineCore *)navigineCore didFailWithError:(NSError *)error;
+
+@end
+```
+You can use it for tracking location updates and AuthorizationStatus
+***
+* Add new property ```lastKnownLocation``` to NavigineCore:
+```Objective-C
+@property (nonatomic, strong, nullable, readonly) NCGlobalPoint *lastKnownLocation;
+```
+It means last global location coordinates received from ```CLLocationManager```.
+
 ## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.55) / 2018-04-29
 * Classes ```NCBeacon```, ```NCDeviceInfo```, ```NCVenue``` now inherits from class ```NCLocationPoint```
 * Initializers methods removed from classes such as: ```NCCategory```, ```NCLocation```, ```NCRouteEvent```, ```NCRoutePath```
