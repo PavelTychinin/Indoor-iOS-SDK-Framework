@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @class NCLocationPoint, NCRoutePath, NCRouteEvent;
 @class NCDeviceInfo, NCVenue, NCZone, NCBeacon, NCGlobalPoint;
@@ -40,6 +41,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol NavigineCoreLocationDelegate;
 
+/**
+ *  Protocol is used for tracking bluetooth status
+ */
+@protocol NavigineCoreBluetoothDelegate;
+
 @interface NavigineCore : NSObject
 
 /**
@@ -71,6 +77,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *server;
 
 @property (nonatomic, weak, nullable) id<NavigineCoreNavigationDelegate> navigationDelegate;
+
+@property (nonatomic, weak, nullable) id<NavigineCoreBluetoothDelegate> bluetoothDelegate;
 
 @property (nonatomic, weak, nullable) id<NavigineCoreLocationDelegate> locationDelegate;
 
@@ -340,6 +348,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)navigineCore: (NavigineCore *)navigineCore didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
 
 - (void)navigineCore: (NavigineCore *)navigineCore didFailWithError:(NSError *)error;
+
+@end
+
+@protocol NavigineCoreBluetoothDelegate <NSObject>
+
+- (void)navigineCore: (NavigineCore *)navigineCore didUpdateBluetoothState:(CBManagerState)status;
 
 @end
 

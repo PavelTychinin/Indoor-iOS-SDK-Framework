@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NCGlobalPoint : NSObject <NSCoding, NSSecureCoding, NSCopying>
-
 NS_ASSUME_NONNULL_BEGIN
+
+@interface NCGlobalPoint : NSObject <NSCoding, NSSecureCoding, NSCopying>
 
 @property (nonatomic, readonly) double latitude;
 @property (nonatomic, readonly) double longitude;

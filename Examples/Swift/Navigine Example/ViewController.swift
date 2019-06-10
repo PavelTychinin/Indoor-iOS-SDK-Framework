@@ -9,7 +9,7 @@
 import UIKit
 import Navigine
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NavigineCoreDelegate {
   // Constraints
   @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint!
@@ -83,7 +83,10 @@ class ViewController: UIViewController {
     
     // Initialize navigation core
     mNavigineCore = NavigineCore(userHash: userHash, server: serverName)
+    mNavigineCore.delegate = self
     mNavigineCore.navigationDelegate = self
+    mNavigineCore.locationDelegate = self
+    mNavigineCore.bluetoothDelegate = self
     
     mNavigineCore.downloadLocation(byId: locationId,
                                    forceReload: true,
@@ -378,7 +381,27 @@ extension ViewController: NavigineCoreNavigationDelegate {
   func navigineCore(_ navigineCore: NavigineCore, didExitZone zone: NCZone) {
     print("You are leave zone ", zone.id)
   }
+}
 
+extension ViewController: NavigineCoreLocationDelegate {
+  func navigineCore(_ navigineCore: NavigineCore, didFailWithError error: Error) {
+    print("Location error: ", error)
+  }
+  
+  func navigineCore(_ navigineCore: NavigineCore, didUpdate locations: [CLLocation]) {
+    print("Locations: ", locations)
+  }
+  
+  func navigineCore(_ navigineCore: NavigineCore, didChange status: CLAuthorizationStatus) {
+    print("AuthorizationStatus: ", status.rawValue)
+  }
+}
+
+@available(iOS 10.0, *)
+extension ViewController: NavigineCoreBluetoothDelegate {
+  func navigineCore(_ navigineCore: NavigineCore, didUpdateBluetoothState status: CBManagerState) {
+    print("Bluetooth status: ", status.rawValue)
+  }
 }
 
 extension ViewController: UIScrollViewDelegate {

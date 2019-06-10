@@ -15,7 +15,8 @@
 UIScrollViewDelegate,
 NavigineCoreDelegate,
 NavigineCoreNavigationDelegate,
-NavigineCoreLocationDelegate
+NavigineCoreLocationDelegate,
+NavigineCoreBluetoothDelegate
 >
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

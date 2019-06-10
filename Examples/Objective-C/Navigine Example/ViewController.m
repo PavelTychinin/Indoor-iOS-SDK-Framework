@@ -68,6 +68,7 @@ static int const locationId = 2872;
   _navigineCore.delegate = self;
   _navigineCore.locationDelegate = self;
   _navigineCore.navigationDelegate = self;
+  _navigineCore.bluetoothDelegate = self;
   
 //  // Add beacon generators if needed
 //  [_navigineCore addBeaconGenerator: @"F7826DA6-4FA2-4E98-8024-BC5B71E0893E" major: 65463 minor:38214 timeout:50 rssiMin:-100 rssiMax:-70];
@@ -389,12 +390,15 @@ static int const locationId = 2872;
 }
 
 #pragma mark NavigineCoreDelegate methods
+
 - (void) didRangePushWithTitle:(NSString *)title
                        content:(NSString *)content
                          image:(NSString *)image
                             id:(NSInteger)id {
   // Your code
 }
+
+#pragma mark NavigineCoreLocationDelegate methods
 
 - (void)navigineCore:(NavigineCore *)navigineCore didUpdateLocations:(NSArray<CLLocation *> *)locations {
   NSLog(@"Locations: %@", locations);
@@ -406,6 +410,12 @@ static int const locationId = 2872;
 
 - (void)navigineCore:(NavigineCore *)navigineCore didFailWithError:(NSError *)error {
   NSLog(@"Error: %@", error);
+}
+
+#pragma mark NavigineCoreBluetoothDelegate methods
+
+- (void)navigineCore:(NavigineCore *)navigineCore didUpdateBluetoothState:(CBManagerState)status {
+  NSLog(@"Bluetooth status: %zd", status);
 }
 
 @end
