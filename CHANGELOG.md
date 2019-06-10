@@ -2,7 +2,21 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.56) / 2018-05-24
+## [1.0.57](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.57) / 2019-06-10
+* Add new protocol to NavigineCore:
+```Objective-C
+@protocol NavigineCoreBluetoothDelegate <NSObject>
+
+- (void)navigineCore: (NavigineCore *)navigineCore didUpdateBluetoothState:(CBManagerState)status;
+
+@end
+```
+You can use it for tracking bluetooth status.
+***
+* Small bugfixes in example projects
+* Small bugfixes and improvements
+
+## [1.0.56](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.56) / 2019-05-24
 * Add new protocol to NavigineCore:
 ```Objective-C
 @protocol NavigineCoreLocationDelegate <NSObject>
@@ -25,7 +39,7 @@ You can use it for tracking location updates and AuthorizationStatus
 ```
 It means last global location coordinates received from ```CLLocationManager```.
 
-## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.55) / 2018-04-29
+## [1.0.55](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.55) / 2019-04-29
 * Classes ```NCBeacon```, ```NCDeviceInfo```, ```NCVenue``` now inherits from class ```NCLocationPoint```
 * Initializers methods removed from classes such as: ```NCCategory```, ```NCLocation```, ```NCRouteEvent```, ```NCRoutePath```
 * Changes in ```NCDeviceInfo``` class:
@@ -97,7 +111,7 @@ with ```forced``` flag.
 * Small bugfixes in example projects
 * Improved algorithm of detection enter/exit zone
 
-## [1.0.54](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.54) / 2018-03-27
+## [1.0.54](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.54) / 2019-03-27
 * ```userHash```, ```server```, ```location``` in ```NavigineCore``` class now readonly properties
 ```Objective-C
 @property (nonatomic, copy, readonly) NSString *server;
@@ -151,10 +165,10 @@ instead.
 * Fix issue with main-thread checker in ```NavigineCoreNavigationDelegate``` protocol
 * Small bugfixes and improvements
 
-## [1.0.53](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.53) / 2018-03-01
+## [1.0.53](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.53) / 2019-03-01
 * Navigation algorithms updated to version 1.14
 
-## [1.0.52](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.52) / 2018-02-04
+## [1.0.52](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.52) / 2019-02-04
 * Navigation algorithms updated to version 1.13
 * Some bugfixes and improvements 
 
