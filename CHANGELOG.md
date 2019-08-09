@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.59](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.59) / 2019-08-09
+* Small bugfixes and improvements
+
 ## [1.0.58](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.58) / 2019-07-23
 * Navigation algorithms updated to version 2.0
 * Fix issue with `NCSublocation`'s coordinate
