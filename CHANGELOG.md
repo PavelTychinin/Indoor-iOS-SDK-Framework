@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.61](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.61) / 2019-09-04
+* Fixed a bug in the method
+```Objective-C
+- (void) stopLocationLoader :(NSInteger)loaderId;
+```
+that could cause a crash.
+
 ## [1.0.60](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.60) / 2019-08-29
 * Small bugfixes and improvements
 
