@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.62](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.62) / 2019-12-03
+* Navigation algorithms updated to version 2.2
+* Add new method to `NavigineCore` class:
+```Objective-C
+- (void) downloadLocationListWithCompletionHandler : (nullable locationListCompletionHandler) completionHandler;
+```
+You can use it for downloading location list.
+
 ## [1.0.61](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.61) / 2019-09-04
 * Fixed a bug in the method
 ```Objective-C
