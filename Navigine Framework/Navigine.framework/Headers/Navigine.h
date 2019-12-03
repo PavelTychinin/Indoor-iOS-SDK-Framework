@@ -25,3 +25,4 @@ FOUNDATION_EXPORT const unsigned char NavigineVersionString[];
 #import <Navigine/NCLocation.h>
 #import <Navigine/NCSublocation.h>
 #import <Navigine/NCSublocationImage.h>
+#import <Navigine/NCLocationInfo.h>

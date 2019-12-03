@@ -12,7 +12,7 @@
 
 @class NCLocationPoint, NCRoutePath, NCRouteEvent;
 @class NCDeviceInfo, NCVenue, NCZone, NCBeacon, NCGlobalPoint;
-@class NCLocation;
+@class NCLocation, NCLocationInfo;
 
 typedef NS_ENUM(NSInteger, NCError) {
   NCLocationDoesNotExist = 1000,
@@ -25,6 +25,9 @@ typedef NS_ENUM(NSInteger, NCError) {
 };
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
+                                              NSArray<NCLocationInfo *> * _Nullable locationInfo);
 
 /**
  *  Protocol is used for getting navigation resutls in timeout
@@ -76,6 +79,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy, readonly) NSString *server;
 
+@property (nonatomic, readonly, nullable) NSArray<NCLocationInfo *> *locationList;
+
 @property (nonatomic, weak, nullable) id<NavigineCoreNavigationDelegate> navigationDelegate;
 
 @property (nonatomic, weak, nullable) id<NavigineCoreBluetoothDelegate> bluetoothDelegate;
@@ -112,6 +117,12 @@ NS_ASSUME_NONNULL_BEGIN
                    processBlock :(void(^)(NSInteger loadProcess))processBlock
                    successBlock :(void(^)(NSDictionary *userInfo))successBlock
                       failBlock :(void(^)(NSError *error))failBlock;
+
+/**
+ @brief The function is used to get a list of locations that are available for this user
+ @discussion To get a list of locations you can use property (@see locationList)
+*/
+- (void) downloadLocationListWithCompletionHandler : (nullable locationListCompletionHandler) completionHandler;
 
 /**
  @brief Function is used for starting Navigine service.
@@ -232,6 +243,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
                              to: (NCLocationPoint *)endPoint;
 
+- (NCRoutePath *) makeRouteFrom: (NCLocationPoint *)startPoint
+                             to: (NCLocationPoint *)endPoint
+                        options: (nullable NSDictionary *)options;
+
 /**
  @brief Function is used for setting up a target point for the device.
  @discussion If a target point is set up, NavigineCore will automatically
@@ -272,6 +287,8 @@ NS_ASSUME_NONNULL_BEGIN
  If the location is not loaded, function returns nil.
  */
 - (nullable NSString *)getGraphDescription:(NSString *)tag;
+
+- (nullable NSArray<NCLocationPoint *> *)getExternalPoints:(NSString *)tag;
 
 /**
  @brief Function is used for determine the list of available routing graphs.
