@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.64](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.64) / 2020-01-20
+* Fix location permission request
+
+## [1.0.63](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.63) / 2019-12-20
+* Navigation algorithms updated to version 2.3
+
 ## [1.0.62](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.62) / 2019-12-03
 * Navigation algorithms updated to version 2.2
 * Add new method to `NavigineCore` class:
