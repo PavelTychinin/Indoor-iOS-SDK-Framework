@@ -98,6 +98,27 @@ typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
  *  Function is used for downloading location and start navigation
  *
  *  @param locationId Location name from web site.
+ If set, the content data would be loaded even if the same version has been downloaded already earlier.
+ If flag is not set, the download process compares the current downloaded version with the last version on the server.
+ If server version equals to the current downloaded version, the re-downloading is not done.
+ *  @param processBlock show downloading process
+ *  @param successBlock run when download complete successfull
+ *  @param failBlock    show error message and stop downloading
+ */
+- (void) downloadLocationById :(NSInteger)locationId
+                 processBlock :(void(^)(NSInteger loadProcess))processBlock
+                 successBlock :(void(^)(NSDictionary *userInfo))successBlock
+                    failBlock :(void(^)(NSError *error))failBlock;
+
+- (void) downloadLocationByName :(NSString *)location
+                   processBlock :(void(^)(NSInteger loadProcess))processBlock
+                   successBlock :(void(^)(NSDictionary *userInfo))successBlock
+                      failBlock :(void(^)(NSError *error))failBlock;
+
+/**
+ *  Function is used for downloading location and start navigation
+ *
+ *  @param locationId Location name from web site.
  *  @param forced The boolean flag.
  If set, the content data would be loaded even if the same version has been downloaded already earlier.
  If flag is not set, the download process compares the current downloaded version with the last version on the server.
@@ -110,13 +131,13 @@ typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
                   forceReload :(BOOL) forced
                  processBlock :(void(^)(NSInteger loadProcess))processBlock
                  successBlock :(void(^)(NSDictionary *userInfo))successBlock
-                    failBlock :(void(^)(NSError *error))failBlock;
+                    failBlock :(void(^)(NSError *error))failBlock DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationName: locationName instead.");
 
 - (void) downloadLocationByName :(NSString *)location
                     forceReload :(BOOL) forced
                    processBlock :(void(^)(NSInteger loadProcess))processBlock
                    successBlock :(void(^)(NSDictionary *userInfo))successBlock
-                      failBlock :(void(^)(NSError *error))failBlock;
+                      failBlock :(void(^)(NSError *error))failBlock DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationName: locationName instead.");
 
 /**
  @brief The function is used to get a list of locations that are available for this user
@@ -139,26 +160,12 @@ typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
  Download is done in a separate thread in the non-blocking mode.
  Function startLocationLoader doesn't wait until download is finished and returns immediately.
  *
- *  @param userHash userID ID from web site.
- *
  *  @param locationId location name from web site.
- *
- *  @param forced the boolean flag.
- If set, the content data would be loaded even if the same version has been downloaded already earlier.
- If flag is not set, the download process compares the current downloaded version with the last version on the server.
- If server version equals to the current downloaded version, the re-downloading is not done.
  *
  *  @return the download process identifier. This number is used further for checking the download process state and for download process terminating.
  */
-- (int)startLocationLoaderByUserHash: (NSString *)userHash
-                          locationId: (NSInteger)locationId
-                              forced: (BOOL) forced DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationId: locationId instead.");
 
 - (NSInteger)startLocationLoaderByLocationId: (NSInteger)locationId;
-
-- (int)startLocationLoaderByUserHash: (NSString *)userHash
-                        locationName: (NSString *)location
-                              forced: (BOOL) forced DEPRECATED_MSG_ATTRIBUTE("Deprecated method. Use -startLocationLoaderBylocationName: locationName instead.");
 
 - (NSInteger)startLocationLoaderByLocationName: (NSString *)locationName;
 
@@ -198,9 +205,12 @@ typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
 - (void) cancelLocation;
 
 /**
- *  Function is used for cheking pushes from web site
- */
-- (void) startPushManager DEPRECATED_MSG_ATTRIBUTE("Method is not yet implemented. Don't use it!");
+ *  Function is used for sending custom user events to server.
+ *
+ *  @param content Event content.
+ *  @return event tag.
+*/
+- (NSString *) publishUserEvent:(NSString *)content;
 
 /**
  *  Function is used for sending data to server using POST sequests
