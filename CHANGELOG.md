@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.2.0](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.2.0) / 2020-01-27
+* Eddystone support added
+* Navigation algorithms updated to the version 2.5
+
 ## [1.0.66](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.0.66) / 2020-01-27
 * Fix zone events issue
 
