@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CGGeometry.h>
 
-@class NCZone, NCBeacon, NCVenue, NCLocationPoint, NCGlobalPoint, NCSublocationImage, UIImage;
+@class NCZone, NCBeacon, NCEddystone, NCVenue, NCLocationPoint, NCGlobalPoint, NCSublocationImage, UIImage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -49,6 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
  *  Beacons which sublocation contains
  */
 @property (nonatomic, strong, readonly) NSArray<NCBeacon *> *beacons;
+
+/**
+ *  Eddysones which sublocation contains
+ */
+@property (nonatomic, strong, readonly) NSArray<NCEddystone *> *eddystones;
 
 @property (nonatomic, strong, readonly) NCSublocationImage *sublocationImage;
 
