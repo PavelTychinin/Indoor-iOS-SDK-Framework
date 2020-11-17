@@ -11,8 +11,8 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 
 @class NCLocationPoint, NCRoutePath, NCRouteEvent;
-@class NCDeviceInfo, NCVenue, NCZone, NCBeacon, NCGlobalPoint;
-@class NCLocation, NCLocationInfo;
+@class NCDeviceInfo, NCVenue, NCZone, NCBeacon, NCEddystone;
+@class NCLocation, NCLocationInfo, NCGlobalPoint;
 
 typedef NS_ENUM(NSInteger, NCError) {
   NCLocationDoesNotExist = 1000,
@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger, NCError) {
   NCURLRequestImpossible = 1030,
   NCInvalidArchive       = 1040,
   NCInvalidClient        = 1050,
-  NCInvalidBeacon        = 1060
+  NCInvalidBeacon        = 1060,
+  NCInvalidEddystone     = 1061
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -363,6 +364,12 @@ typedef void (^locationListCompletionHandler)(NSError * _Nullable error,
 - (void) beaconFounded: (NCBeacon *)beacon error:(NSError **)error;
 
 - (void) measuringBeaconWithProcess: (NSInteger) process;
+
+- (void) didRangeEddystones: (NSArray *)eddystones;
+
+- (void) eddystoneFounded: (NCEddystone *)eddystone error:(NSError **)error;
+
+- (void) measuringEddystoneWithProcess: (NSInteger) process;
 
 @end
 
