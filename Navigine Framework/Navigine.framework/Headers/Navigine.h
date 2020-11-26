@@ -20,6 +20,7 @@ FOUNDATION_EXPORT const unsigned char NavigineVersionString[];
 #import <Navigine/NCRouteEvent.h>
 #import <Navigine/NCRoutePath.h>
 #import <Navigine/NCDeviceInfo.h>
+#import <Navigine/NCDevice.h>
 #import <Navigine/NCGlobalPoint.h>
 #import <Navigine/NCLocationPoint.h>
 #import <Navigine/NCLocation.h>
