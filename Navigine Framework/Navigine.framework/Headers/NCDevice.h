@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, NCNetworkStatus) {
 
 @interface NCDevice : NSObject
 
-+ (NCDevice *) device;
++ (NCDevice *) sharedDevice;
 
 @property (nonatomic, strong, readonly) NSString              *deviceId;
 @property (nonatomic, strong, readonly) NSString              *osVersion;
