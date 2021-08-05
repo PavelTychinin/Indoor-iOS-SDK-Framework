@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 `Navigine.framework` adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.3.1](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.3.1) / 2021-08-03
+* Fix venue encode/decode algorithm
+
 ## [1.3.0](https://github.com/Navigine/navigine_ios_framework/releases/tag/v.1.3.0) / 2021-08-03
 * Update venues comparator
 * Improved navigation algorithms
