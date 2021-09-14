@@ -1,3 +1,5 @@
+# No longer supported, please, use new vesrion of [SDK](https://github.com/Navigine/Indoor-Navigation-iOS-Mobile-SDK-2.0)
+
 <a href="http://navigine.com"><img src="https://navigine.com/assets/web/images/logo.svg" align="right" height="60" width="180" hspace="10" vspace="5"></a> 
 
 # iOS SDK 
